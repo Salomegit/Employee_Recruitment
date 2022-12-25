@@ -10,7 +10,7 @@
     <title>Employee Recruitement management system</title>
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
     
-    <!-- <link
+    <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -21,12 +21,12 @@
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     crossorigin="anonymous"
     />
-   -->
+  
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success" style="display: flex;" > 
+    <nav class="navbar navbar-expand-lg  bg-success" style="display: flex; color: #561C32;" > 
         <button
         class="navbar-toggler"
         type="button"
@@ -38,9 +38,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar" style="padding: 5px 30px">
         <div class="navbar-nav" style="width: 100%;">
-            <a class="navbar-brand" style="color: rgb(1, 22, 1)" href="index.html">4IQ Technologies</a>
+            <a class="navbar-brand" style="color: #561C32" href="{% url 'employee:index' %}">4IQ Technologies</a>
     
-            <a style="color: white;" class="nav-item nav-link" id="home" href="index.html">
+            <a style="color: white;" class="nav-item nav-link" id="home" href="{% url 'employee:index' %}">
  
             <i class="fa fa-home"></i>Home</a>
     
@@ -68,7 +68,7 @@
                   New Employee
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'register' %}"><i class="fas fa-sign-in-alt "></i> Employee Sign-Up</a>
+                  <a class="dropdown-item" href="{% url 'employee:register' %}"><i class="fas fa-sign-in-alt "></i> Employee Sign-Up</a>
                   <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> Employee Login</a>
                 </div>
               </li>
