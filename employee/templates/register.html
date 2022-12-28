@@ -1,9 +1,23 @@
 {%include 'header.html'%}
+
+<script>
+    function checkpassword(){
+        if(document.signup.password.value!=document.signup.cpassword.value)
+        {
+            alert("Password and Confirm Password field does not match");
+            document.signup.cpassword.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
 <div class="card shadow m-5">
     <div class="card-body"style="background-color: #F7F0F5;">
         <h5 class="p-2 " style="border-bottom : 2px solid orange;color : #561c32">Create an account</h5>
         <div class="container-fluid">
-            <form method="post" >
+            <form method="post" name="signup" onsubmit="return checkpassword()">
                 {% csrf_token %}
                 <div class="form-row">
                     <div class="col-sm-6">
@@ -17,6 +31,13 @@
                         <div class="form-group">
                          <label> Last Name</label>
                          <input type="text" name="lastname" class="form-control" placeholder="Enter Your Last Name" required>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                         <label>  Username</label>
+                         <input type="text" name="username" class="form-control" placeholder="Enter Your preferred Username" required>
                         </div>
 
                     </div>
@@ -43,9 +64,22 @@
                     </div>
                 </div>
                 <br>
-                <input type="submit" value="submit" class="m-2 px-3 btn btn-primary" style="background-color: #561c32;">
-
+                <input type="submit" value="Sign Up" class="m-2 px-3 btn btn-primary" style="background-color: #561c32;">
+                <p>Already have an account?<a href="{% url 'employee:login' %}">login</a> </p>
             </form>
         </div>
     </div>
 </div>
+<!-- 
+{%if error == "no"%}
+<script>
+    alert("Signup Successful")
+    window.location = ("{% url 'employee:login' %}");
+</script>
+{% endif %}
+{% if error == "yes"%}
+{% else %}
+<script>
+    alert("Someting went wrong try again")
+</script>
+{% endif %} -->

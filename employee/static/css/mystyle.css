@@ -1,4 +1,20 @@
+.nav-link{
+    color: #f7edee !important;
+}
 
-nav-item nav-link {
-    color:rgb(122, 41, 41);
+.nav-link:hover{
+color: yellow !important;
+background-color: #a15371;
+border-radius: 15px;
+}
+
+.navbar{
+    color: #561c32;
+}
+
+.salo{
+    color: rgba(229, 15, 15, 0.5);
+}
+.bg-success{
+    color: #561c32 !important;
 }
