@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from job.models import Job
 # Create your views here.
 @login_required
 def base(request):
-    return render(request ,"base.html",)
+    jobs = Job.objects.all()[0:3]
+    return render(request ,"base.html",{'jobs':jobs})
 
 
 def register(request):
