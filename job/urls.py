@@ -4,6 +4,6 @@ from . import views
 app_name = "job"
 
 urlpatterns = [
-    # path("base", views.base, name="base"),
+    path("job/<int:job_id>", views.job_detail, name="job_detail"),
     
     ]

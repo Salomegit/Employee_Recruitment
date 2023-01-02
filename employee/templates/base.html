@@ -1,27 +1,45 @@
-{%include 'header.html'%}
+{% include 'header.html' %}
+
+
+
 <div class="salo">homepage</div>
-{% block content%}
-<h2 class="subtitle has-text-centered">Available job Vacancies</h2>
-
-<div class="columns">
-  {% for job in jobs %}
-  <div class="card">
-    <div class="card-content">
-      <div class="media">
-        <div class="media-content">
-          <p class="title is-4">{{ job.title }}</p>
-          <p class="subtitle is-6">{{ job.created_at }}</p>
-        </div>
-      </div>
-      <div class="content">{{ job.skillset_required }}</div>
-      <div class="content">{{ job.about_job}}</div>
-      <div class="content">{{ job.created_by }}</div>
-      
-
+<div class="jumbotron feature bg-primary custom-land-page-bg" style="border-radius: 0; height: 65vh;">
+    <div class="container"style="height: 100%; color: black; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
+        <h1 style="font-weight: bolder; font-size: 4em" >Welcome to Green Shop</h1>
+        <p style="font-size: 2em">We sell diffrent kinds of cereals in whole sale.</p>
+        <p><a class="btn bg-success custom-btn" style="font-weight: bolder; font-size: 2em; border: solid 2px grey; color: whitesmoke;" href="#">Order now</a></p>
     </div>
-  </div>
-
-  {% endfor %}
 </div>
 
+{% block content %}
+    <h2 class="subtitle has-text-centered">Newest jobs</h2>
+
+    <div class="row">
+        {% for job in jobs %}
+
+            <div class="col-sm-4">
+                <div class="card" style="width: 24rem; height: 24rem; margin: 10px;">
+					<img class="card-img-top" src="q.jpg" alt="Card image cap">
+
+					
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title">{{ job.title }}</p>
+                                <p class="subtitle">{{ job.created_at }}</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            {{ job.skillset_required}}
+
+                            <hr>
+
+                            <a href="{% url 'job:job_detail' job.id %}">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
