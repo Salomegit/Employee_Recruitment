@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+
+
+{% block content %}
+   <h1 class="title">Dashboard</h1>
+   {% if userprofile.is_employer %} 
+        Is employer 
+    {% else %}
+        Is jobseeker 
+    {% endif %}
+{% endblock %}

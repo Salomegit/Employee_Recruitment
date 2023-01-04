@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
+from userprofile.models import Userprofile
 from job.models import Job
 # Create your views here.
 @login_required
@@ -20,12 +21,19 @@ def register(request):
         password= request.POST.get('password')
         name = request.POST.get("username")
         
-        new_user = User.objects.create_user(name,email, password)
-        new_user.first_name = fname
-        new_user.last_name = lname
+        user = User.objects.create_user(name,email, password)
+        user.first_name = fname
+        user.last_name = lname
 
-        new_user.save()
-
+        user.save()
+        account_type = request.POST.get('account_type','jobseeker',)
+        if account_type == 'employer':
+            userprofile = Userprofile.objects.create(user=user, is_employer=True)
+            userprofile.save()
+        else:
+            userprofile = Userprofile.objects.create(user=user)
+            userprofile.save()
+        
         return redirect("employee:login")
 
         

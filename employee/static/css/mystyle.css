@@ -35,7 +35,7 @@ body{
 	width: 60px;
 	height: 60px;
 }
-.card{
+/* .card{
 	display: block;
 	padding: 3vh 2vh 7vh 5vh;
 	border: none;
@@ -43,7 +43,7 @@ body{
 	margin-top: 5%;
 	margin-bottom: 5%;
 	max-width: 500px;
-}
+} */
 .header{
 	margin-bottom: 5vh;
 	margin-right: 2vh;

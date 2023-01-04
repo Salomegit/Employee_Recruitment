@@ -2,12 +2,14 @@
 
 
 
-<div class="salo">homepage</div>
-<div class="jumbotron feature bg-primary custom-land-page-bg" style="border-radius: 0; height: 65vh;">
+<div class="jumbotron feature  custom-land-page-bg" style="border-radius: 0; height: 65vh; background-color: #d5abb9;">
     <div class="container"style="height: 100%; color: black; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
-        <h1 style="font-weight: bolder; font-size: 4em" >Welcome to Green Shop</h1>
-        <p style="font-size: 2em">We sell diffrent kinds of cereals in whole sale.</p>
-        <p><a class="btn bg-success custom-btn" style="font-weight: bolder; font-size: 2em; border: solid 2px grey; color: whitesmoke;" href="#">Order now</a></p>
+        <h1 style="font-weight: bolder; font-size: 4em ; " >We're hiring</h1>
+        <p style="font-size: 2em">Get your <span>Dream Job</span> today </p>
+		<p style="font-size: 2em">At 4IQ Technologies</p>
+
+        <p><a class="btn custom-btn" style="font-weight:100; font-size: 1em; border: solid 2px grey; color:  #f7edee; background-color: #561c32 ; border-radius: 10cm;" href="">Apply now</a></p>
+		<img src="/employee/templates/q.jpg" alt="">
     </div>
 </div>
 
@@ -19,7 +21,8 @@
 
             <div class="col-sm-4">
                 <div class="card" style="width: 24rem; height: 24rem; margin: 10px;">
-					<img class="card-img-top" src="q.jpg" alt="Card image cap">
+					<h1>{{job.image.url}}</h1>
+					<img class="card-img-top" src={{job.image.url}} alt="Card image cap">
 
 					
                     <div class="card-body">
