@@ -78,6 +78,8 @@
             ><i class="fas fa-sign-in-alt"></i>Sign-Up</a
             >
             {% endif %}
+            {% if request.user.is_authenticated %}
+
             <a
             style="color: white;"
             class="nav-item nav-link"
@@ -85,7 +87,8 @@
             href="{% url 'userprofile:dashboard' %}"
             ><i class="fas fa-sign-in-alt"></i>Dashboard</a
             >
-              
+            {% endif %}
+
 
             
             <form class="form-inline my-2 my-lg-0 rightNav" style="flex-grow: 1; justify-content: end;">

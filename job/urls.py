@@ -8,7 +8,7 @@ app_name = "job"
 
 urlpatterns = [
     path("job/<int:job_id>", views.job_detail, name="job_detail"),
-    
+    path("job/add" ,views.add, name="add")
     ]
 
 

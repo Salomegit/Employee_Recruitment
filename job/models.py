@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Job(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
-    skillset_required = models.TextField(max_length=150)
+    skillset_required = models.TextField(max_length=200)
     about_job = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="images/covers")
 

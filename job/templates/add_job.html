@@ -1,0 +1,65 @@
+{% include 'header.html' %} {% block content %}
+<h1 class="title" style="display: flex; align-items: center">Add job</h1>
+<form
+  method="post"
+  action="."
+  style="
+    color: #561c32;
+    font: 100% / normal sans-serif;
+    justify-content: space-between;
+
+    padding: 20px;
+
+    justify-content: start;
+    align-items: flex-start;
+  "
+>
+  {% csrf_token %} 
+
+{%if form.errors %}
+     {% for error in form.errors %}
+        <div class="notification is-danger">
+           {{ error }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+<div class="col-sm-12">
+    <div class="form-group">
+    <label> Title</label>
+    <input  type="text" name="title" class="form-control" id="id_title" required>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group">
+    <label>Skillset Required</label>
+    <input type="text" name="skillset_required" class="form-control" id="id_skillset_required" required>
+</div>
+</div>
+
+<div class="col-sm-12">
+    <div class="form-group">
+    <label>About Job</label>
+    <textarea  type="textarea" name="about_job" class="form-control" id="id_about_job" cols="10" rows="10"  required></textarea>
+</div>
+</div>
+
+<div>
+    <label for="file">Image</label>
+    <br>
+    <input type="file" id="file" name="file" multiple />
+   </div>
+<div>
+    <input
+    type="submit"
+    value="Add Job"
+    class="m-2 px-3 btn btn-primary"
+    style="background-color: #561c32"
+  />
+</div>
+
+</form>
+
+{% endblock %}
