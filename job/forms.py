@@ -5,3 +5,4 @@ class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['title','skillset_required','about_job','image']
+        

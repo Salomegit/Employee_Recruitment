@@ -2,7 +2,7 @@
 
 
 {% block content %}
-   <h1 class="title">Dashboard</h1>
+   <h1 class="title"> <center style="text-decoration: underline; color: #561c32;">Dashboard</center> </h1>
    {% if userprofile.is_employer %} 
        <h2 class="subtitle">Jobs salome</h2>
        
@@ -11,19 +11,20 @@
         {{ job.title }}
 
        </div> -->
-       <p>i am jobseeker</p>
+       <p>i am employer</p>
        <!-- {% endfor %} -->
 
     {% else %}
 
     
 
-    <h2 class="subtitle">Jobs salomeit</h2>
+    <h2 class="subtitle">Welcome back.. </h2>
     
     {% for job in request.user.jobs.all %}
     <div class="title">
-     {{ job.title }}
 
+     {{ job.title }}
+ca
     </div>
     {% empty %}
      <p>You dont have any jobs yet...</p>

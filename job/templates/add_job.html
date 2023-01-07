@@ -1,5 +1,6 @@
 {% include 'header.html' %} {% block content %}
-<h1 class="title" style="display: flex; align-items: center">Add job</h1>
+ <center class="title" style="font-size:50px; font-weight: 100;text-decoration: underline;color: #561c32;
+ "> Add job</center>
 <form
   method="post"
   action="."
@@ -7,9 +8,8 @@
     color: #561c32;
     font: 100% / normal sans-serif;
     justify-content: space-between;
-
+    font-size: large;
     padding: 20px;
-
     justify-content: start;
     align-items: flex-start;
   "
@@ -28,15 +28,15 @@
 
 <div class="col-sm-12">
     <div class="form-group">
-    <label> Title :</label>
-    <input  type="text" name="title" class="form-control" id="id_title" required>
+    <label> Title:-</label>
+    <input  style="border: 2px solid" type="text" name="title" class="form-control" id="id_title" required>
     </div>
 </div>
 
 <div class="col-sm-12">
     <div class="form-group">
-    <label>Skillset Required :</label>
-    <textarea  type="textarea" name="skillset_required" class="form-control" id="id_skillset_required"  rows="5"  required></textarea>
+    <label>Skillset Required:-</label>
+    <textarea style="border: 2px solid"   type="textarea" name="skillset_required" class="form-control" id="id_skillset_required"  rows="5"  required></textarea>
 </div>
 </div>
 
@@ -45,15 +45,15 @@
 
 <div class="col-sm-12">
     <div class="form-group">
-    <label>About Job :</label>
-    <textarea  type="textarea" name="about_job" class="form-control" id="id_about_job"  rows="8"  required></textarea>
+    <label>About Job:-</label>
+    <textarea style="border: 2px solid"  type="textarea" name="about_job" class="form-control" id="id_about_job"  rows="8"  required></textarea>
 </div>
 </div>
 
 <div>
-    <label for="file">Image :</label>
+    <label for="file">Image:-</label>
     <br>
-    <input type="file" id="file" name="file" multiple />
+    <input   type="file" id="file" name="file" multiple />
    </div>
 <div>
     <input

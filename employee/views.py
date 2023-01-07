@@ -40,7 +40,7 @@ def register(request):
             return redirect("userprofile:dashboard")
 
         else:
-            userprofile = Userprofile.objects.create(user=user,is_employer=False)
+            userprofile = Userprofile.objects.create(user=user)
             userprofile.save()
       
         login(request, user)
@@ -51,28 +51,28 @@ def register(request):
       return render(request, "register.html", locals())
 
 
-def Login(request):
-    if request.method == "POST":
-        name = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+# def Login(request):
+#     if request.method == "POST":
+#         name = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
 
-        user1 = authenticate(request,
-                            username=name,
-                            email=email,
-                            password=password)
-        if user1 is not None:
-            login(request, user1)
-            return redirect("employee:base")
+#         user1 = authenticate(request,
+#                             username=name,
+#                             email=email,
+#                             password=password)
+#         if user1 is not None:
+#             login(request, user1)
+#             return redirect("employee:base")
             
-        else:
-            return HttpResponse('Error user does not exist')
-    return render(
-        request,
-        "login.html",
-    )
+#         else:
+#             return HttpResponse('Error user does not exist')
+#     return render(
+#         request,
+#         "login.html",
+#     )
 
 
 def logoutuser(request):
     logout(request)
-    return redirect("employee:login")
+    return redirect("employee:register")

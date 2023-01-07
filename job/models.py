@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+GENDER = (('1', 'Male'), ('2', 'Female'))
+
 
 class Job(models.Model):
     title = models.CharField(max_length=50)
@@ -9,7 +11,36 @@ class Job(models.Model):
     about_job = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="images/covers")
 
-    created_by = models.ForeignKey(User, related_name="jobs",on_delete=models.CASCADE)
-    
+    created_by = models.ForeignKey(User,
+                                   related_name="jobs",
+                                   on_delete=models.CASCADE)
+
     def __str__(self):
         return self.title
+
+
+class Application(models.Model):
+
+    job = models.ForeignKey(Job,
+                            related_name='applications',
+                            on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=200, null=True, blank=True)
+    date_of_birth = models.CharField(max_length=20, blank=True, null=True)
+    gender = models.CharField(max_length=10,
+                              choices=GENDER,
+                              blank=True,
+                              null=True)
+    email = models.EmailField(max_length=70, blank=True, unique=True)
+    location = models.CharField(
+        max_length=104,
+        null=True
+    )
+    mobile = models.IntegerField()
+    resume = models.FileField(upload_to='resumes/')
+
+    content = models.TextField()
+    experience = models.TextField()
+
+    created_by = models.ForeignKey(User,
+                                   related_name="applications",
+                                   on_delete=models.CASCADE)
