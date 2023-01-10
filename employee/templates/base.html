@@ -82,19 +82,19 @@
           <div style="display: flex;">
             <div style="display: flex">
               <i style="font-size: 30px" class="fas fa-user"></i>
-              <div style="display: inline; margin: 0px 10px">
+              <div style="display: inline; margin: 0px 10px; margin-right: 50px;">
                 <i>
-                  <p style="color: grey">Looking for</p>
+                  <p style="color: grey">Looking for:</p>
                 </i>
                 <p class="title">{{ job.title }}</p>
               </div>
             </div>
 
             <div style="display: flex">
-              <i style="font-size: 30px" class="fas fa-timer"></i>
-              <div style="display: inline; margin: 0px 10px">
+              <i style="font-size: 30px" class="fas fa-clock"></i>
+              <div style="display: inline; margin: 0px 10px ">
                 <i>
-                  <p style="color: grey">Posted on</p>
+                  <p style="color: grey">Posted on:</p>
                 </i>
                 <p class="title">{{ job.created_at }}</p>
               </div>
@@ -104,11 +104,11 @@
           <div style="display: flex;">
             <div style="display: flex">
               <i style="font-size: 30px" class="fas fa-dollar-sign"></i>
-              <div style="display: inline; margin: 0px 10px">
+              <div style="display: inline;margin: 0px 10px;  margin-right: 100px;">
                 <i>
-                  <p style="color: grey">Salary</p>
+                  <p style="color: grey">Salary:</p>
                 </i>
-                <p class="title">{{ job.title }}</p>
+                <p class="title">{{ job.salary }} $</p>
               </div>
             </div>
 
@@ -116,22 +116,21 @@
               <i style="font-size: 30px" class="fas fa-briefcase"></i>
               <div style="display: inline; margin: 0px 10px">
                 <i>
-                  <p style="color: grey">Experience</p>
+                  <p style="color: grey">Experience:</p>
                 </i>
-                <p class="title">{{ job.created_at }}</p>
+                <p class="title">{{ job.experience}}</p>
               </div>
             </div>
           </div>
 
         </div>
       </div>
-      <div>
-        <i>
-          <h5 style="color: grey">Skillset Required:-</h5>
-        </i>
-        <div class="content">{{ job.skillset_required}}
 
-        </div>
+
+      <!-- button -->
+      <div>
+        
+       
 
         <hr />
         <center>

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 GENDER = (('1', 'Male'), ('2', 'Female'))
 
@@ -10,7 +12,9 @@ class Job(models.Model):
     skillset_required = models.TextField(max_length=200)
     about_job = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="images/covers")
-
+    experience = models.CharField(max_length=50,null=True)
+    salary = models.IntegerField(max_length=50,null=True)
+    
     created_by = models.ForeignKey(User,
                                    related_name="jobs",
                                    on_delete=models.CASCADE)
@@ -35,8 +39,8 @@ class Application(models.Model):
         max_length=104,
         null=True
     )
-    mobile = models.IntegerField()
-    resume = models.FileField(upload_to='resumes/')
+    # mobile = models.IntegerField()
+    # resume = models.FileField(upload_to='resumes/')
 
     content = models.TextField()
     experience = models.TextField()

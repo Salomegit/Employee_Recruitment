@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'userprofile'
 ]
+INSTALLED_APPS+= ["djmoney"]
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
