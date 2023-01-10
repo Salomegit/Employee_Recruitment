@@ -1,48 +1,168 @@
 {% include 'header.html' %}
 
+<div
+  class="jumbotron feature custom-land-page-bg"
+  style="
+    border-radius: 0;
+    height: 65vh;
+    background-color: #d5abb9;
+    display: flex;
+  "
+>
+  <div
+    class="container"
+    style="height: 100%; color: black; align-items: center; margin-left: 100px"
+  >
+    <h1 style="font-weight: bolder; font-size: 4em">We're hiring</h1>
+    <p style="font-size: 2em">Get your <span>Dream Job</span> today</p>
+    <p style="font-size: 2em">At 4IQ Technologies</p>
 
-
-<div class="jumbotron feature  custom-land-page-bg" style="border-radius: 0; height: 65vh; background-color: #d5abb9;">
-    <div class="container"style="height: 100%; color: black; display: flex; flex-direction: column; justify-content: center; align-items: center;" >
-        <h1 style="font-weight: bolder; font-size: 4em ; " >We're hiring</h1>
-        <p style="font-size: 2em">Get your <span>Dream Job</span> today </p>
-		<p style="font-size: 2em">At 4IQ Technologies</p>
-
-        <p><a class="btn custom-btn" style="font-weight:100; font-size: 1em; border: solid 2px grey; color:  #f7edee; background-color: #561c32 ; border-radius: 10cm;" href="">Apply now</a></p>
-		<img src="/employee/templates/q.jpg" alt="">
-    </div>
+    <p>
+      <a
+        class="btn custom-btn"
+        style="
+          font-weight: 100;
+          font-size: 1em;
+          border: solid 2px grey;
+          color: #f7edee;
+          background-color: #561c32;
+          border-radius: 10cm;
+        "
+        href=""
+        >Apply now</a
+      >
+    </p>
+  </div>
+  <div>
+    <img
+      src="https://media.istockphoto.com/id/1455134109/vector/job-interview-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=pHCYohoigGJKQfRnP6O7OqpoisImmhNW084SZ2As1d4="
+      alt=""
+      style="
+        display: flex;
+        margin-right: 100px;
+        height: 100%;
+        mix-blend-mode: color-burn;
+      "
+    />
+  </div>
 </div>
 
 {% block content %}
-    <h2 class="subtitle has-text-centered">Newest jobs</h2>
+<center>
+  <h2
+    class="subtitle has-text-centered"
+    style="color: #561c32;font-size: 55px; text-decoration: underline; fo"
+  >
+    Newest jobs
+  </h2>
+</center>
 
-    <div class="row">
-        {% for job in jobs %}
+<br />
+<div
+  class="container row"
+  style="width: 100%; margin: auto; display: flex; justify-content: center"
+>
+  {% for job in jobs %}
 
-            <div class="col-sm-4">
-                <div class="card" style="width: 24rem; height: 24rem; margin: 10px;">
-					<h1>{{job.image.url}}</h1>
-					<img class="card-img-top" src={{job.image.url}} alt="Card image cap">
+  <!-- <div class="col-sm-1 col-md-3 " style="margin: 5px;"> -->
+  <div class="card" style="width: 350px; margin: 10px">
+    <!-- <h1>{{job.image.url}}</h1> -->
+    <!-- <img class="card-img-top" src={{job.image.url}} alt="Card image cap"> -->
 
-					
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title">{{ job.title }}</p>
-                                <p class="subtitle">{{ job.created_at }}</p>
-                            </div>
-                        </div>
+    <img
+      class="card-img-top"
+      src="https://images.pexels.com/photos/14792109/pexels-photo-14792109.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+      style="height: 200px; object-fit: cover; overflow: hidden"
+      alt="Card image cap"
+    />
 
-                        <div class="content">
-                            {{ job.skillset_required}}
-
-                            <hr>
-
-                            <a href="{% url 'job:job_detail' job.id %}">View</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="card-body" style="background-color: #f0deef">
+      <div class="media">
+        <div class="media-content">
+          <div style="display: flex;">
+            <div style="display: flex">
+              <i style="font-size: 30px" class="fas fa-user"></i>
+              <div style="display: inline; margin: 0px 10px">
+                <i>
+                  <p style="color: grey">Looking for</p>
+                </i>
+                <p class="title">{{ job.title }}</p>
+              </div>
             </div>
-        {% endfor %}
+
+            <div style="display: flex">
+              <i style="font-size: 30px" class="fas fa-timer"></i>
+              <div style="display: inline; margin: 0px 10px">
+                <i>
+                  <p style="color: grey">Posted on</p>
+                </i>
+                <p class="title">{{ job.created_at }}</p>
+              </div>
+            </div>
+          </div>
+        <!-- second row -->
+          <div style="display: flex;">
+            <div style="display: flex">
+              <i style="font-size: 30px" class="fas fa-dollar-sign"></i>
+              <div style="display: inline; margin: 0px 10px">
+                <i>
+                  <p style="color: grey">Salary</p>
+                </i>
+                <p class="title">{{ job.title }}</p>
+              </div>
+            </div>
+
+            <div style="display: flex">
+              <i style="font-size: 30px" class="fas fa-briefcase"></i>
+              <div style="display: inline; margin: 0px 10px">
+                <i>
+                  <p style="color: grey">Experience</p>
+                </i>
+                <p class="title">{{ job.created_at }}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div>
+        <i>
+          <h5 style="color: grey">Skillset Required:-</h5>
+        </i>
+        <div class="content">{{ job.skillset_required}}
+
+        </div>
+
+        <hr />
+        <center>
+          <a
+            class="btn custom-btn"
+            style="
+              font-weight: 100;
+              font-size: 1em;
+              border: solid 2px grey;
+              color: #f7edee;
+              background-color: #561c32;
+              border-radius: 10cm;
+              width: 5cm;
+              align-items: center;
+            "
+            href="{% url 'job:job_detail' job.id %}"
+            >View</a
+          >
+        </center>
+      </div>
     </div>
+  </div>
+  <!-- </div> -->
+  {% endfor %}
+</div>
 {% endblock %}
+<hr
+  style="
+    width: 60%;
+    color: #561c32;
+    border: solid 2px #561c32;
+    background-color: #561c32;
+  "
+/>
