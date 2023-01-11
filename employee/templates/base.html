@@ -60,13 +60,16 @@
 <br />
 <div
   class="container row"
-  style="width: 100%; margin: auto; display: flex; justify-content: center"
+  style="width: 100%; 
+  margin : auto; 
+  display: flex; 
+  justify-content: center"
 >
   {% for job in jobs %}
 
   <!-- <div class="col-sm-1 col-md-3 " style="margin: 5px;"> -->
   <div class="card" style="width: 350px; margin: 10px">
-    <img class="card-img-top" src={{job.image.url}} alt="Card image cap">
+    <!-- <img class="card-img-top" src={{job.image.url}} alt="Card image cap"> -->
 
     <img
       class="card-img-top"
@@ -188,20 +191,91 @@
 />
 
 <!-- steps to apply -->
-<div style="display: flex;">
-<div style="margin-left: 100px; size: 30px ; ;">
-  <img
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCukyM_yl3Cy3O5qCgsFrNYNYhrlse_BX07Q&usqp=CAU"
-    alt=""
-  />
-  <h4 style="color: #561c32;">Sign-Up</h4>
+<div style="display: flex;  justify-content: center" >
+  <div style="margin-left: 0px; size: 30px">
+    <button
+      class="btn custom-btn"
+      style="
+        font-weight: 200;
+        font-size: 1em;
+        color: #561c32;
+        border: solid 2px #561c32;
+
+        background-color: #f0deef;
+        border-radius: 40cm;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+
+      "
+    >
+      1
+    </button>
+
+  
+    <h4 style="color: #561c32">Sign-Up</h4>
+  </div>
+  <!-- vertical line -->
+  <div style="border-left: 3px solid #561c32;
+  height: 200px; margin-left: 100px;"></div>
+  <!-- verticle line -->
+
+  <div style="margin-left: 100px; size: 30px">
+    <button
+      class="btn custom-btn"
+      style="
+        font-weight: 200;
+        font-size: 1em;
+        color: #561c32;
+        border: solid 2px #561c32;
+
+        background-color: #f0deef;
+        border-radius: 40cm;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+
+      "
+    >
+      2
+    </button>
+    <h4 style="color: #561c32">Apply For a Job</h4>
+</div>
+ <!-- vertical line -->
+ <div style="border-left: 3px solid #561c32;
+ height: 200px; margin-left: 100px;"></div>
+ <!-- verticle line -->
+
+  <div style="margin-left: 150px; size: 30px">
+    <button
+    class="btn custom-btn"
+    style="
+      font-weight: 200;
+      font-size: 1em;
+      color: #561c32;
+      border: solid 2px #561c32;
+      background-color: #f0deef;
+      border-radius: 40cm;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+
+    "
+  >
+    3
+  </button>
+  <h4 style="color: #561c32">Await Feedback</h4>
+</div>
+ <!-- vertical line -->
+ <div style="border-left: 3px solid #561c32;
+ height: 200px; margin-left: 100px;"></div>
+ <!-- verticle line -->
 </div>
 
-<div style="margin-left: 100px; size: 30px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd2YIv3wQAhw2RbHyaUY6Rj0SXWn4yWSRmXQ&usqp=CAU" alt="">
-</div>
+<br>
 
-<div style="margin-left: 100px; size: 30px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd2YIv3wQAhw2RbHyaUY6Rj0SXWn4yWSRmXQ&usqp=CAU" alt="">
-</div>
-</div>
+{% include 'footer.html' %}
+
