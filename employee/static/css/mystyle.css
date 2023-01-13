@@ -1,56 +1,23 @@
-.nav-link{
+ .nav-link{
     color: #f7edee !important;
 }
 
 .nav-link:hover{
-color: yellow !important;
+color: rgb(255, 221, 0) !important;
 background-color: #a15371;
 border-radius: 15px;
 }
-
-.navbar{
-    color: #561c32;
-}
-
-.salo{
-    color: rgba(229, 15, 15, 0.5);
-}
-.bg-success{
-    color: #561c32 !important;
-}
+ 
 
 
 
 
 
 
-/* .card{
-	display: block;
-	padding: 3vh 2vh 7vh 5vh;
-	border: none;
-	border-radius: 15px;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	max-width: 500px;
-} */
-.arrow-1 {
-	width:100px;
-	height:30px;
-	display: flex;
-  }
-  .arrow-1:before {
-	content: "";
-	background: currentColor;
-	width:15px;
-	clip-path: polygon(0 10px,calc(100% - 15px) 10px,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,calc(100% - 15px) calc(100% - 10px),0 calc(100% - 10px));
-	animation: a1 1.5s infinite linear;
-  }
-  @keyframes a1 {
-	90%,100%{flex-grow: 1}
-  }
 
 
-  .vl {
-    border-left: 6px solid green;
-    height: 500px;
-  }
+
+
+
+  
+   

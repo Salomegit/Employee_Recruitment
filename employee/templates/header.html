@@ -47,8 +47,7 @@
             <a
             style="color: white; "
             class="nav-item nav-link"
-            id="signUp"
-            href="about.html"
+            href="{% url 'employee:about'%}"
             ><i class="fas fa-address-card"></i>About Us</a>
             
  
@@ -56,8 +55,7 @@
             <a
             style="color: white;"
             class="nav-item nav-link"
-            id="login"
-            href="visit.html"
+            href="{% url 'employee:contact'%}"
             ><i class="fas fa-phone"></i>Contact Us</a
             >
             
@@ -65,7 +63,6 @@
            <a
            style="color: white;"
            class="nav-item nav-link"
-           id="login"
            href="{% url 'employee:logout' %}"
            ><i class="fas fa-phone"></i>Logout</a
            >
@@ -73,7 +70,6 @@
             <a
             style="color: white;"
             class="nav-item nav-link"
-            id="login"
             href="{% url 'employee:register' %}"
             ><i class="fas fa-sign-in-alt"></i>Sign-Up</a
             >
@@ -83,7 +79,6 @@
             <a
             style="color: white;"
             class="nav-item nav-link"
-            id="login"
             href="{% url 'userprofile:dashboard' %}"
             ><i class="fas fa-sign-in-alt"></i>Dashboard</a
             >

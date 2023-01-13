@@ -14,6 +14,12 @@ def base(request):
     jobs = Job.objects.all()[0:8]
     return render(request, "base.html", {'jobs': jobs})
 
+def about(request):
+    return render (request,'about.html')
+
+def contact(request):
+    return render (request,'contact.html')
+
 
 def register(request):
     if request.method == "POST":
