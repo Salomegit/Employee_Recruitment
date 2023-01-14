@@ -13,8 +13,8 @@ class Job(models.Model):
     about_job = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="images/covers")
     experience = models.CharField(max_length=50,null=True)
-    salary = models.IntegerField(max_length=50,null=True)
-    
+    salary = models.CharField(max_length=50,null=True)
+    deadline = models.CharField(max_length=50,null=True)
     created_by = models.ForeignKey(User,
                                    related_name="jobs",
                                    on_delete=models.CASCADE)
@@ -28,7 +28,8 @@ class Application(models.Model):
     job = models.ForeignKey(Job,
                             related_name='applications',
                             on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=200, null=True, blank=True)
+    first_name = models.CharField(max_length=200, null=True, blank=True)
+    last_name = models.CharField(max_length=200, null=True, blank=True)
     date_of_birth = models.CharField(max_length=20, blank=True, null=True)
     gender = models.CharField(max_length=10,
                               choices=GENDER,
@@ -44,6 +45,9 @@ class Application(models.Model):
 
     content = models.TextField()
     experience = models.TextField()
+    
+    
+    created_at = models.DateTimeField(auto_now_add=True,null=False)
 
     created_by = models.ForeignKey(User,
                                    related_name="applications",
