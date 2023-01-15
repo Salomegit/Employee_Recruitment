@@ -9,4 +9,5 @@ class AddJobForm(forms.ModelForm):
 # class ApplicationForm(forms.ModelForm):
 #     class Meta:
 #         model = Application
-#         field = []
+#         field = ['first_name','last_name','date_of_birth','gender','email','location','content','experience',
+#                  'mobile','resume']

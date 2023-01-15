@@ -14,7 +14,7 @@ def job_detail(request, job_id):
 @login_required
 def add(request):
     if request.method == "POST":
-        form = AddJobForm(request.Post)
+        form = AddJobForm(request.Post,request.FILES)
 
         if form.is_valid():
             job = form.save(commit=False)

@@ -22,5 +22,6 @@ urlpatterns = [
     path('__debug__/',include('debug_toolbar.urls')),
     path('job/',include("job.urls")),
     path('userprofile/',include("userprofile.urls")),
+    # path('images/covers')                        
 
 ] 
