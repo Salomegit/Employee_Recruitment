@@ -20,7 +20,7 @@
         color: #f7edee;
         background-color: #561c32;
         "
-      href=""
+      href="{% url 'job:apply_for_job ' job.id %}"
       >Apply now<i class="fas fa-hand-point-up"></i></a
       >
       <h6>Last Date to Apply {{ job.deadline }}</h6>

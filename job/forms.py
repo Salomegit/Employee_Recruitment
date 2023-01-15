@@ -6,8 +6,8 @@ class AddJobForm(forms.ModelForm):
         model = Job
         fields = ['title','skillset_required','about_job','image']
 
-# class ApplicationForm(forms.ModelForm):
-#     class Meta:
-#         model = Application
-#         field = ['first_name','last_name','date_of_birth','gender','email','location','content','experience',
-#                  'mobile','resume']
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ['first_name','last_name','date_of_birth','gender','education','email','location','content','experience',
+                 'mobile','resume']

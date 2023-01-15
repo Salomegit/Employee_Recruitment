@@ -6,18 +6,30 @@
    {% if userprofile.is_employer %} 
        <h2 class="subtitle">Jobs salome</h2>
        
-       <!-- {% for job in request.user.jobs.all %}
-       <div class="job">
-        {{ job.title }}
-
-       </div> -->
+    
        <p>i am employer</p>
-       <!-- {% endfor %} -->
-
-    {% else %}
+       {% else %}
 
     
 
+       <h2 class="subtitle">All Applications</h2>
+       
+       {% for application in request.user.applications.all %}
+       <div class="title">
+           <a href="{% url 'userprofile:view_application' application.id %}
+           ">
+           {{ application.job.title }}
+</a>
+   
+       </div>
+       {% empty %}
+        <p>You have not applied for any jobs yet..</p>
+       {% endfor %}
+    {% endif %}
+
+    
+{% endblock %}
+<!-- 
     <h2 class="subtitle">Welcome back.. </h2>
     
     {% for job in request.user.jobs.all %}
@@ -29,5 +41,3 @@
     {% empty %}
      <p>You dont have any jobs yet...</p>
     {% endfor %}
-    {% endif %}
-{% endblock %}

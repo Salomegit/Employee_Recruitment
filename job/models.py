@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 GENDER = (('1', 'Male'), ('2', 'Female'))
@@ -27,7 +26,7 @@ class Application(models.Model):
 
     job = models.ForeignKey(Job,
                             related_name='applications',
-                            on_delete=models.CASCADE)
+                             on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     date_of_birth = models.CharField(max_length=20, blank=True, null=True)
@@ -41,14 +40,21 @@ class Application(models.Model):
         null=True
     )
     mobile = models.IntegerField(null=True, blank=True)
-    # resume = models.Fi leField(upload_to='resumes/',null=False)
+    education   = models.CharField('Education', max_length=255, null=True, blank=True)
+
+
 
     content = models.TextField()
     experience = models.TextField()
     
+    resume  = models.FileField( upload_to='resumes/', null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True,null=False)
 
     created_by = models.ForeignKey(User,
                                    related_name="applications",
                                    on_delete=models.CASCADE)
+    
+
+    def __str__(self):
+       return self.job
