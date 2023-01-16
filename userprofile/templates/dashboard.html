@@ -12,17 +12,71 @@
 
     
 
-       <h2 class="subtitle">All Applications</h2>
+       <h2 class="subtitle">All Applications Apllied</h2>
        
-       {% for application in request.user.applications.all %}
-       <div class="title">
+      {% for application in request.user.applications.all %}
+       <!-- <div class="title">
            <a href="{% url 'userprofile:view_application' application.id %}
            ">
            {{ application.job.title }}
 </a>
    
-       </div>
-       {% empty %}
+       </div> -->
+
+       <style>
+        table, th, td {
+          border:3px solid black;
+        }
+        
+        </style>
+        <body>
+        
+        
+        <table style="width:80%">
+          <tr>
+            <th>Job Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>View Application</th>
+            <th>Delete Application</th>
+
+          </tr>
+          <tr>
+            <td>{{ application.job.title }}</td>
+            <td>{{ application.first_name }}</td>
+            <td>{{ application.last_name }}</td>
+            <td>{{ application.email }}</td>
+            <td>{{ application.location }}</td>
+            <td> <a href="{% url 'userprofile:view_application' application.id %}
+            ">
+            <input
+            type="submit"
+            value="view"
+            class="m-1  px-5 btn btn-primary"
+            style="background-color: #561c32"
+            />
+            </a></td>
+            <td>
+                <input
+            type="submit"
+            value="delete"
+            class="m-1  px-5 btn btn-primary"
+            style="background-color: #fa0303"
+            />
+          
+
+            </td>
+
+          
+            
+
+          </tr>
+         
+        </table>
+      
+        {% empty %}
         <p>You have not applied for any jobs yet..</p>
        {% endfor %}
     {% endif %}

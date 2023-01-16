@@ -1,25 +1,30 @@
-{% include 'header.html' %}
+{% include 'header.html' %} {% block content %}
 
-{% block content %}
+<div class="container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center">
+  <!-- start of main container  -->
 
-<h1 class="title"> View Application</h1>
-<h2 class="title">
-   
-    {{ application.job.title }}
+  <div
+    style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%; "
+    class="card"
+  >
 
-</h2>
-<small> Date added: {{application.created_at}}</small>
-<p><strong> Firstname: </strong>{{application.first_name}}</p>
-<p><strong> Lastname: </strong>{{application.last_name}}</p>
-<p><strong> Date of birth: </strong>{{application.date_of_birth}}</p>
-<p><strong> Gender: </strong>{{application.gender}}</p>
-<p><strong> Education: </strong>{{application.education}}</p>
-<p><strong> Email: </strong>{{application.email}}</p>
-<p><strong> Location: </strong>{{application.location}}</p>
-<p><strong> Mobile Number: </strong>{{application.mobile}}</p>
-<p><strong> Work Experience: </strong>{{application.experience}}</p>
-<p><strong> Email: </strong>{{application.email}}</p>
-<p><strong> Additional Information/Comment: </strong>{{application.content}}</p>
-
-
+      <h1 class="title card-title">Application Details</h1>
+      <h2 class="title">Job Positon: {{ application.job.title }}</h2>
+      <hr>
+      <small> Date added: {{application.created_at}}</small>
+      <p><strong> Firstname: </strong>{{application.first_name}}</p>
+    <p><strong> Lastname: </strong>{{application.last_name}}</p>
+    <p><strong> Date of birth: </strong>{{application.date_of_birth}}</p>
+    <p><strong> Gender: </strong>{{application.gender}}</p>
+    <p><strong> Education: </strong>{{application.education}}</p>
+    <p><strong> Email: </strong>{{application.email}}</p>
+    <p><strong> Location: </strong>{{application.location}}</p>
+    <p><strong> Mobile Number: </strong>{{application.mobile}}</p>
+    <p><strong> Work Experience: </strong>{{application.experience}}</p>
+    <p>
+      <strong> Additional Information/Comment: </strong>{{application.content}}
+    </p>
+  </div>
+</div>
+<!-- end of container  -->
 {% endblock %}

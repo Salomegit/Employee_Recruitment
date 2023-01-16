@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-GENDER = (('1', 'Male'), ('2', 'Female'))
+GENDER = (('Male', 'Male'), ('Female', 'Female'))
 
 
 class Job(models.Model):
@@ -56,5 +56,4 @@ class Application(models.Model):
                                    on_delete=models.CASCADE)
     
 
-    def __str__(self):
-       return self.job
+   
