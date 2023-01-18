@@ -1,5 +1,4 @@
 {% include 'header.html' %}
-
 <div
   class="jumbotron feature custom-land-page-bg"
   style="
@@ -53,7 +52,7 @@
 <center>
   <h2
     class="subtitle has-text-centered"
-    style="color: #561c32;font-size: 55px; text-decoration: underline; fo"
+    style="color: #561c32;font-size: 55px; text-decoration: underline;"
   >
     Newest jobs
   </h2>
@@ -62,18 +61,17 @@
 <br />
 <div
   class="container row"
-  style="width: 100%; 
-  margin : auto; 
-  display: flex; 
-  justify-content: center"
+  style="width: 100%;margin : auto; display: flex; justify-content: center"
 >
   {% for job in jobs %}
 
   <!-- <div class="col-sm-1 col-md-3 " style="margin: 5px;"> -->
   <div class="card" style="width: 350px; margin: 10px">
     <h1>
-      {{job.image }}</h1>
-    <img class="card-img-top" src={{job.image.url}} alt="Card image cap">
+      {{job.title }}</h1>
+    <!-- <img class="card-img-top" src={{job.image.url}} alt="Card image cap"> -->
+    {% load static %}
+    <img src="{% static '{{images/covers/2cb3a49149690fad19b0fda0239966c9_eQqtzru.jpg}}' %}" alt="My image">
 
     <!-- <img
       class="card-img-top"
