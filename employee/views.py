@@ -9,7 +9,7 @@ from job.models import Job
 
 
 # Create your views here.
-@login_required
+# @login_required
 def base(request):
     jobs = Job.objects.all()[0:8]
     return render(request, "base.html", {'jobs': jobs})
@@ -81,4 +81,4 @@ def Login(request):
 
 def logoutuser(request):
     logout(request)
-    return redirect("employee:register")
+    return redirect("employee:base")
