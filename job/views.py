@@ -2,9 +2,16 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from django.contrib.auth.decorators import login_required 
-from .models import Job
+from .models import Job,Application
 from .forms import AddJobForm,ApplicationForm
 # Create your views here.
+
+def delete_application(request, application_id):
+    application = Application.objects.get(pk=application_id) 
+    application.delete()
+    return redirect("userprofile:dashboard")
+
+
 
 def job_detail(request, job_id):
     job = Job.objects.get(pk=job_id)
