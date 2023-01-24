@@ -1,4 +1,4 @@
-{%include 'header.html'%}
+ {%include 'header.html'%}
 
 <script>
   function checkpassword() {
@@ -17,7 +17,7 @@
       Create an account
     </h5>
     <div class="container-fluid">
-      <form method="post" name="signup" onsubmit="return checkpassword()">
+      <form method="post"  name="signup" onsubmit="return checkpassword()">
         {% csrf_token %}
         <div class="form-row">
           <div class="col-sm-6">
@@ -99,9 +99,9 @@
             <label>Account Type</label>
           <div class="control">
             <div class="select">
-              <select class="account_type">
-                <option value="employer" selected>Employer</option>
-                <option value="jobseeker" >Job seeker</option>
+              <select name="account_type">
+                <option value="jobseeker" selected>Job Seeker</option>
+                <option value="employer" >Employer</option>
               </select>
             </div>
           </div>
@@ -119,15 +119,6 @@
     </div>
   </div>
 </div>
+-->
 
-<!-- {%if error == "yes"%}
-<script>
-    alert("Signup Successful")
-    window.location = ("{% url 'employee:login' %}");
-</script>
-{% endif %}
-{% if error == "no"%}
-<script>
-    alert("Someting went wrong try again")
-</script>
-{% endif %} -->
+

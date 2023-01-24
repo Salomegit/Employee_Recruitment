@@ -1,0 +1,81 @@
+{% include 'header.html' %} {% block content %}
+
+<h1 class="title">
+  <center style="text-decoration: underline; color: #561c32">Dashboard</center>
+</h1>
+
+{% if userprofile.is_employer %}
+
+<h2 class="subtitle">Welcome back Employer..</h2>
+
+{% for job in request.user.jobs.all %}
+<div class="title">
+  <a href="{% url 'users:view_dashboard_job' job.id%}"> {{ job.title }} </a>
+</div>
+{% empty %}
+<p>You have not posted any jobs yet...</p>
+{% endfor %} {% else %}
+
+<h2 class="subtitle">All Applications Aplied</h2>
+<h2 class="subtitle">Welcome back jobseeker</h2>
+<style>
+  table,
+  th,
+  td {
+    border: 3px solid black;
+  }
+</style>
+
+{% for application in request.user.applications.all %}
+ <table style="width: 80%">
+  <tr>
+    <th>Job Title</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Location</th>
+    <th>View Application</th>
+    <th>Delete Application</th>
+  </tr>
+
+  <tr>
+    <td>{{ application.job.title }}</td>
+    <td>{{ application.first_name }}</td>
+    <td>{{ application.last_name }}</td>
+    <td>{{ application.email }}</td>
+    <td>{{ application.location }}</td>
+    <td>
+      <a
+        href="{% url 'users:view_application' application.id %}
+            "
+      >
+        <input
+          type="submit"
+          value="view"
+          class="m-1 px-5 btn btn-primary"
+          style="background-color: #561c32"
+        />
+      </a>
+    </td>
+    <td>
+      <a href="{% url 'job:delete_application' application.id %}">
+        <input
+          type="submit"
+          value="delete"
+          class="m-1 px-5 btn btn-primary"
+          style="background-color: #fa0303"
+        />
+      </a>
+    </td>
+  </tr>
+ </table>
+
+ {% empty %}
+  <p>You have not applied for any jobs yet..</p>
+     {% endfor %}
+  {% endif %}
+
+
+
+{% endblock %}
+

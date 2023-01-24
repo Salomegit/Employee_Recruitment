@@ -1,0 +1,23 @@
+{% include 'header.html' %} {% block content %}
+
+<h1 class="title">
+  <center style="text-decoration: underline; color: #561c32">
+    Dashboard for The admin
+  </center>
+</h1>
+{% if userprofile.is_employer %}
+<h2 class="subtitle">Jobs salome</h2>
+<p>i am employer</p>
+{% else %}
+
+<h2 class="subtitle">Welcome back Employer..</h2>
+
+{% for job in request.user.jobs.all %}
+<div class="title">
+  <a href="{% url 'userprofile:view_dashboard_job' job.id%}">
+    {{ job.title }}
+  </a>
+</div>
+{% empty %}
+<p>You dont have any jobs yet...</p>
+{% endfor %} {% endif %} {% endblock %}

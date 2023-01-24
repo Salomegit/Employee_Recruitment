@@ -9,7 +9,7 @@ from .forms import AddJobForm,ApplicationForm
 def delete_application(request, application_id):
     application = Application.objects.get(pk=application_id) 
     application.delete()
-    return redirect("userprofile:dashboard")
+    return redirect("users:dashboard")
 
 
 
@@ -31,7 +31,7 @@ def apply_for_job(request,job_id):
             application.created_by = request.user
             application.save()
             
-        return redirect("userprofile:dashboard")
+        return redirect("users:dashboard")
 
     else:
         form = ApplicationForm()
@@ -49,7 +49,7 @@ def add(request):
             job.image = request.FILES['images']
             job.save()
             
-            return redirect("userprofile:dashboard")
+            return redirect("users:dashboard")
 
             # return HttpResponse('added a job succesfully')
             # return http ('login')

@@ -1,0 +1,8 @@
+{% include 'header.html' %}
+
+ <h1 class="title">View all users who applied for the job - {{ job.title }}</h1>
+ {% for application in job.applications.all %}
+ <a href="{% url 'users:view_application' application.id %}">{{ application.created_by.username}}</a>
+ {% empty %}
+ <P>no user applied for the job</P>
+{% endfor   %}

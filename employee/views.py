@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
-from userprofile.models import Userprofile
+from users.models import Userprofile
 from job.models import Job
 
 
@@ -36,25 +37,29 @@ def register(request):
         user.save()
         account_type = request.POST.get(
             'account_type',
-            'jobseeker',
+            'jobseeker'
         )
         if account_type == 'employer':
             userprofile = Userprofile.objects.create(user=user,
                                                      is_employer=True)
             userprofile.save()
 
-            return redirect("userprofile:dashboard")
-
+            return redirect("users:dashboard")
+ 
         else:
             userprofile = Userprofile.objects.create(user=user)
             userprofile.save()
       
         login(request, user)
 
-        return redirect("userprofile:dashboard")
+        return redirect("users:dashboard")
     else:
 
       return render(request, "register.html", locals())
+
+
+
+
 
 
 def Login(request):
