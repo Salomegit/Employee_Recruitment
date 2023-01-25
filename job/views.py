@@ -23,7 +23,7 @@ def apply_for_job(request,job_id):
     job = Job.objects.get(pk=job_id) 
 
     if request.method == 'POST':
-        form = ApplicationForm(request.Post)
+        form = ApplicationForm(request.POST)
        
         if form.is_valid():
             application = form.save(commit=False)
@@ -31,7 +31,7 @@ def apply_for_job(request,job_id):
             application.created_by = request.user
             application.save()
             
-        return redirect("users:dashboard")
+            return redirect("users:dashboard")
 
     else:
         form = ApplicationForm()
@@ -40,13 +40,14 @@ def apply_for_job(request,job_id):
 
 @login_required
 def add(request):
-    if request.method == "POST":
-        form = AddJobForm(request.Post,request.FILES)
+
+    if request.method == 'POST':
+        form = AddJobForm(request.POST)
 
         if form.is_valid():
             job = form.save(commit=False)
             job.created_by = request.user
-            job.image = request.FILES['images']
+            # job.image = request.FILES['images']
             job.save()
             
             return redirect("users:dashboard")
@@ -56,4 +57,5 @@ def add(request):
 
     else:
         form = AddJobForm()
+
     return render (request,'add_job.html',{'form':form})

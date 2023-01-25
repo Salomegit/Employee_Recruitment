@@ -10,7 +10,7 @@ class Job(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     skillset_required = models.TextField(max_length=200)
     about_job = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="covers/")
+    # image = models.ImageField(upload_to="covers/")
     experience = models.CharField(max_length=50,null=True)
     salary = models.CharField(max_length=50,null=True)
     deadline = models.CharField(max_length=50,null=True)
@@ -47,7 +47,7 @@ class Application(models.Model):
     content = models.TextField()
     experience = models.TextField()
     
-    resume  = models.FileField( upload_to='resumes/', null=True, blank=True)
+    # resume  = models.FileField( upload_to='resumes/', null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True,null=False)
 
