@@ -26,5 +26,36 @@
     </p>
   </div>
 </div>
+<hr>
+<h2 class="subtitle">Conversation</h2>
+{% for message in application.conversationmessages.all %}
+<div class="notification" style="display: flex; flex-direction:column; background-color:#d799b1; margin:20px;border-radius: 5px; padding:10px;">
+  <b >{{ message.created_by.username }} - {{ message.created_at|timesince }} ago</b>
+  {{ message.content }}
+  <br>
+</div>
+{% empty %}
+
+<p>No messages yet...</p>
+{% endfor %}
+<form method="post" action="." >
+  {% csrf_token %}
+
+  <div class="field">
+    <div class="col-sm-12">
+      <div class="form-group">
+      <textarea style="border: 2px solid" placeholder="Enter your message"   type="textarea" name="content" class="form-control" id="id_content"  rows="5"  ></textarea>
+  </div>
+  </div>
+  </div>
+    <input
+    type="submit"
+    value="Send"
+    class="m-3  px-5 btn btn-primary"
+    style="background-color: #561c32"
+  />
+</div>
+</form>
+
 <!-- end of container  -->
 {% endblock %}

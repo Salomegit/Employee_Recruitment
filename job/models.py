@@ -20,7 +20,9 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
-
+    
+    class Meta:
+        ordering = ['-created_at']
 
 class Application(models.Model):
 
@@ -40,7 +42,7 @@ class Application(models.Model):
         null=True
     )
     mobile = models.IntegerField(null=True, blank=True)
-    education   = models.CharField('Education', max_length=255, null=True, blank=True)
+    education   = models.CharField( max_length=255, null=True, blank=True)
 
 
 
@@ -56,4 +58,4 @@ class Application(models.Model):
                                    on_delete=models.CASCADE)
     
 
-   
+    

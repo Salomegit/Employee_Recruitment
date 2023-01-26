@@ -10,7 +10,7 @@
 <p>All jobs posted</p>
 
 {% for job in request.user.jobs.all %}
-<div class="title">
+<div class="job">
   <a href="{% url 'users:view_dashboard_job' job.id%}"> {{ job.title }} </a>
 </div>
 {% empty %}
