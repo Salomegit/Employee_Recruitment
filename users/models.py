@@ -17,7 +17,7 @@ def __str__(self):
 
 class ConversationMessage(models.Model):
     application = models.ForeignKey(Application, related_name="conversationmessages",on_delete=models.CASCADE)
-    content = models.TextField()
+    content = models.TextField(null=True)
 
 
     created_by = models.ForeignKey(User, related_name="conversationmessages",on_delete=models.CASCADE)
