@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Job, Application
 from .forms import AddJobForm, ApplicationForm
+from notification.utilities import create_notification
+
 # Create your views here.
 
 
@@ -32,12 +34,20 @@ def apply_for_job(request, job_id):
             application.created_by = request.user
             application.save()
 
-            return redirect("users:dashboard")
+            create_notification(request,
+                                job.created_by,
+                                'application',
+                                extra_id=application.id)
+
+        return redirect("users:dashboard")
 
     else:
         form = ApplicationForm()
 
-    return render(request, 'apply_for_job.html', {'form': form, 'job': job})
+    return render(request, 'apply_for_job.html', {
+            'form': form,
+            'job': job
+        })
 
 
 @login_required
