@@ -5,7 +5,7 @@ from .models import Notification
 
 
 @login_required
-def notify(request):
+def notifications(request):
     goto = request.GET.get('goto', '')
     notification_id = request.GET.get('notification',0)
 

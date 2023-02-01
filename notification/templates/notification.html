@@ -4,23 +4,23 @@
 
 
    <h1 class="title">Notifications</h1>
-    {% if not notifications %}
+    {% if not notification %}
          No notifications yet!
    
-    {% endif%}
+    {% endif %}
 
 
     {% for notification in notifications %}
        <div class="notification">
         <p>
             {% if notification.notification_type == 'message' %}
-            <a href="{% url 'notification:notify' %}?goto=users:view_application&notification={{ notification.extra_id }}">
+            <a href="{% url 'notifications' %}?goto=users:view_application&notification={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> sent you a message <br>
                 <small>{{ notification.created_at|timesince }} ago </small>
             </a>
             {% elif notification.notification_type == 'application' %}
-            <a href="{% url 'notification:notify' %}?goto=users:view_application&notification={{ notification.extra_id }}">
+            <a href="{% url 'notifications' %}?goto=users:view_application&notification={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> applied for your job <br>
                 <small>{{ notification.created_at|timesince }} ago </small>
