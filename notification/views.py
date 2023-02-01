@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-from models import Notification
+from .models import Notification
 
 
 @login_required
