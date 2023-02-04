@@ -34,12 +34,12 @@ def apply_for_job(request, job_id):
             application.created_by = request.user
             application.save()
 
-            create_notification(request,
-                                job.created_by,
-                                'application',
-                                extra_id=application.id)
+            # create_notification(request,
+            #                     job.created_by,
+            #                     'application',
+            #                     extra_id=application.id)
 
-        return redirect("users:dashboard")
+            return redirect("users:dashboard")
 
     else:
         form = ApplicationForm()

@@ -2,17 +2,21 @@
 
 <div class="container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center">
   <!-- start of main container  -->
+  <div style="display: flex;">
 
-  <div
+    
+    
+    
+    <div
     style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%; "
     class="card"
-  >
-
-      <h1 class="title card-title">Application Details</h1>
-      <h2 class="title">Job Positon: {{ application.job.title }}</h2>
-      <hr>
-      <small> Date added: {{application.created_at}}</small>
-      <p><strong> Firstname: </strong>{{application.first_name}}</p>
+    >
+    
+    <h1 class="title card-title">Application Details</h1>
+    <h2 class="title">Job Positon: {{ application.job.title }}</h2>
+    <hr>
+    <small> Date added: {{application.created_at}}</small>
+    <p><strong> Firstname: </strong>{{application.first_name}}</p>
     <p><strong> Lastname: </strong>{{application.last_name}}</p>
     <p><strong> Date of birth: </strong>{{application.date_of_birth}}</p>
     <p><strong> Gender: </strong>{{application.gender}}</p>
@@ -25,8 +29,19 @@
       <strong> Additional Information/Comment: </strong>{{application.content}}
     </p>
   </div>
+  <input
+    type="submit"
+    value="Message Employer"
+    class="m-3  px-5 btn btn-primary"
+    style="background-color: #561c32;height :40px; position:static"
+    id="scroll-down-button"
+  />
+
+</div>
 </div>
 <hr>
+
+<div id="content">
 <h2 class="subtitle">Conversation</h2>
 {% for message in application.conversationmessages.all %}
 <div class="notification" style="display: flex; flex-direction:column; background-color:#d799b1; margin:20px;border-radius: 5px; padding:10px;">
@@ -55,7 +70,18 @@
     style="background-color: #561c32"
   />
 </div>
+</div>
+
 </form>
+<script>
+
+  document.getElementById("scroll-down-button").addEventListener("click", function() {
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+  });
+</script>
 
 <!-- end of container  -->
 {% endblock %}

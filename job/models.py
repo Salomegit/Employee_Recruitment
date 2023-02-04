@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-GENDER = (('Male', 'Male'), ('Female', 'Female'))
+GENDER = (('M', 'Male'), ('F', 'Female'), ('O', 'Others'))
 
 
 class Job(models.Model):
@@ -32,9 +32,9 @@ class Application(models.Model):
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
     date_of_birth = models.CharField(max_length=20, blank=True, null=True)
-    gender = models.CharField(max_length=10,
+    gender = models.CharField(max_length=1,
                               choices=GENDER,
-                              blank=True,
+                              blank=False,
                               null=True)
     email = models.EmailField(max_length=70, blank=True, unique=True)
     location = models.CharField(
