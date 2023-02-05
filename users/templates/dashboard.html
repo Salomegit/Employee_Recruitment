@@ -1,83 +1,108 @@
-{% include 'header.html' %} {% block content %}
 {% include 'sidebar.html' %}
+{% block content %}
+  <div class="container">
 
-<h1 class="title">
-  <center style="text-decoration: underline; color: #561c32">Dashboard</center>
-</h1>
+    <h1 class="title">
+      <center style="text-decoration: underline; color: #561c32">Dashboard</center>
+    </h1>
 
 {% if userprofile.is_employer %}
 
 <h2 class="subtitle">Welcome back Employer..</h2>
 <p>All jobs posted</p>
 
-{% for job in request.user.jobs.all %}
-<div class="job">
-  <a href="{% url 'users:view_dashboard_job' job.id%}"> {{ job.title }} </a>
-</div>
-{% empty %}
-<p>You have not posted any jobs yet...</p>
-{% endfor %} {% else %}
+<table class="table table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Job Id</th>
+      <th scope="col">Job name</th>
+      <th scope="col">Date created</th>
+      <th scope="col">View Aplicants</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in request.user.jobs.all %}
+    <tr>
+      <th scope="row">   {{ job.id }} </a></th>
+      <td>  {{ job.title }}</td>
+      <td>  {{ job.created_at }}</td>
+      <td><a href="{% url 'users:view_dashboard_job' job.id%}"><i class="fas fa-bars"></i> Candidates</td>
+    </tr>
+    
+    {% empty %}
+    <p>You have not posted any jobs yet...</p>
+    {% endfor %} 
+  </tbody>
+</table>
+{% else %}
 
 <h2 class="subtitle">All Applications Aplied</h2>
 <h2 class="subtitle">Welcome back jobseeker</h2>
-<style>
+<!-- <style>
   table,
   th,
   td {
     border: 3px solid black;
   }
-</style>
+</style> -->
 
-{% for application in request.user.applications.all %}
- <table style="width: 80%">
-  <tr>
-    <th>Job Title</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Location</th>
-    <th>View Application</th>
-    <th>Delete Application</th>
-  </tr>
+<table class="table table-striped table-bordered" style="width: 100%">
+  <thead class="thead-dark">
 
-  <tr>
-    <td>{{ application.job.title }}</td>
-    <td>{{ application.first_name }}</td>
-    <td>{{ application.last_name }}</td>
-    <td>{{ application.email }}</td>
-    <td>{{ application.location }}</td>
-    <td>
-      <a
+    <tr>
+      <th scope="col">Job Title</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Location</th>
+      <th scope="col">View Application</th>
+      <th scope="col">Delete Application</th>
+    </tr>
+  </thead>
+  
+  {% for application in request.user.applications.all %}
+  <tbody>
+
+    <tr>
+      <td>{{ application.job.title }}</td>
+      <td>{{ application.first_name }}</td>
+      <td>{{ application.last_name }}</td>
+      <td>{{ application.email }}</td>
+      <td>{{ application.location }}</td>
+      <td>
+        <a
         href="{% url 'users:view_application' application.id %}
-            "
-      >
+        "
+        >
         <input
-          type="submit"
-          value="view"
-          class="m-1 px-5 btn btn-primary"
+        type="submit"
+        value="view"
+        class="m-1 px-5 btn btn-primary"
           style="background-color: #561c32"
-        />
-      </a>
-    </td>
-    <td>
-      <a href="{% url 'job:delete_application' application.id %}">
-        <input
+          />
+        </a>
+      </td>
+      <td>
+        <a href="{% url 'job:delete_application' application.id %}">
+          <input
           type="submit"
           value="delete"
           class="m-1 px-5 btn btn-primary"
           style="background-color: #fa0303"
-        />
-      </a>
-    </td>
-  </tr>
- </table>
-
- {% empty %}
+          />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+    {% empty %}
   <p>You have not applied for any jobs yet..</p>
-     {% endfor %}
-  {% endif %}
+  {% endfor %}
+</table>
+{% endif %}
 
 
 
+
+</div>
 {% endblock %}
 

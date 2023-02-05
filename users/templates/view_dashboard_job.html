@@ -1,8 +1,37 @@
 {% include 'header.html' %}
 
- <h1 class="title">View all users who applied for the job - {{ job.title }}</h1>
- {% for application in job.applications.all %}
- <a href="{% url 'users:view_application' application.id %}">{{ application.created_by.username}}</a>
- {% empty %}
- <P>no user applied for the job</P>
-{% endfor   %}
+<h1 class="title">View all users who applied for the job - {{ job.title }}</h1>
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark  table-striped table-bordered">
+      <tr>
+        <th scope="col">Job id</th>
+        <th scope="col">Aplicant username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Location</th>
+        <th scope="col">View Application</th>
+        <th scope="col">Delete Applicant</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for application in job.applications.all %}
+
+      <tr>
+        <th>{{ job.id }}</th>
+        <td>{{application.first_name}} {{application.last_name}}</td>
+        <td>{{application.email}}</td>
+        <td>{{application.location}}</td>
+        <td>
+          <a href="{% url 'users:view_application' application.id %}"
+            ><i class="fas fa-list"></i>Application</a
+          >
+        </td>
+        <td style="color: red;"><i class="fas fa-trash"></i></td>
+      </tr>
+
+      {% empty %}
+      <p>no user applied for the job</p>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

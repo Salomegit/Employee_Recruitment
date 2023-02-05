@@ -1,43 +1,92 @@
 {% include 'header.html' %} {% block content %}
 
-<div class="container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center">
+<style>
+  p strong{
+    min-width:400px ;
+  }
+</style>
+<div class="container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; ;">
   <!-- start of main container  -->
-  <div style="display: flex;">
 
     
     
     
     <div
-    style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%; "
+    style="margin: 30px; padding: 10px; background-color: #f7f0f5;width:60% "
     class="card"
     >
-    
-    <h1 class="title card-title">Application Details</h1>
-    <h2 class="title">Job Positon: {{ application.job.title }}</h2>
-    <hr>
-    <small> Date added: {{application.created_at}}</small>
-    <p><strong> Firstname: </strong>{{application.first_name}}</p>
-    <p><strong> Lastname: </strong>{{application.last_name}}</p>
-    <p><strong> Date of birth: </strong>{{application.date_of_birth}}</p>
-    <p><strong> Gender: </strong>{{application.gender}}</p>
-    <p><strong> Education: </strong>{{application.education}}</p>
-    <p><strong> Email: </strong>{{application.email}}</p>
-    <p><strong> Location: </strong>{{application.location}}</p>
-    <p><strong> Mobile Number: </strong>{{application.mobile}}</p>
-    <p><strong> Work Experience: </strong>{{application.experience}}</p>
-    <p>
-      <strong> Additional Information/Comment: </strong>{{application.content}}
-    </p>
-  </div>
-  <input
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+
+        <h1 class=" card-title">Application Details</h1>
+        <h2 class="card-subtitle mb-2 text-muted">Job Positon: {{ application.job.title }}</h2>
+      </div>
+        <input
     type="submit"
     value="Message Employer"
     class="m-3  px-5 btn btn-primary"
     style="background-color: #561c32;height :40px; position:static"
     id="scroll-down-button"
   />
+    </div>
 
-</div>
+    <hr>
+    <small> Date added: {{application.created_at}}</small>
+
+    <div class="card-body">
+
+      <div style="display: flex;">
+        <h6 style="min-width: 200px; font-weight: bold;">First Name:</h6>
+        <h6>{{application.first_name}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Last Name:</h6>
+        <h6>{{application.last_name}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Date of birth:</h6>
+        <h6>{{application.date_of_birth}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Gender:</h6>
+        <h6>{{application.gender}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Education:</h6>
+        <h6>{{application.education}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Email:</h6>
+        <h6>{{application.email}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Location:</h6>
+        <h6>{{application.location}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Mobile:</h6>
+        <h6>{{application.mobile}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold;">Experience:</h6>
+        <h6>{{application.experience}}</h6>
+      </div>
+      <div style="display: flex">
+        <h6 style="width: 200px; word-wrap: normal; font-weight: bold;">Additional Comment:</h6>
+        <h6>{{application.content}}</h6>
+      </div>
+    <p>
+    </p>
+  </div>
+  </div>
+  <!-- <input
+    type="submit"
+    value="Message Employer"
+    class="m-3  px-5 btn btn-primary"
+    style="background-color: #561c32;height :40px; position:static"
+    id="scroll-down-button"
+  /> -->
+
 </div>
 <hr>
 
