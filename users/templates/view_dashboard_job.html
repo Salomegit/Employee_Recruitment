@@ -6,9 +6,11 @@
     <thead class="thead-dark  table-striped table-bordered">
       <tr>
         <th scope="col">Job id</th>
-        <th scope="col">Aplicant username</th>
+        <th scope="col">Aplicant Name</th>
         <th scope="col">Email</th>
         <th scope="col">Location</th>
+        <th scope="col">Time Applied</th>
+
         <th scope="col">View Application</th>
         <th scope="col">Delete Applicant</th>
       </tr>
@@ -21,6 +23,8 @@
         <td>{{application.first_name}} {{application.last_name}}</td>
         <td>{{application.email}}</td>
         <td>{{application.location}}</td>
+        <td>{{application.created_at}}</td>
+
         <td>
           <a href="{% url 'users:view_application' application.id %}"
             ><i class="fas fa-list"></i>Application</a

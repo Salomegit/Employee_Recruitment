@@ -2,25 +2,31 @@
 {% block content %}
 <div class="container">
 
-
+{%if notification.errors %}
+    {% for error in notification.errors %}
+       <div class="notification is-danger">
+          {{ error }}
+       </div>
+   {% endfor %}
+{% endif %}
    <h1 class="title">Notifications</h1>
-    {% if not notification %}
+    {% if not notifications %}
          No notifications yet!
    
     {% endif %}
 
 
     {% for notification in notifications %}
-       <div class="notification">
+       <div class="card">
         <p>
             {% if notification.notification_type == 'message' %}
-            <a href="{% url 'notifications' %}?goto=users:view_application&notification={{ notification.extra_id }}">
+            <a href="{% url 'notification:notifications' %}?goto=users:view_application&notification:={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> sent you a message <br>
                 <small>{{ notification.created_at|timesince }} ago </small>
             </a>
             {% elif notification.notification_type == 'application' %}
-            <a href="{% url 'notifications' %}?goto=users:view_application&notification={{ notification.extra_id }}">
+            <a href="{% url 'notification:notifications' %}?goto=users:view_application&notification={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> applied for your job <br>
                 <small>{{ notification.created_at|timesince }} ago </small>

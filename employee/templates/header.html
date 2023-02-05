@@ -82,13 +82,13 @@
             href="{% url 'users:dashboard' %}"
             ><i class="fas fa-sign-in-alt"></i>Dashboard</a
             >
-
+           
             <a
             style="color: white;"
             class="nav-item nav-link"
-            href="{% url 'notifications'%}"
+            href="{% url 'notification:notifications'%}"
             >Notifications 
-              ({{ notifications.count }})
+              ({{ notifications.count  }})
             </a>
 
             {% endif %}

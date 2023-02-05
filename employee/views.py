@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 from users.models import Userprofile
 from job.models import Job
@@ -74,10 +75,15 @@ def Login(request):
                             password=password)
         if user1 is not None:
             login(request, user1)
-            return redirect("employee:base")
+            message = "Login successful!"
+
+            return render(request,"base.html",{'message':message})
             
         else:
-            return HttpResponse('Error user does not exist')
+            message = "Invalid username or password"
+
+    
+
     return render(
         request,
         "login.html",

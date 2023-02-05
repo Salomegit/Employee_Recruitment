@@ -1,4 +1,12 @@
 {% include 'header.html' %}
+{% if message %}
+    <div id="alert" class="alert alert-success">{{ message }}</div>
+    <script>
+        setTimeout(function() {
+            document.getElementById("alert").style.display = "none";
+        }, 5000);
+    </script>
+{% endif %}
 <div
   class="jumbotron feature custom-land-page-bg"
   style="

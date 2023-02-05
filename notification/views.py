@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import Notification
@@ -7,10 +7,10 @@ from .models import Notification
 @login_required
 def notifications(request):
     goto = request.GET.get('goto', '')
-    notification_id = request.GET.get('notification',0)
+    notification_id = request.GET.get('notification', 0)
 
-    if goto !='':
-        notification = Notification.objects.get(pk=notification_id)
+    if goto != '':
+        notification = Notification.objects.get.all(pk=notification_id)
         notification.is_read = True
         notification.save()
 
@@ -18,5 +18,6 @@ def notifications(request):
             return redirect('users:view_application',application_id=notification.extra_id)
         elif notification.notification_type == Notification.APPLICATION:
             return redirect('users:view_application',application_id=notification.extra_id)
-    
-    return render(request, 'notification.html')
+
+    return render(request, 'notification.html',
+                  )
