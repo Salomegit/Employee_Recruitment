@@ -9,7 +9,7 @@ class Notification(models.Model):
     CHOICES = (
         (MESSAGE,'Message'),
         (APPLICATION,'Application')
-    )
+    ) 
 
     to_user = models.ForeignKey(User, related_name="notifications",on_delete=models.CASCADE )
     notification_type = models.CharField(max_length=20, choices = CHOICES)  

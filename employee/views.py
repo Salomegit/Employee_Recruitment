@@ -52,6 +52,7 @@ def register(request):
             userprofile.save()
       
         login(request, user)
+        message = "Sign-up successful!"
 
         return redirect("users:dashboard")
     else:
@@ -80,9 +81,9 @@ def Login(request):
             return render(request,"base.html",{'message':message})
             
         else:
-            message = "Invalid username or password"
+            message1 = "Invalid username or password"
+            return render(request,"login.html",{'message1':message1})
 
-    
 
     return render(
         request,
