@@ -1,6 +1,16 @@
 {% include 'header.html' %} {% block content %}
- <center class="title" style="font-size:50px; font-weight: 100;text-decoration: underline;color: #561c32;
- "> Add job</center>
+
+<center
+  class="title"
+  style="
+    font-size: 50px;
+    font-weight: 100;
+    text-decoration: underline;
+    color: #561c32;
+  "
+>
+  Add job
+</center>
 <form
   method="POST"
   style="
@@ -13,73 +23,206 @@
     align-items: flex-start;
   "
 >
-  {% csrf_token %} 
+  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+  <div class="notification is-danger">{{ error }}</div>
+  {% endfor %} {% endif %}
 
-{%if form.errors %}
-     {% for error in form.errors %}
-        <div class="notification is-danger">
-           {{ error }}
-        </div>
-    {% endfor %}
-{% endif %}
-
-
-
-<div class="col-sm-12">
+  <div class="col-sm-12">
     <div class="form-group">
-    <label> Title:-</label>
-    <input  style="border: 2px solid" type="text" name="title" class="form-control" id="id_title" required>
+      <label> Title:-</label>
+      <input
+        style="border: 2px solid"
+        type="text"
+        name="title"
+        class="form-control"
+        id="id_title"
+        required
+      />
     </div>
-</div>
+  </div>
 
-<div class="col-sm-12">
+  <div class="col-sm-12">
     <div class="form-group">
-    <label>Skillset Required:-</label>
-    <textarea style="border: 2px solid"   type="textarea" name="skillset_required" class="form-control" id="id_skillset_required"  rows="5"  required></textarea>
-</div>
-</div>
+      <label>Skillset Required:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="skillset_required"
+        class="form-control"
+        id="id_skillset_required"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
 
-
-
-
-<div class="col-sm-12">
+  <div class="col-sm-12">
     <div class="form-group">
-    <label>About Job:-</label>
-    <textarea style="border: 2px solid"  type="textarea" name="about_job" class="form-control" id="id_about_job"  rows="8"  required></textarea>
-</div>
-</div>
-<div class="col-sm-12">
-  <div class="form-group">
-  <label> Experience:-</label>
-  <input  style="border: 2px solid" type="text" name="experience" class="form-control" id="id_experience" required>
+      <label>About Job:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="about_job"
+        class="form-control"
+        id="id_about_job"
+        rows="8"
+        required
+      ></textarea>
+    </div>
   </div>
-</div>
-<div class="col-sm-12">
-  <div class="form-group">
-  <label> Salary Range:-</label>
-  <input  style="border: 2px solid" type="text" name="salary" class="form-control" id="id_salary" required>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label> Experience:-</label>
+      <input
+        style="border: 2px solid"
+        type="text"
+        name="experience"
+        class="form-control"
+        id="id_experience"
+        required
+      />
+    </div>
   </div>
-</div>
-<div class="col-sm-12">
-  <div class="form-group">
-  <label> Deadline Date to Submit:-</label>
-  <input  style="border: 2px solid" type="date" name="deadline" class="form-control" id="id_deadline" required>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label> Salary Range:-</label>
+      <input
+        style="border: 2px solid"
+        type="text"
+        name="salary"
+        class="form-control"
+        id="id_salary"
+        required
+      />
+    </div>
   </div>
-</div>
-<!-- <div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company Name:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="company_name"
+        class="form-control"
+        id="id_company_name"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company Address:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="company_address"
+        class="form-control"
+        id="id_company_address"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company ZipCode:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="company_zipcode"
+        class="form-control"
+        id="id_company_zipcode"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company Place:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="company_place"
+        class="form-control"
+        id="id_company_place"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company Country:-</label>
+      <textarea
+        style="border: 2px solid"
+        type="textarea"
+        name="company_country"
+        class="form-control"
+        id="id_company_country"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label>Company Size:-</label>
+      <div class="control">
+        <div class="select">
+          <select name="company_size" v-model="company_size">
+            <option value="">Choose size</option>
+            <option value="size_1-9">1-9</option>
+            <option value="size_10-49">10-49</option>
+            <option value="size_50-99">50-99</option>
+            <option value="size_100">100+</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label> Deadline Date to Submit:-</label>
+      <input
+        style="border: 2px solid"
+        type="date"
+        name="deadline"
+        class="form-control"
+        id="id_deadline"
+        required
+      />
+    </div>
+  </div>
+  <!-- <div>
     <label for="file">Image:-</label>
     <br>
     <input   type="file" id="file" name="file" multiple />
    </div>
 <div> -->
-    <input
+  <input
     type="submit"
     value="Add Job"
-    class="m-3  px-5 btn btn-primary"
+    class="m-3 px-5 btn btn-primary"
     style="background-color: #561c32"
   />
-</div>
-
 </form>
 
+{% endblock %} {% block scripts %}
+<script>
+  const AddjobApp = {
+    data() {
+      return {
+        title: "",
+        company_name: "",
+        skillset_required: "",
+        experience: "",
+        company_size: "",
+      };
+    },
+    delimiters: ["[[", "]]"],
+  };
+  Vue.createApp(AddjobApp).mount("#add-job-app");
+</script>
 {% endblock %}
