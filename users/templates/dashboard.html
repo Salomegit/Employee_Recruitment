@@ -17,7 +17,15 @@
 {% if userprofile.is_employer %}
 
 <h2 class="subtitle">Welcome back Employer..</h2>
-<p>All jobs posted</p>
+<div><a href="{% url 'job:add'  %}">
+  <input
+  type="submit"
+  value="Add Job"
+  class="m-1 px-5 btn btn-primary"
+  style="background-color: #561c32"
+  /> </a>
+</div>
+<p>All jobs posted</p> 
 
 <table class="table table table-striped table-bordered">
   <thead class="thead-dark">

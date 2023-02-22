@@ -1,9 +1,72 @@
 {% include 'header.html' %}
 
-<h1 class="title">View all users who applied for the job - {{ job.title }}</h1>
+<h1 class="title mx-auto">
+  View all users who applied for the job - {{ job.title }}
+</h1>
+<div
+  style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%"
+  class="card mx-auto"
+>
+  <div style="display: flex; justify-content: space-between">
+    <div>
+      <h1 class="card-title">Job Vacancy Details</h1>
+      <h2 class="card-subtitle mb-2 text-muted">
+        Job Positon: {{ job.title }}
+      </h2>
+    </div>
+    <input
+      type="submit"
+      value="View All Candidates"
+      class="m-3 px-5 btn btn-primary"
+      style="background-color: #561c32; height: 40px; position: static"
+      id="scroll-down-button"
+    />
+  </div>
+
+  <hr />
+  <small> Date added: {{job.created_at}}</small>
+
+  <div class="card-body">
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">About Job:</h6>
+      <h6>{{job.about_job}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Skillset Required</h6>
+      <h6>{{job.skillset_required}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Experience:</h6>
+      <h6>{{application.education}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Email:</h6>
+      <h6>{{application.email}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Location:</h6>
+      <h6>{{application.location}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Mobile:</h6>
+      <h6>{{application.mobile}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Experience:</h6>
+      <h6>{{application.experience}}</h6>
+    </div>
+    <div style="display: flex">
+      <h6 style="width: 200px; word-wrap: normal; font-weight: bold">
+        Additional Comment:
+      </h6>
+      <h6>{{application.content}}</h6>
+    </div>
+    <p></p>
+  </div>
+</div>
 <div class="container">
   <table class="table">
-    <thead class="thead-dark  table-striped table-bordered">
+    <thead class="thead-dark table-striped table-bordered">
       <tr>
         <th scope="col">Job id</th>
         <th scope="col">Aplicant Name</th>
@@ -30,7 +93,7 @@
             ><i class="fas fa-list"></i>Application</a
           >
         </td>
-        <td style="color: red;"><i class="fas fa-trash"></i></td>
+        <td style="color: red"><i class="fas fa-trash"></i></td>
       </tr>
 
       {% empty %}
