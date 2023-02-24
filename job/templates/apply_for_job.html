@@ -27,7 +27,7 @@
    
   {%if form.errors %}
   {% for error in form.errors %}
-     <div class="notification is-danger">
+     <div class="alert alert-danger">
         {{ error }}
      </div>
  {% endfor %}
@@ -139,7 +139,7 @@
       <label> Email:-</label>
       <input
         style="border: 2px solid"
-        type="text"
+        type="email"
         name="email"
         placeholder="Your Email"
         class="form-control"

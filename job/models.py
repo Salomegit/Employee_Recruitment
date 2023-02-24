@@ -32,12 +32,7 @@ class Job(models.Model):
     salary = models.CharField(max_length=50,null=True)
     deadline = models.CharField(max_length=50,null=True)
 
-    company_name = models.CharField(max_length=255, null=True)
-    company_address = models.CharField(max_length=255, blank=True, null=True)
-    company_zipcode = models.CharField(max_length=255, blank=True, null=True)
-    company_place = models.CharField(max_length=255, blank=True, null=True)
-    company_country = models.CharField(max_length=255, blank=True, null=True)
-    company_size = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9)
+    department_name = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9)
 
     
     created_by = models.ForeignKey(User,

@@ -28,6 +28,10 @@
 
   <div class="card-body">
     <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Job Title:</h6>
+      <h6>{{job.title}}</h6>
+    </div>
+    <div style="display: flex">
       <h6 style="min-width: 200px; font-weight: bold">About Job:</h6>
       <h6>{{job.about_job}}</h6>
     </div>
@@ -37,30 +41,19 @@
     </div>
     <div style="display: flex">
       <h6 style="min-width: 200px; font-weight: bold">Experience:</h6>
-      <h6>{{application.education}}</h6>
+      <h6>{{job.experience}}</h6>
     </div>
     <div style="display: flex">
-      <h6 style="min-width: 200px; font-weight: bold">Email:</h6>
-      <h6>{{application.email}}</h6>
+      <h6 style="min-width: 200px; font-weight: bold">Salary Range</h6>
+      <h6>{{job.salary}}</h6>
     </div>
     <div style="display: flex">
-      <h6 style="min-width: 200px; font-weight: bold">Location:</h6>
-      <h6>{{application.location}}</h6>
+      <h6 style="min-width: 200px; font-weight: bold">Department Name:</h6>
+      <h6>{{job.get_department_name_diplay}}</h6>
     </div>
-    <div style="display: flex">
-      <h6 style="min-width: 200px; font-weight: bold">Mobile:</h6>
-      <h6>{{application.mobile}}</h6>
-    </div>
-    <div style="display: flex">
-      <h6 style="min-width: 200px; font-weight: bold">Experience:</h6>
-      <h6>{{application.experience}}</h6>
-    </div>
-    <div style="display: flex">
-      <h6 style="width: 200px; word-wrap: normal; font-weight: bold">
-        Additional Comment:
-      </h6>
-      <h6>{{application.content}}</h6>
-    </div>
+  
+    
+    
     <p></p>
   </div>
 </div>

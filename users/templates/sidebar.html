@@ -1,27 +1,20 @@
 {% include 'header.html' %} {% block content %}
 
-<!DOCTYPE html>  
-<html>  
-<head>  
-<style>
-    h1{
-        color:blueviolet
-    }
-</style>
-</head>
-<body>
-    
-</body>
-    <h1 class="love">Hello, world!</h1>
- <!-- container -->
- <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light d-none d-md-black sidebar">
-            <div class="left-sidebar">
-
-            </div>
+        <div class="col-md-2 sidebar" style="background-color: #333; color: #fff; padding: 20px;">
+            <h1>Employer Name</h1>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 content" style="padding: 20px;">
+            <!-- page content goes here -->
         </div>
     </div>
- </div>
-</body>
+</div>
+
 {% endblock %}
