@@ -25,7 +25,7 @@
     "
   >
     {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
-    <div class="alert alert-danger">{{ error }}</div>
+    <div class="alert alert-danger"> Error in {{ error }} field</div>
     {% endfor %} {% endif %}
 
     
@@ -103,31 +103,24 @@
           />
         </div>
       </div>
-      <div class="col-sm-12">
-        <div class="form-group">
-          <label>Company Name:-</label>
-          <textarea
-            style="border: 2px solid"
-            type="textarea"
-            name="company_name"
-            class="form-control"
-            id="id_company_name"
-            rows="5"
-            v-model="company_name"
-          ></textarea>
-        </div>
-      </div>
+      
 
       <div class="col-sm-12">
         <div class="form-group">
           <label>Department Name:-</label>
           <div class="select">
-            <select name="company_size" v-model="company_size">
-              <option value="">Choose size</option>
-              <option value="size_1-9">1-9</option>
-              <option value="size_10-49">10-49</option>
-              <option value="size_50-99">50-99</option>
-              <option value="size_100">100+</option>
+            <select name="department_name" v-model="department_name">
+              <option value="">---</option>
+              <option value="CSS">Computer Support Specialist</option>
+              <option value="HWA">Hardware Engineer</option>
+              <option value="CSA">Computer System Analyst </option>
+              <option value="SWD">Software Developer</option>
+              <option value="PRG">Programmer</option>
+              <option value="WBD">Web developer</option>
+              <option value="NWE">Network engineer</option>
+              <option value="SWT">Software Tester</option>
+
+
             </select>
           </div>
         </div>
@@ -182,7 +175,7 @@
         skillset_required: "",
         about_job: "",
         experience: "",
-        company_size: "",
+        department_name: "",
         deadline:"",
         errors: [],
       };
@@ -196,7 +189,7 @@
           this.errors.push("The Title field is missing!");
         }
 
-        if (this.company_name === "") {
+        if (this.department_name === "") {
           this.errors.push("The Department name field is missing!");
         }
 

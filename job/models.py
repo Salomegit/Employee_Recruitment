@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Count
 
 
 GENDER = (('M', 'Male'), ('F', 'Female') )
@@ -8,31 +9,32 @@ GENDER = (('M', 'Male'), ('F', 'Female') )
 
 class Job(models.Model):
 
-    SIZE_1_9 = 'size_1-9'
-    SIZE_10_49 = 'size_10-49'
-    SIZE_50_99 = 'size_50-99'
-    SIZE_100 = 'size_100'
+    CHOICES_SIZE =   ( ('CSS', 'Computer Support Specialist'),
+    ('HWA' , 'Hardware Engineer'),
+    ('CSA' , 'Computer System Analyst '),
+    ('SWD' , 'Software Developer'),
+    ('PRG','Programmer'),
+    ('WBD','Web developer',),
+    ('NWE','Network engineer'),
+    ('SWT', 'Software Tester'))
 
-    CHOICES_SIZE = (
-        (SIZE_1_9 ,'1-9'),
-        (SIZE_10_49 ,'10-49'),
-        (SIZE_50_99 ,'50-99'),
-        (SIZE_100 ,'100+'),
-
-
-    )
+    
+      
 
 
-    title = models.CharField(max_length=50)
+    
+
+
+    title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    skillset_required = models.TextField(max_length=200)
+    skillset_required = models.TextField(max_length=2000)
     about_job = models.TextField(blank=True, null=True)
     # image = models.ImageField(upload_to="covers/")
-    experience = models.CharField(max_length=50,null=True)
+    experience = models.CharField(max_length=100,null=True)
     salary = models.CharField(max_length=50,null=True)
     deadline = models.CharField(max_length=50,null=True)
 
-    department_name = models.CharField(max_length=20, choices=CHOICES_SIZE, default=SIZE_1_9)
+    department_name = models.CharField( max_length=3,choices=CHOICES_SIZE)
 
     
     created_by = models.ForeignKey(User,
@@ -42,10 +44,14 @@ class Job(models.Model):
     def __str__(self):
         return self.title
     
+        
     class Meta:
         ordering = ['-created_at']
-
+        
+    def application_count(self):
+        return Application.objects.filter(job=self).values('user').distinct().count()
 class Application(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     job = models.ForeignKey(Job,
                             related_name='applications',
@@ -78,5 +84,4 @@ class Application(models.Model):
                                    related_name="applications",
                                    on_delete=models.CASCADE)
     
-
     

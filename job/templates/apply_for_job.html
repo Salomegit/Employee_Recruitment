@@ -23,201 +23,192 @@
     align-items: flex-start;
   "
 >
-  {% csrf_token %}
-   
-  {%if form.errors %}
-  {% for error in form.errors %}
-     <div class="alert alert-danger">
-        {{ error }}
-     </div>
- {% endfor %}
-{% endif %}
- 
+  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+  <div class="alert alert-danger">{{ error }}</div>
+  {% endfor %} {% endif %}
 
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label> Firstname:-</label>
-      <input
-        style="border: 2px solid"
-        type="text"
-        placeholder="Your First Name"
-        name="first_name"
-        class="form-control"
-        id="id_first_name"
-        required
-      />
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label> Lastname:-</label>
-      <input
-        style="border: 2px solid"
-        type="text"
-        name="last_name"
-        placeholder="Your Last Name"
-        class="form-control"
-        id="id_last_name"
-        required
-      />
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label>Date of Birth:-</label>
-      <input
-        style="border: 2px solid"
-        type="date"
-        name="date_of_birth"
-        placeholder="Your Date of Birth"
-        class="form-control"
-        id="id_date_of_birth"
-        required
-      />
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="form-group">
-      <label>Gender</label>
-      <div style="margin-left: 20px;">
-        <label>Male</label>
+  <div
+    class="card mx-auto"
+    style="width: 70%; background-color: #d5abb9; justify-content: center"
+  >
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Firstname:-</label>
         <input
-          type="radio"
-          placeholder="gender"
-          value="M"
-          name="gender"
-          id="id_gender"
-        />
-      </div>
-      <div style="margin-left: 20px;">
-        <label>Female</label>
-        <input
-          type="radio"
-          placeholder="gender"
-          value="F"
-          name="gender"
-          id="id_gender"
-        />
-      </div>
-      <div style="margin-left: 20px;">
-        <label>Other</label>
-        <input
-          type="radio"
-          placeholder="gender"
-          value="O"
-          name="gender"
-          id="id_gender"
+          style="border: 2px solid"
+          type="text"
+          placeholder="Your First Name"
+          name="first_name"
+          class="form-control"
+          id="id_first_name"
+          required
         />
       </div>
     </div>
-
-    
-    
-
-      
-  </div>
-
-  
-
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label>Education acquired:-</label>
-      <textarea
-        style="border: 2px solid"
-        placeholder="Levels of Education Acquired"
-        type="textarea"
-        name="education"
-        class="form-control"
-        id="education"
-        rows="5"
-        required
-      ></textarea>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Lastname:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          name="last_name"
+          placeholder="Your Last Name"
+          class="form-control"
+          id="id_last_name"
+          required
+        />
+      </div>
     </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label> Email:-</label>
-      <input
-        style="border: 2px solid"
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        class="form-control"
-        id="id_email"
-        required
-      />
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Date of Birth:-</label>
+        <input
+          style="border: 2px solid"
+          type="date"
+          name="date_of_birth"
+          placeholder="Your Date of Birth"
+          class="form-control"
+          id="id_date_of_birth"
+          required
+        />
+      </div>
     </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label> Your Location:-</label>
-      <input
-        style="border: 2px solid"
-        type="text"
-        placeholder="Your location"
-        name="location"
-        class="form-control"
-        id="id_location"
-        required
-      />
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label> Your Mobile Number:-</label>
-      <input
-        style="border: 2px solid"
-        type="number"
-        placeholder="Your Mobile Number"
-        name="mobile"
-        class="form-control"
-        id="id_mobile"
-        required
-      />
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label>Any Work Experience Acquired:-</label>
-      <textarea
-        style="border: 2px solid"
-        type="textarea"
-        name="experience"
-        placeholder="Any Experience Acquired"
-        class="form-control"
-        id="id_experience"
-        rows="5"
-        required
-      ></textarea>
-    </div>
-  </div>
-  <div class="col-sm-12">
-    <div class="form-group">
-      <label>Any Other Information/Comment:-</label>
-      <textarea
-        style="border: 2px solid"
-        type="textarea"
-        name="content"
-        placeholder="Any Comment"
-        class="form-control"
-        id="id_content"
-        rows="5"
-        required
-      ></textarea>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Gender</label>
+        <div style="margin-left: 20px">
+          <label>Male</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="M"
+            name="gender"
+            id="id_gender"
+          />
+        </div>
+        <div style="margin-left: 20px">
+          <label>Female</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="F"
+            name="gender"
+            id="id_gender"
+          />
+        </div>
+        <div style="margin-left: 20px">
+          <label>Other</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="O"
+            name="gender"
+            id="id_gender"
+          />
+        </div>
+      </div>
     </div>
 
-    <!-- <div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Education acquired:-</label>
+        <textarea
+          style="border: 2px solid"
+          placeholder="Levels of Education Acquired"
+          type="textarea"
+          name="education"
+          class="form-control"
+          id="education"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Email:-</label>
+        <input
+          style="border: 2px solid"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          class="form-control"
+          id="id_email"
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Your Location:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          placeholder="Your location"
+          name="location"
+          class="form-control"
+          id="id_location"
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Your Mobile Number:-</label>
+        <input
+          style="border: 2px solid"
+          type="number"
+          placeholder="Your Mobile Number"
+          name="mobile"
+          class="form-control"
+          id="id_mobile"
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Any Work Experience Acquired:-</label>
+        <textarea
+          style="border: 2px solid"
+          type="textarea"
+          name="experience"
+          placeholder="Any Experience Acquired"
+          class="form-control"
+          id="id_experience"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Any Other Information/Comment:-</label>
+        <textarea
+          style="border: 2px solid"
+          type="textarea"
+          name="content"
+          placeholder="Any Comment"
+          class="form-control"
+          id="id_content"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+
+      <!-- <div>
     <label for="file">Resume:-</label>
     <br>
     <input   type="file" id="file" name="file" />
    </div>
 <div> -->
-    <input
-      type="submit"
-      value="Submit"
-      class="m-3 px-5 btn btn-primary"
-      style="background-color: #561c32"
-    />
+      <input
+        type="submit"
+        value="Submit"
+        class="m-3 px-5 btn btn-primary"
+        style="background-color: #561c32"
+      />
+    </div>
   </div>
 </form>
 
