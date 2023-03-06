@@ -14,10 +14,13 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_DIR = BASE_DIR / 'static'
-MEDIA_DIR = BASE_DIR / 'media'
-MEDIA_ROOT = '/static/'
-MEDIA_URL='/media/'
+# STATIC_DIR = BASE_DIR / 'static'
+# MEDIA_DIR = BASE_DIR / 'media'
+# MEDIA_ROOT = '/static/'
+# MEDIA_URL='/media/'
+STATIC_URL= "/static/"
+MEDIA_ROOT= os.path.join(BASE_DIR, "media")
+MEDIA_URL="/media/"
 #MEDIA_ROOT= os.path.join(BASE_DIR,"static")
 
 # Quick-start development settings - unsuitable for production

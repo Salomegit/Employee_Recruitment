@@ -1,8 +1,8 @@
 {% include 'header.html' %}
 
-<h1 class="title mx-auto">
+<!-- <h3 class="title ">
   View all users who applied for the job - {{ job.title }}
-</h1>
+</h3> -->
 <div
   style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%"
   class="card mx-auto"
@@ -90,7 +90,7 @@
       </tr>
 
       {% empty %}
-      <p>no user applied for the job</p>
+      <p>No user applied for this job</p>
       {% endfor %}
     </tbody>
   </table>

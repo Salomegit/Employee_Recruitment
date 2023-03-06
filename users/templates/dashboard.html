@@ -10,13 +10,13 @@
 {% endif %}
   <div class="container">
 
-    <h1 class="title">
-      <center style="text-decoration: underline; color: #561c32">Dashboard</center>
-    </h1>
+    <h3 class="title">
+      <center style="text-decoration: underline; color: #561c32 ;font-family: 'Courier New', Courier, monospace;">Dashboard</center>
+    </h3>
 
 {% if userprofile.is_employer %}
 
-<h2 class="subtitle">Welcome back Employer..</h2>
+<h4 class="subtitle">Welcome  Employer..</h4>
 <div><a href="{% url 'job:add'  %}">
   <input
   type="submit"
@@ -25,7 +25,7 @@
   style="background-color: #561c32"
   /> <a href=""></a>
 </div>
-<h2 class="subtitle">View all jobs posted</h2>
+<h3 class="subtitle">View all jobs posted</h3>
 
 
 <table class="table table table-striped table-bordered">
@@ -53,8 +53,8 @@
 </table>
 {% else %}
 
-<h2 class="subtitle">All Applications Aplied</h2>
-<h2 class="subtitle">Welcome back jobseeker</h2>
+<h4 class="subtitle">Welcome  jobseeker</h4>
+<h5 class="subtitle" style="font-family: 'Courier New', Courier, monospace;">All Applications Aplied</h5>
 <!-- <style>
   table,
   th,

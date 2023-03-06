@@ -23,12 +23,13 @@
       justify-content: start;
       align-items: flex-start;
     "
+    enctype="multipart/form-data"
   >
     {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
-    <div class="alert alert-danger"> Error in {{ error }} field</div>
+    <div class="alert alert-danger">Error in {{ error }} Field</div>
     {% endfor %} {% endif %}
 
-    
+ 
 
     <div
       class="card mx-auto"
@@ -103,7 +104,6 @@
           />
         </div>
       </div>
-      
 
       <div class="col-sm-12">
         <div class="form-group">
@@ -111,15 +111,16 @@
           <div class="select">
             <select name="department_name" v-model="department_name">
               <option value="">---</option>
-              <option value="CSS">Computer Support Specialist</option>
-              <option value="HWA">Hardware Engineer</option>
-              <option value="CSA">Computer System Analyst </option>
-              <option value="SWD">Software Developer</option>
-              <option value="PRG">Programmer</option>
-              <option value="WBD">Web developer</option>
-              <option value="NWE">Network engineer</option>
-              <option value="SWT">Software Tester</option>
-
+              <option value="Computer Support Specialist">Computer Support Specialist</option>
+              <option value="Hardware Engineer">Hardware Engineer</option>
+              <option value="Computer System Analyst">Computer System Analyst</option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Programmer">Programmer</option>
+              <option value="Web Developer">Web developer</option>
+              <option value="Network Engineer">Network engineer</option>
+              <option value="Software Tester">Software Tester</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
 
             </select>
           </div>
@@ -135,35 +136,35 @@
             class="form-control"
             id="id_deadline"
             v-model="deadline"
-
           />
         </div>
       </div>
+      <div>
+        <label for="file">Image:-</label>
+        <br>
+        <input   type="file" id="file" name="file" multiple />
+       </div>
+    <div>
 
       <input
         type="submit"
         value="Add Job"
-        class="m-3 px-5 btn btn-primary"
+        class="m-2 px-3 btn btn-primary"
         style="background-color: #561c32; justify-content: center"
       />
+      <div
+      id="alert"
+      class="alert alert-danger"
+      v-if="errors.length"
+      style="color: BLACK; background-color: RED"
+    >
+      <p v-for="error in errors">[[ error ]]</p>
     </div>
-
-    <!-- <div>
-    <label for="file">Image:-</label>
-    <br>
-    <input   type="file" id="file" name="file" multiple />
-   </div>
-<div> -->
-  <div
-    id="alert"
-    class="alert alert-danger"
-    v-if="errors.length"
-    style="color: BLACK; background-color: RED"
-  >
-    <p v-for="error in errors">[[ error ]]</p>
-  </div>
+    </div>
   </form>
 </div>
+
+
 
 {% endblock %} {% block scripts %}
 <script>
@@ -176,7 +177,7 @@
         about_job: "",
         experience: "",
         department_name: "",
-        deadline:"",
+        deadline: "",
         errors: [],
       };
     },

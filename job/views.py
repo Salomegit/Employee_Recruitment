@@ -17,10 +17,9 @@ def delete_application(request, application_id):
 
 def job_detail(request, job_id):
     job = Job.objects.get(pk=job_id)
-    for job in jobs:
-        job.applicant_count = job.application_set.count()
+   
 
-        return render(request, 'job_detail.html', {'job': job})
+    return render(request, 'job_detail.html', {'job': job})
 
 
 @login_required
@@ -34,6 +33,9 @@ def apply_for_job(request, job_id):
             application = form.save(commit=False)
             application.job = job
             application.created_by = request.user
+            application.resume = request.FILES["resume"]
+            
+            
             application.save()
 
             # create_notification(request,
@@ -61,7 +63,7 @@ def add(request):
         if form.is_valid():
             job = form.save(commit=False)
             job.created_by = request.user
-            # job.image = request.FILES['images']
+            
             job.save()
 
             return redirect("users:dashboard")

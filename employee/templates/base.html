@@ -1,3 +1,4 @@
+{% load static %}
 {% include 'header.html' %}
 {% if message %}
     <div id="alert" class="alert alert-success">{{ message }}</div>
@@ -77,15 +78,22 @@
   <div class="card" style="width: 350px; margin: 10px">
     <h1>
       {{job.title }}</h1>
-    <!-- <img class="card-img-top" src={{job.image.url}} alt="Card image cap"> -->
-    {% load static %}
-
+     
+    {% if job.image %}
      <img
       class="card-img-top"
-      src="https://images.pexels.com/photos/14792109/pexels-photo-14792109.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+      src="{{ job.image.url }}"
       style="height: 200px; object-fit: cover; overflow: hidden"
       alt="Card image cap"
     /> 
+    {% else %}
+    <img
+      class="card-img-top"
+      src="https://business.uonbi.ac.ke/sites/default/files/2020-11/job.jpg"
+      style="height: 200px; object-fit: cover; overflow: hidden"
+      alt="Card image cap"
+    /> 
+    {% endif %}
 
     <div class="card-body" style="background-color: #f0deef">
       <div class="media">

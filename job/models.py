@@ -9,16 +9,38 @@ GENDER = (('M', 'Male'), ('F', 'Female') )
 
 class Job(models.Model):
 
-    CHOICES_SIZE =   ( ('CSS', 'Computer Support Specialist'),
-    ('HWA' , 'Hardware Engineer'),
-    ('CSA' , 'Computer System Analyst '),
-    ('SWD' , 'Software Developer'),
-    ('PRG','Programmer'),
-    ('WBD','Web developer',),
-    ('NWE','Network engineer'),
-    ('SWT', 'Software Tester'))
+    # CHOICES_SIZE =   ( ('CSS', 'Computer Support Specialist'),
+    # ('HWA' , 'Hardware Engineer'),
+    # ('CSA' , 'Computer System Analyst '),
+    # ('SWD' , 'Software Developer'),
+    # ('PRG','Programmer'),
+    # ('WBD','Web developer',),
+    # ('NWE','Network engineer'),
+    # ('SWT', 'Software Tester'))
 
-    
+    COMPUTER_SUPPORT_SPECIALIST = 'Computer Support Specialist'
+    HARDWARE_ENGINEER = 'Hardware Engineer'
+    COMPUTER_SYSTEM_ANALYST = 'Computer System Analyst'
+    SOFTWARE_DEVELOPER = 'Software Developer'
+    PROGRAMMER = 'Programmer'
+    WEB_DEVELOPER = 'Web Developer'
+    NETWORK_ENGINEER = 'Network Engineer'
+    SOFTWARE_TESTER = 'Software Tester'
+    FRONTEND_DEVELOPER = "Frontend Developer"
+    BACKEND_DEVELOPER = "Backend Developer"
+
+    CHOICES_SIZE =   ( (COMPUTER_SUPPORT_SPECIALIST ,'CSS'),
+    ( HARDWARE_ENGINEER ,'HWA'),
+    ( COMPUTER_SYSTEM_ANALYST, 'CSA' ),
+    ( SOFTWARE_DEVELOPER, 'SWD'),
+    ( PROGRAMMER , 'PRG'),
+    ( WEB_DEVELOPER,'WBD'),
+    ( NETWORK_ENGINEER,'NWE'),
+    ( SOFTWARE_TESTER,'SWT'),
+    (FRONTEND_DEVELOPER,"FD"),
+    (BACKEND_DEVELOPER,"BD")
+    )
+
       
 
 
@@ -29,12 +51,12 @@ class Job(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     skillset_required = models.TextField(max_length=2000)
     about_job = models.TextField(blank=True, null=True)
-    # image = models.ImageField(upload_to="covers/")
+    image = models.ImageField(upload_to="covers/",null=True,blank=True)
     experience = models.CharField(max_length=100,null=True)
     salary = models.CharField(max_length=50,null=True)
     deadline = models.CharField(max_length=50,null=True)
 
-    department_name = models.CharField( max_length=3,choices=CHOICES_SIZE)
+    department_name = models.CharField( max_length=30,choices=CHOICES_SIZE)
 
     
     created_by = models.ForeignKey(User,
@@ -47,11 +69,9 @@ class Job(models.Model):
         
     class Meta:
         ordering = ['-created_at']
-        
-    def application_count(self):
-        return Application.objects.filter(job=self).values('user').distinct().count()
+
+    
 class Application(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     job = models.ForeignKey(Job,
                             related_name='applications',
@@ -76,7 +96,7 @@ class Application(models.Model):
     content = models.TextField()
     experience = models.TextField()
     
-    # resume  = models.FileField( upload_to='resumes/', null=True, blank=True)
+    resume  = models.FileField( upload_to="resumes/", null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True,null=False)
 
@@ -84,4 +104,5 @@ class Application(models.Model):
                                    related_name="applications",
                                    on_delete=models.CASCADE)
     
-    
+    class Meta:
+        ordering = ['-created_at']
