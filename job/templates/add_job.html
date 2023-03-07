@@ -29,8 +29,6 @@
     <div class="alert alert-danger">Error in {{ error }} Field</div>
     {% endfor %} {% endif %}
 
- 
-
     <div
       class="card mx-auto"
       style="width: 70%; background-color: #d5abb9; justify-content: center"
@@ -111,9 +109,13 @@
           <div class="select">
             <select name="department_name" v-model="department_name">
               <option value="">---</option>
-              <option value="Computer Support Specialist">Computer Support Specialist</option>
+              <option value="Computer Support Specialist">
+                Computer Support Specialist
+              </option>
               <option value="Hardware Engineer">Hardware Engineer</option>
-              <option value="Computer System Analyst">Computer System Analyst</option>
+              <option value="Computer System Analyst">
+                Computer System Analyst
+              </option>
               <option value="Software Developer">Software Developer</option>
               <option value="Programmer">Programmer</option>
               <option value="Web Developer">Web developer</option>
@@ -121,7 +123,6 @@
               <option value="Software Tester">Software Tester</option>
               <option value="Frontend Developer">Frontend Developer</option>
               <option value="Backend Developer">Backend Developer</option>
-
             </select>
           </div>
         </div>
@@ -139,12 +140,12 @@
           />
         </div>
       </div>
+
       <div>
         <label for="file">Image:-</label>
-        <br>
-        <input   type="file" id="file" name="file" multiple />
-       </div>
-    <div>
+        <br />
+        <input type="image" id="id_image" name="image" />
+      </div>
 
       <input
         type="submit"
@@ -153,74 +154,73 @@
         style="background-color: #561c32; justify-content: center"
       />
       <div
-      id="alert"
-      class="alert alert-danger"
-      v-if="errors.length"
-      style="color: BLACK; background-color: RED"
-    >
-      <p v-for="error in errors">[[ error ]]</p>
-    </div>
-    </div>
-  </form>
+        id="alert"
+        class="alert alert-danger"
+        v-if="errors.length"
+        style="color: BLACK; background-color: RED"
+      >
+        <p v-for="error in errors">[[ error ]]</p>
+      </div>
+    </form>
 </div>
 
+    {% endblock %} {% block scripts %}
+    <script>
+      const AddjobApp = {
+        data() {
+          return {
+            title: "",
+            company_name: "",
+            skillset_required: "",
+            about_job: "",
+            experience: "",
+            department_name: "",
+            deadline: "",
+            errors: [],
+          };
+        },
+        delimiters: ["[[", "]]"],
+        methods: {
+          validateForm(e) {
+            this.errors = [];
 
+            if (this.title === "") {
+              this.errors.push("The Title field is missing!");
+            }
 
-{% endblock %} {% block scripts %}
-<script>
-  const AddjobApp = {
-    data() {
-      return {
-        title: "",
-        company_name: "",
-        skillset_required: "",
-        about_job: "",
-        experience: "",
-        department_name: "",
-        deadline: "",
-        errors: [],
+            if (this.department_name === "") {
+              this.errors.push("The Department name field is missing!");
+            }
+
+            if (this.skillset_required === "") {
+              this.errors.push("The Skillset field is missing!");
+            }
+
+            if (this.about_job === "") {
+              this.errors.push("The About Job field is missing!");
+            }
+
+            if (this.experience === "") {
+              this.errors.push("The Experience field is missing!");
+            }
+
+            if (this.company_size === "") {
+              this.errors.push("The Company size field is missing!");
+            }
+            if (this.deadline === "") {
+              this.errors.push("The Deadline field is missing!");
+            }
+            if (this.errors.length) {
+              e.preventDefault();
+              return false;
+            } else {
+              return true;
+            }
+          },
+        },
       };
-    },
-    delimiters: ["[[", "]]"],
-    methods: {
-      validateForm(e) {
-        this.errors = [];
-
-        if (this.title === "") {
-          this.errors.push("The Title field is missing!");
-        }
-
-        if (this.department_name === "") {
-          this.errors.push("The Department name field is missing!");
-        }
-
-        if (this.skillset_required === "") {
-          this.errors.push("The Skillset field is missing!");
-        }
-
-        if (this.about_job === "") {
-          this.errors.push("The About Job field is missing!");
-        }
-
-        if (this.experience === "") {
-          this.errors.push("The Experience field is missing!");
-        }
-
-        if (this.company_size === "") {
-          this.errors.push("The Company size field is missing!");
-        }
-        if (this.deadline === "") {
-          this.errors.push("The Deadline field is missing!");
-        }
-        if (this.errors.length) {
-          e.preventDefault();
-          return false;
-        } else {
-          return true;
-        }
-      },
-    },
-  };
-  Vue.createApp(AddjobApp).mount("#add-job-app");
-</script>
-{% endblock %}
+      Vue.createApp(AddjobApp).mount("#add-job-app");
+    </script>
+    {% endblock %}
+  </form>
+</div>

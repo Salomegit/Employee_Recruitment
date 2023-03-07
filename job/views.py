@@ -7,7 +7,8 @@ from .forms import AddJobForm, ApplicationForm
 from notification.utilities import create_notification
 
 # Create your views here.
-
+def search(request):
+    return render(request, "search.html")
 
 def delete_application(request, application_id):
     application = Application.objects.get(pk=application_id)

@@ -1,6 +1,9 @@
 from django.shortcuts import render,get_object_or_404 ,redirect
 from django.contrib.auth.decorators import login_required
 from job.models import Application, Job
+from xhtml2pdf import pisa
+
+
 from users.models import ConversationMessage
 # Create your views here.
 @login_required
@@ -21,6 +24,8 @@ def view_application(request, application_id):
          conversationmessage = ConversationMessage.objects.create(application = application, content=content, created_by=request.user )
          
          return redirect("users:view_application",application_id=application_id)
+   
+
 
    return render ( request,'view_application.html' ,{'application': application})
 

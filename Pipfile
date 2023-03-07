@@ -8,6 +8,7 @@ django = "*"
 django-debug-toolbar = "*"
 pillow = "*"
 django-money = "*"
+xhtml2pdf = "*"
 
 [dev-packages]
 
