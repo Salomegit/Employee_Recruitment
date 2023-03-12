@@ -1,9 +1,115 @@
-{% include 'header.html' %}
-
-{% block content %}
+{% include 'header.html' %} {% block content %}
 <div id="search-app">
-   <h1 class="title">
+  <h3 class="title">Search</h3>
 
-   </h1>
+  <form
+    @submit.prevent="performSearch()"
+    style="
+      color: #561c32;
+      font: 100% / normal sans-serif;
+      justify-content: space-between;
+      font-size: large;
+      padding: 20px;
+      justify-content: start;
+      align-items: flex-start;
+    "
+  >
+    <div
+      class="card mx-auto"
+      style="width: 50%; background-color: #d5abb9; justify-content: center"
+    >
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Query</label>
+          <div class="control">
+            <input type="text" name="query" class="input" v-model="query" />
+          </div>
+
+          <div class="field">
+            <label> Department Name </label>
+            <div class="control">
+              <div class="select">
+                <select name="department_name" v-model="department_name">
+                  <option value="">All</option>
+                  <option value="Computer Support Specialist">
+                    Computer Support Specialist
+                  </option>
+                  <option value="Hardware Engineer">Hardware Engineer</option>
+                  <option value="Computer System Analyst">
+                    Computer System Analyst
+                  </option>
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="Programmer">Programmer</option>
+                  <option value="Web Developer">Web developer</option>
+                  <option value="Network Engineer">Network engineer</option>
+                  <option value="Software Tester">Software Tester</option>
+                  <option value="Frontend Developer">Frontend Developer</option>
+                  <option value="Backend Developer">Backend Developer</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input
+            type="submit"
+            value="Search "
+            class="m-2 px-3 btn btn-primary"
+            style="background-color: #561c32; justify-content: center"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
+
+<div v-if="jobs.length">
+  <hr />
+
+  <div v-for="job in jobs" :key="job.id" class="notification mt-2">
+    <h3 class="is-size-4">{{ job.title }}</h3>
+    <p>[[ job.department_name ]]</p>
+
+    <a :href="job.url">View details</a>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  const SearchApp = {
+    data() {
+      return {
+        query: "",
+        department_name: "",
+        jobs: []
+      }
+    },
+    delimeters: ["[[", "]]"],
+    methods: {
+      performSearch() {
+        var data = {
+          'query': this.query,
+          'department_name': this.department_name,
+        };
+
+        fetch("/job/api/search", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": "{{ csrf_token }}",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((result) => {
+            console.log(result.jobs);
+            this.jobs = result.jobs;
+          })
+          .catch((error) => {
+            console.log("Error", error);
+          });
+      },
+    },
+  };
+  Vue.createApp(SearchApp).mount("#search-app");
+</script>
 {% endblock %}

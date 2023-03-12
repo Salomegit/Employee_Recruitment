@@ -7,8 +7,8 @@ from .api import api_search
 app_name = "job"
 
 urlpatterns = [
-    path("api/search",api_search,name = "api_search"),
-    path("search",views.search,name = "search"),
+    path("api/search/",api_search,name = "api_search"),
+    path("search/",views.search,name = "search"),
 
     path("job/<int:job_id>", views.job_detail, name="job_detail"),
     path("job/add" ,views.add, name="add"),

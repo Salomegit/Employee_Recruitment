@@ -24,6 +24,7 @@ def api_search(request):
             "url": "/jobs/%s/" % job.id
 
         }
+        print(jobs)
         jobslist.append(obj)
 
     return JsonResponse ( {'jobs': jobslist} )
