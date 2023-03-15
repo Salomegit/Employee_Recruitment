@@ -9,6 +9,8 @@
 >
   <div style="display: flex; justify-content: space-between">
     <div>
+      
+      <a href="{% url 'job:edit' job.id %}" class="button is-success mb-4"><button style="background-color: green;color:white;border-radius: 10px; margin:10px; padding:10px;">Edit Job Details</button></a>
       <h1 class="card-title">Job Vacancy Details</h1>
       <h2 class="card-subtitle mb-2 text-muted">
         Job Positon: {{ job.title }}
@@ -29,7 +31,7 @@
   <div class="card-body">
     <div style="display: flex">
       <h6 style="min-width: 200px; font-weight: bold">Job Title:</h6>
-      <h6>{{job.title}}</h6>
+      <h6>{{job.title}} ({{job.get_status_display}}) </h6>
     </div>
     <div style="display: flex">
       <h6 style="min-width: 200px; font-weight: bold">About Job:</h6>
@@ -51,7 +53,10 @@
       <h6 style="min-width: 200px; font-weight: bold">Department Name:</h6>
       <h6>{{job.department_name}}</h6>
     </div>
-  
+    <div style="display: flex">
+      <h6 style="min-width: 200px; font-weight: bold">Deadline to Submit:</h6>
+      <h6>{{job.deadline}}</h6>
+    </div>
     
     
     <p></p>

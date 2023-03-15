@@ -92,9 +92,11 @@
 
 
             
-           
-                    <button class="btn btn-outline-success my-2 my-sm-0 bg-info" style="color: white;" type="submit">
-                     <a href="{% url 'job:search' %}">Search</a> </button>
+           <div style="justify-content: end;">
+
+             <button  type="submit">
+               <a href="{% url 'job:search' %}" class="btn " style="color: white;" >Search</a> </button>
+              </div>
            
             </div>
         
@@ -118,7 +120,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script  src="https://unpkg.com/vue@next"></script>
+    <!-- <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.common.prod.min.js" integrity="sha512-vwjHx54j9x6k6Mz7g7fR1d8f9CoCqKGv3eTaYShGsa0+SmmXgl6cq/DF+fek2/akIYUw6ZlnHU5UFEkpo+xF1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
       {% block scripts %}
       {% endblock %}
 </body>

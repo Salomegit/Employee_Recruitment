@@ -1,6 +1,7 @@
 {% include 'header.html' %} {% block content %}
 <div id="search-app">
-  <h3 class="title">Search</h3>
+  <br>
+  <h3 class="title" style="text-align: center;">Search For a Job</h3>
 
   <form
     @submit.prevent="performSearch()"
@@ -20,7 +21,7 @@
     >
       <div class="col-sm-12">
         <div class="form-group">
-          <label>Query</label>
+          <label>Query now</label>
           <div class="control">
             <input type="text" name="query" class="input" v-model="query" />
           </div>
@@ -59,18 +60,39 @@
       </div>
     </div>
   </form>
-</div>
 
-<div v-if="jobs.length">
-  <hr />
+  <!-- <div>
+  <div v-if="jobs && jobs.length">
+    <hr />
+    <div v-for="job in jobs" :key="job.id" class="notification mt-2">
+      <h3 class="is-size-4">[[ job.title ]]</h3>
+      <p>[[ job.department_name ]]</p>
+      <a :href="job.url">View details</a>
+    </div>
+  </div>
+  <div v-else>
+    <div class="job-not-found">
+      <p>Job not found</p>
+    </div>
+  </div>
+</div> -->
 
-  <div v-for="job in jobs" :key="job.id" class="notification mt-2">
-    <h3 class="is-size-4">{{ job.title }}</h3>
-    <p>[[ job.department_name ]]</p>
-
-    <a :href="job.url">View details</a>
+  <div
+    class="card mx-auto"
+    style="width: 50%; background-color: #ecd8df; justify-content: center; text-align:center"
+  >
+    <div v-if="jobs.length">
+      <div v-for="job in jobs" :key="job.id" class="notification mt-2">
+        <div class="card-header" style="font-size: large; font-weight: 300;"> <h3> Found Results </h3></div>
+        <h3 class="is-size-4">[[ job.title ]]</h3>
+        <p>[[ job.department_name ]]</p>
+        <a v-bind:href="job.url" class="btn btn-success"> <slot>View More details</slot> </a>
+        <hr>
+      </div>
+    </div>
   </div>
 </div>
+
 {% endblock %} {% block scripts %}
 <script>
   const SearchApp = {
@@ -78,15 +100,16 @@
       return {
         query: "",
         department_name: "",
-        jobs: []
-      }
+        jobs: [],
+        showError: false, // default value is false
+      };
     },
     delimeters: ["[[", "]]"],
     methods: {
       performSearch() {
         var data = {
-          'query': this.query,
-          'department_name': this.department_name,
+          query: this.query,
+          department_name: this.department_name,
         };
 
         fetch("/job/api/search", {
@@ -103,6 +126,14 @@
           .then((result) => {
             console.log(result.jobs);
             this.jobs = result.jobs;
+            if (this.jobs.length === 0) {
+              this.showError = true; // set flag to true to show error message
+              setTimeout(() => {
+                this.showError = false; // reset flag after 5 seconds
+              }, 5000);
+            } else {
+              this.showError = false; // reset flag if jobs were found
+            }
           })
           .catch((error) => {
             console.log("Error", error);
@@ -112,4 +143,35 @@
   };
   Vue.createApp(SearchApp).mount("#search-app");
 </script>
+<style>
+  .job-not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  .job-not-found p {
+    font-size: 24px;
+    color: red;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 10px;
+    background-color: #f8d7da;
+    margin-top: 20px; /* Add margin to the top */
+    animation: fadeOut 3s forwards; /* Add animation to fade out after 3 seconds */
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+</style>
+
 {% endblock %}

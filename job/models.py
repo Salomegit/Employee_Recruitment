@@ -42,10 +42,16 @@ class Job(models.Model):
     )
 
       
-
+    ACTIVE = 'active'
+    EMPLOYED = 'employed'
+    ARCHIVED = 'archived'
 
     
-
+    CHOICES_STATUS = (
+        (EMPLOYED,'Employed'),
+        (ACTIVE,'Active' ),
+        (ARCHIVED,'Archived' )
+     )
 
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -62,7 +68,8 @@ class Job(models.Model):
     created_by = models.ForeignKey(User,
                                    related_name="jobs",
                                    on_delete=models.CASCADE)
-
+    status = models.CharField(max_length=20,choices=CHOICES_STATUS)
+    
     def __str__(self):
         return self.title
     

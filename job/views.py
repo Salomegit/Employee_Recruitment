@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 
 from django.contrib.auth.decorators import login_required
@@ -76,5 +76,28 @@ def add(request):
         form = AddJobForm()
 
     return render(request, 'add_job.html', {'form': form})
+
+
+@login_required
+def edit(request,job_id):
+    job = get_object_or_404(Job,pk=job_id,created_by=request.user)
+    if request.method == 'POST':
+        form = AddJobForm(request.POST,instance=job)
+
+        if form.is_valid():
+            job = form.save(commit=False)
+            job.status = request.POST.get('status')
+            
+            job.save()
+
+            return redirect("users:dashboard")
+
+            # return HttpResponse('added a job succesfully')
+            # return http ('login')
+
+    else:
+        form = AddJobForm(instance=job)
+
+    return render(request, 'edit_job.html', {'form': form,'job':job})
 
 

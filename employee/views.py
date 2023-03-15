@@ -13,7 +13,7 @@ from job.models import Job
 # Create your views here.
 # @login_required
 def base(request):
-    jobs = Job.objects.all()[0:8]
+    jobs = Job.objects.filter(status=Job.ACTIVE)[0:8]
     return render(request, "base.html", {'jobs': jobs})
 
 def about(request):

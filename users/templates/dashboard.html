@@ -41,7 +41,7 @@
     {% for job in request.user.jobs.all %}
     <tr>
       <th scope="row">   {{ job.id }} </a></th>
-      <td>  {{ job.title }}</td>
+      <td>  {{ job.title }} ({{job.get_status_display}})</td>
       <td>  {{ job.created_at }}</td>
       <td><a href="{% url 'users:view_dashboard_job' job.id%}"><i class="fas fa-bars"></i> Candidates</td>
     </tr>

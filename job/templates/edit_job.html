@@ -1,0 +1,232 @@
+{% include 'header.html' %} {% block content %}
+<center
+  class="title"
+  style="
+    font-size: 50px;
+    font-weight: 100;
+    text-decoration: underline;
+    color: #561c32;
+  "
+>
+  Edit job
+</center>
+<div id="edit-job-app">
+  <form
+    v-on:submit="validateForm"
+    method="POST"
+    style="
+      color: #561c32;
+      font: 100% / normal sans-serif;
+      justify-content: space-between;
+      font-size: large;
+      padding: 20px;
+      justify-content: start;
+      align-items: flex-start;
+    "
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+    <div class="alert alert-danger">Error in {{ error }} Field or field is empty</div>
+    {% endfor %} {% endif %}
+
+    <div
+      class="card mx-auto"
+      style="width: 70%; background-color: #d5abb9; justify-content: center"
+    >
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Title:-</label>
+          <input
+            style="border: 2px solid"
+            type="text"
+            name="title"
+            class="form-control"
+            id="id_title"
+            v-model="title"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Skillset Required:-</label>
+          <textarea
+            style="border: 2px solid"
+            type="textarea"
+            name="skillset_required"
+            class="form-control"
+            id="id_skillset_required"
+            value=" {% if job.skillset_required %}{{ job.skillset_required }}{% endif %}"            
+
+            rows="5"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>About Job:-</label>
+          <textarea
+            style="border: 2px solid"
+            type="textarea"
+            name="about_job"
+            class="form-control"
+            id="id_about_job"
+            rows="8"
+           value=" {% if job.about_job %}{{ job.about_job }}{% endif %}"            
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Experience:-</label>
+          <textarea
+            style="border: 2px solid"
+            type="text"
+            name="experience"
+            class="form-control"
+            id="id_experience"
+            rows="8"
+            v-model="experience"
+            value=" {% if job.about_job %}{{job.about_job}}{% endif %}"            
+
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Salary Range:-</label>
+          <input
+            style="border: 2px solid"
+            type="text"
+            name="salary"
+            class="form-control"
+            value=" {% if job.salary %}{{ job.salary }}{% endif %}"            
+
+            id="id_salary"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Department Name:-</label>
+          <div class="select">
+            <select name="department_name" v-model="department_name">
+              <option value="">---</option>
+              <option value="Computer Support Specialist">
+                Computer Support Specialist
+              </option>
+              <option value="Hardware Engineer">Hardware Engineer</option>
+              <option value="Computer System Analyst">
+                Computer System Analyst
+              </option>
+              <option value="Software Developer">Software Developer</option>
+              <option value="Programmer">Programmer</option>
+              <option value="Web Developer">Web developer</option>
+              <option value="Network Engineer">Network engineer</option>
+              <option value="Software Tester">Software Tester</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Status:-</label>
+          <div class="select">
+            <select name="status" >
+             <option value="">---</option>
+             <option value="employed">
+                 Employed
+                </option>
+                <option value="active"{% if job.status == 'active' %} selected {% endif %}>Active</option>
+              <option value="archived"{% if job.status == 'archived' %} selected {% endif %}>Archived</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Deadline Date to Submit:-</label>
+          <input
+            style="border: 2px solid"
+            type="date"
+            name="deadline"
+            class="form-control"
+            id="id_deadline"
+          />
+        </div>
+      </div>
+
+      <input
+      type="submit"
+      value="Save Changes"
+      class="m-2 px-3 btn btn-primary"
+      style="background-color: #561c32; justify-content: center"
+    />
+      <div
+        id="alert"
+        class="alert alert-danger"
+        v-if="errors.length"
+        style="color: BLACK; background-color: RED"
+      >
+        <p v-for="error in errors">[[ error ]]</p>
+      </div>
+    </form>
+</div>
+
+    {% endblock %} {% block scripts %}
+    <script>
+      const EditjobApp = {
+        data() {
+          return {
+            title: "{{ job.title }}",
+            skillset_required: "{{ job.skillset_required }}",
+            experience: "{{ job.experience }}",
+            department_name: "{{ job.department_name }}",
+        
+            errors: [],
+          };
+        },
+        delimiters: ["[[", "]]"],
+        methods: {
+          validateForm(e) {
+            this.errors = [];
+
+            if (this.title === "") {
+              this.errors.push("The Title field is missing!");
+            }
+
+            if (this.department_name === "") {
+              this.errors.push("The Department name field is missing!");
+            }
+
+            if (this.skillset_required === "") {
+              this.errors.push("The Skillset field is missing!");
+            }
+
+
+            if (this.experience === "") {
+              this.errors.push("The Experience field is missing!");
+            }
+
+            if (this.company_size === "") {
+              this.errors.push("The Company size field is missing!");
+            }
+            
+            if (this.errors.length) {
+              e.preventDefault();
+              return false;
+            } else {
+              return true;
+            }
+          },
+        },
+      };
+      Vue.createApp(EditjobApp).mount("#edit-job-app");
+    </script>
+    {% endblock %}
+  </form>
+</div>
