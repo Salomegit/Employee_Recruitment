@@ -138,9 +138,7 @@
           <div class="select">
             <select name="status" >
              <option value="">---</option>
-             <option value="employed">
-                 Employed
-                </option>
+             
                 <option value="active"{% if job.status == 'active' %} selected {% endif %}>Active</option>
               <option value="archived"{% if job.status == 'archived' %} selected {% endif %}>Archived</option>
             </select>
@@ -156,6 +154,8 @@
             name="deadline"
             class="form-control"
             id="id_deadline"
+            value=" {% if job.deadline %}{{ job.deadline }}{% endif %}"            
+
           />
         </div>
       </div>
