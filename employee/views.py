@@ -8,7 +8,7 @@ from django.contrib import messages
 
 from users.models import Userprofile
 from job.models import Job
-
+from employee.models import Contact
 
 # Create your views here.
 # @login_required
@@ -20,8 +20,18 @@ def about(request):
     return render (request,'about.html')
 
 def contact(request):
+    if request.method == "POST":
+        cfull_name=request.POST.get("full_name")
+        cemail=request.POST.get("email")
+        ccontent=request.POST.get("content")
+        query=Contact(full_name=cfull_name,email=cemail,content=ccontent)
+        query.save()
+        messages.info(request,"Thanks for contacting us we will get back to you soon...")
+        return redirect("employee:contact")
     return render (request,'contact.html')
 
+def help(request):
+    return render (request,'help.html')
 
 def register(request):
     if request.method == "POST":
@@ -52,7 +62,7 @@ def register(request):
             userprofile.save()
       
         login(request, user)
-        message = "Sign-up successful!"
+        messages.info(request,"Sign-up successful")
 
         return redirect("users:dashboard")
     else:

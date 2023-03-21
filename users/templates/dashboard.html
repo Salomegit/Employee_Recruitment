@@ -43,7 +43,7 @@
       <th scope="row">   {{ job.id }} </a></th>
       <td>  {{ job.title }} ({{job.get_status_display}})</td>
       <td>  {{ job.created_at }}</td>
-      <td><a href="{% url 'users:view_dashboard_job' job.id%}"><i class="fas fa-bars"></i> Candidates</td>
+      <td><a href="{% url 'view_dashboard_job' job.id%}"><i class="fas fa-bars"></i> Candidates</td>
     </tr>
     
     {% empty %}
@@ -88,7 +88,7 @@
       <td>{{ application.location }}</td>
       <td>
         <a
-        href="{% url 'users:view_application' application.id %}
+        href="{% url 'view_application' application.id %}
         "
         >
         <input

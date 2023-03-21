@@ -1,79 +1,81 @@
 {% include 'header.html' %}
 <center>
-    <div class="container" style=" font-family:arial narrow ; color:#561c32;  ">
-   <strong>
-       <h2 style="margin-top: 20px"> We'd love to hear from you</h2>
-</strong> 
-    
-    <br>
-    <h4>Whether you have a question about the jobs,how to apply or anything else,our team is ready
-        to hear from you
+  <div class="container" style="font-family: arial narrow; color: #561c32">
+    <strong>
+      <h2 style="margin-top: 20px">We'd love to hear from you</h2>
+    </strong>
+
+    <br />
+    <h4>
+      Whether you have a question about the jobs,how to apply or anything
+      else,our team is ready to hear from you
     </h4>
-</div>
+  </div>
 </center>
 <div class="card shadow m-5">
-    <div class="card-body" style="background-color: #f7f0f5">
-      <h5 class="p-2" style="border-bottom: 2px solid orange; color: #561c32">
-        Get In Touch With Us
-      </h5>
-      <div class="container-fluid">
-        <form method="post" name="contact" >
-          {% csrf_token %}
-          <div class="form-row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label> Full Name</label>
-                <input
-                  type="text"
-                  name="fullname"
-                  class="form-control"
-                  placeholder="Enter your Full Name"
-                  required
-                />
-              </div>
-            </div>
-            <br>
-
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label> Email</label>
-                <input
-                  type="email"
-                  name="lastname"
-                  class="form-control"
-                  placeholder="Enter Your Email"
-                  required
-                />
-              </div>
-            </div>
-        <br>
-            
-            
-            <div class="col-sm-12">
-                <div class="form-group">
-                <label>Your Message</label>
-                <textarea style="border: 2px line"  placeholder="Enter Your Message..."  type="textarea" name="message" class="form-control" id="id_content"  rows="5"  required></textarea>
-            </div>
-            
-            
-            
-            
-          
-          
-          
-              
+  <div class="card-body" style="background-color: #f7f0f5">
+    <h5 class="p-2" style="border-bottom: 2px solid orange; color: #561c32">
+      Get In Touch With Us
+    </h5>
+    <div class="container-fluid">
+      <form method="post" name="contact">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label> Full Name</label>
+              <input
+                type="text"
+                name="full_name"
+                id="id_fullname"
+                class="form-control"
+                placeholder="Enter your Full Name"
+                required
+              />
             </div>
           </div>
-          <input
-            type="submit"
-            value="Contact Us"
-            class="m-2 px-3 btn btn-primary"
-            style="background-color: #561c32"
-          />
-       
-        </form>
-      </div>
+          <br />
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label> Email</label>
+              <input
+                type="email"
+                name="email"
+                id="id_email"
+                class="form-control"
+                placeholder="Enter Your Email"
+                required
+              />
+            </div>
+          </div>
+          <br />
+
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Your Message</label>
+              <textarea
+                style="border: 2px line"
+                placeholder="Enter Your Message..."
+                type="textarea"
+                name="content"
+                class="form-control"
+                id="id_content"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <input
+          type="submit"
+          value="Contact Us"
+          class="m-2 px-3 btn btn-primary"
+          style="background-color: #561c32"
+        />
+      </form>
     </div>
   </div>
-  
+</div>
+
 {% include 'footer.html' %}

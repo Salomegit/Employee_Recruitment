@@ -20,13 +20,13 @@
        <div class="card">
         <p>
             {% if notification.notification_type == 'Message' %}
-            <a href="{% url 'notification:notifications' %}?goto={% url 'users:view_application' %}&notification={{ notification.extra_id }}">
+            <a href="{% url 'notifications' %}?goto={% url 'view_application' %}&notification= {{  notification.id }}&extra_id={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> sent you a message <br>
                 <small>{{ notification.created_at|timesince }} ago </small>
             </a>
             {% elif notification.notification_type == 'Application' %}
-            <a href="{% url 'notification:notifications' %}?goto={% url 'users:view_application' %}&notification={{ notification.extra_id }}">
+            <a href="{% url 'notifications' %}?goto={% url 'view_application' %}&notification= {{  notification.id }}&extra_id={{ notification.extra_id }}">
 
                 <strong>{{ notification.created_by.username }}</strong> applied for your job <br>
                 <small>{{ notification.created_at|timesince }} ago </small>

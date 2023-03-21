@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404 ,redirect
 from django.contrib.auth.decorators import login_required
 from job.models import Application, Job
 from xhtml2pdf import pisa
+from notification.utilities import create_notification
 
 
 from users.models import ConversationMessage
@@ -23,6 +24,8 @@ def view_application(request, application_id):
       if content:
          conversationmessage = ConversationMessage.objects.create(application = application, content=content, created_by=request.user )
          
+         create_notification(request, application.created_by, 'message', extra_id=application.id)
+
          return redirect("users:view_application",application_id=application_id)
    
 

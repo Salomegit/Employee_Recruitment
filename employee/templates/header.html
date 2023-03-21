@@ -76,29 +76,32 @@
             <a
             style="color: white;"
             class="nav-item nav-link"
-            href="{% url 'users:dashboard' %}"
+            href="{% url 'dashboard' %}"
             ><i class="fas fa-sign-in-alt"></i>Dashboard</a
             >
            
-            <a
+            <!-- <a
             style="color: white;"
             class="nav-item nav-link"
-            href="{% url 'notification:notifications'%}"
+            href="{% url 'notifications' %}"
             ><i class="fas fa-envelope"></i>Notifications 
               ({{ notifications.count  }})
-            </a>
+            </a> -->
 
             {% endif %}
 
-
+            <a
+            style="color: white;"
+            class="nav-item nav-link"
+            href="{% url 'job:search' %}"
+            ><i class="fa-solid fa-magnifying-glass"></i>Search</a
+            >
             
-           <div style="justify-content: end;">
+           <!-- <div style="justify-content: end;">
 
-             <button  type="submit">
-               <a href="{% url 'job:search' %}" class="btn " style="color: white;" >Search</a> </button>
-              </div>
+               <a href="{% url 'job:search' %}" class="btn " style="color: #f;back" >Search</a> </button>
            
-            </div>
+            </div> -->
         
           </div>
         </div>
