@@ -29,16 +29,16 @@ class Job(models.Model):
     FRONTEND_DEVELOPER = "Frontend Developer"
     BACKEND_DEVELOPER = "Backend Developer"
 
-    CHOICES_SIZE =   ( (COMPUTER_SUPPORT_SPECIALIST ,'CSS'),
-    ( HARDWARE_ENGINEER ,'HWA'),
-    ( COMPUTER_SYSTEM_ANALYST, 'CSA' ),
-    ( SOFTWARE_DEVELOPER, 'SWD'),
-    ( PROGRAMMER , 'PRG'),
-    ( WEB_DEVELOPER,'WBD'),
-    ( NETWORK_ENGINEER,'NWE'),
-    ( SOFTWARE_TESTER,'SWT'),
-    (FRONTEND_DEVELOPER,"FD"),
-    (BACKEND_DEVELOPER,"BD")
+    CHOICES_SIZE =   ( (COMPUTER_SUPPORT_SPECIALIST ,'COMPUTER_SUPPORT_SPECIALIST'),
+    ( HARDWARE_ENGINEER ,'HARDWARE_ENGINEER'),
+    ( COMPUTER_SYSTEM_ANALYST, 'COMPUTER_SYSTEM_ANALYST' ),
+    ( SOFTWARE_DEVELOPER, 'SOFTWARE_DEVELOPER'),
+    ( PROGRAMMER , 'PROGRAMMER'),
+    ( WEB_DEVELOPER,'WEB_DEVELOPER'),
+    ( NETWORK_ENGINEER,'NETWORK_ENGINEER'),
+    ( SOFTWARE_TESTER,'SOFTWARE_TESTER'),
+    (FRONTEND_DEVELOPER,"FRONTEND_DEVELOPER"),
+    (BACKEND_DEVELOPER,"BACKEND_DEVELOPER")
     )
 
       
@@ -68,7 +68,7 @@ class Job(models.Model):
     created_by = models.ForeignKey(User,
                                    related_name="jobs",
                                    on_delete=models.CASCADE)
-    status = models.CharField(max_length=20,choices=CHOICES_STATUS)
+    status = models.CharField(max_length=20,choices=CHOICES_STATUS,default='Active')
     
     def __str__(self):
         return self.title

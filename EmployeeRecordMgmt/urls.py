@@ -17,12 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.auth.models import Group
+# from django.contrib.auth.models import Group
 
 admin.site.site_header = "Employee_Recruitment"
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 
-class JobAdmin
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

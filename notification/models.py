@@ -16,7 +16,7 @@ class Notification(models.Model):
     is_read = models.BooleanField(default=False)
     extra_id = models.IntegerField(null=True, blank=True)
 
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, related_name="creatednotifications",on_delete=models.CASCADE )
 
     class Meta:

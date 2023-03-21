@@ -16,7 +16,7 @@
 
 {% if userprofile.is_employer %}
 
-<h4 class="subtitle">Welcome  Employer..</h4>
+<h4 class="subtitle">Welcome  Employer..{{username}}</h4>
 <div><a href="{% url 'job:add'  %}">
   <input
   type="submit"
@@ -53,7 +53,7 @@
 </table>
 {% else %}
 
-<h4 class="subtitle">Welcome  jobseeker</h4>
+<h4 class="subtitle">Welcome  jobseeker </h4>
 <h5 class="subtitle" style="font-family: 'Courier New', Courier, monospace;">All Applications Aplied</h5>
 <!-- <style>
   table,

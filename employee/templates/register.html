@@ -70,10 +70,11 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label> Password</label>
+              <label> Password <p style="color: red;">"Should be in six characters"</p></label>
               <input
                 type="password"
                 name="password"
+                pattern="\d{6}"
                 class="form-control"
                 placeholder="Enter Your Password"
                 required
@@ -86,6 +87,7 @@
               <input
                 type="password"
                 name="cpassword"
+                pattern="\d{6}"
                 class="form-control"
                 placeholder="Enter Your Password Again"
                 required
