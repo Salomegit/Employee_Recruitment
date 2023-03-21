@@ -94,7 +94,8 @@
           </div>
         </div>
         <br />
-        <div class="field" class="col-sm-6">
+        <!-- <div class="field" >
+
             <hr>
             <label>Account Type</label>
           <div class="control">
@@ -105,6 +106,16 @@
               </select>
             </div>
           </div>
+          
+        </div> -->
+        <hr>
+        <div class="col-auto my-1">
+          <label class="mr-sm-2" for="inlineFormCustomSelect">Account Type</label>
+          <select name="account_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Choose...</option>
+            <option value="jobseeker">Job Seeker</option>
+            <option value="employer">Employer</option>
+          </select>
         </div>
         <input
           type="submit"

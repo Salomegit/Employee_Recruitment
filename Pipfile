@@ -9,6 +9,7 @@ django-debug-toolbar = "*"
 pillow = "*"
 django-money = "*"
 xhtml2pdf = "*"
+django-jazzmin = "*"
 
 [dev-packages]
 
