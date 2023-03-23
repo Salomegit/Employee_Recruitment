@@ -15,15 +15,32 @@
     </h3>
 
 {% if userprofile.is_employer %}
-
+{% if messages %}
+    <ul class="alert alert-danger">
+        {% for message1 in messages %}
+            <li>{{ message1 }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <h4 class="subtitle">Welcome  Employer..{{username}}</h4>
-<div><a href="{% url 'job:add'  %}">
-  <input
-  type="submit"
-  value="Add Job"
-  class="m-1 px-5 btn btn-primary"
-  style="background-color: #561c32"
-  /> <a href=""></a>
+<div style="display: flex;">
+
+  <div><a href="{% url 'job:add'  %}">
+    <input
+    type="submit"
+    value="Add Job"
+    class="m-1 px-5 btn btn-primary"
+    style="background-color: #561c32"
+    /> 
+  </div>
+  <div><a href="{% url 'job:job_pdf'  %}">
+    <input
+    type="submit"
+    value="Job PDF"
+    class="m-1 px-5 btn btn-primary"
+    style="background-color: #561c32"
+    /> <a href=""></a>
+  </div>
 </div>
 <h3 class="subtitle">View all jobs posted</h3>
 
@@ -52,7 +69,13 @@
   </tbody>
 </table>
 {% else %}
-
+{% if messages %}
+    <ul class="alert alert-danger">
+        {% for message1 in messages %}
+            <li>{{ message1 }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <h4 class="subtitle">Welcome  jobseeker </h4>
 <h5 class="subtitle" style="font-family: 'Courier New', Courier, monospace;">All Applications Aplied</h5>
 <!-- <style>
@@ -100,14 +123,19 @@
         </a>
       </td>
       <td>
-        <a href="{% url 'job:delete_application' application.id %}">
+        <form action="{% url 'job:delete_application' application.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete"   class="m-1 px-5 btn btn-primary"
+          style="background-color: #fa0303" onclick="return confirmDelete();">
+        </form>
+        <!-- <a href="{% url 'job:delete_application' application.id %}">
           <input
           type="submit"
           value="delete"
           class="m-1 px-5 btn btn-primary"
           style="background-color: #fa0303"
           />
-        </a>
+        </a> -->
       </td>
     </tr>
   </tbody>
@@ -121,5 +149,10 @@
 
 
 </div>
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete?");
+  }
+</script>
 {% endblock %}
 

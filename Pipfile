@@ -10,6 +10,7 @@ pillow = "*"
 django-money = "*"
 xhtml2pdf = "*"
 django-jazzmin = "*"
+reportlab = "*"
 
 [dev-packages]
 

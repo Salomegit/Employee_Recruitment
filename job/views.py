@@ -1,3 +1,5 @@
+from django.contrib import messages
+
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 
@@ -6,7 +8,55 @@ from .models import Job, Application
 from .forms import AddJobForm, ApplicationForm
 from notification.utilities import create_notification
 
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+
 # Create your views here.
+
+def job_pdf(request):
+    buf = io.BytesIO()
+    #create canvas
+    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    #create text object
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica", 14)
+
+    # lines = [
+    #     "This is line 1",
+    #     "This is line 2",
+    #     "This is line 3",
+
+    # ]
+    jobs = Job.objects.all()
+    lines = []
+
+    for job in jobs:
+        lines.append(job.title.encode('utf-8')) # type: ignore
+        lines.append(str(job.created_at)) # type: ignore
+        lines.append(job.skillset_required.encode('utf-8')) # type: ignore
+        lines.append(job.about_job.encode('utf-8'))# type: ignore
+        lines.append(job.experience.encode('utf-8'))# type: ignore
+        lines.append(job.salary.encode('utf-8'))# type: ignore
+        lines.append(job.deadline.encode('utf-8'))# type: ignore
+        lines.append(job.department_name.encode('utf-8')) # type: ignore
+        lines.append("======================") # type: ignore
+
+    for line in lines:
+        textob.textLine(line)
+
+    c.drawText(textob)
+    c.showPage()
+    c.save() 
+    buf.seek(0)
+
+
+    return FileResponse(buf, as_attachment=True, filename="job.pdf")
+
 def search(request):
     return render(request, "search.html")
 
@@ -38,13 +88,15 @@ def apply_for_job(request, job_id):
             
             
             application.save()
-
+            messages.info(
+            request,
+            "Applied successfully...")
             create_notification(request,
                                 job.created_by,
                                 'application',
                                 extra_id=application.id)
 
-            return redirect("users:dashboard")
+            return redirect("dashboard")
  
     else:
         form = ApplicationForm()
@@ -67,8 +119,11 @@ def add(request):
             job.image = request.FILES['image']
             
             job.save()
+            messages.info(
+            request,
+            "Job Added successfully...")
 
-            return redirect("users:dashboard")
+            return redirect("dashboard")
 
             # return HttpResponse('added a job succesfully')
             # return http ('login')

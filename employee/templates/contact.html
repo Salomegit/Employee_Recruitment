@@ -1,4 +1,11 @@
 {% include 'header.html' %}
+{% if messages %}
+    <ul class="alert alert-danger">
+        {% for message1 in messages %}
+            <li>{{ message1 }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 <center>
   <div class="container" style="font-family: arial narrow; color: #561c32">
     <strong>
