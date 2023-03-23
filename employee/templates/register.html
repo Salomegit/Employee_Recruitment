@@ -9,6 +9,22 @@
     }
     return true;
   }
+  function togglePasswordVisibility() {
+    var passwordField = document.getElementById("password");
+    if (passwordField.type === "password" ) {
+      passwordField.type = "text";
+    } else {
+      passwordField.type = "password";
+    }
+  }
+  </script>
+  
+  
+  
+  
+  
+  
+  
 </script>
 
 <div class="card shadow m-5">
@@ -32,7 +48,7 @@
               />
             </div>
           </div>
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6">
             <div class="form-group">
               <label> Last Name</label>
               <input
@@ -43,8 +59,8 @@
                 required
               />
             </div>
-          </div>
-          <div class="col-sm-12">
+          </div> -->
+          <div class="col-sm-6">
             <div class="form-group">
               <label> Username</label>
               <input
@@ -70,15 +86,23 @@
           </div>
           <div class="col-sm-6">
             <div class="form-group">
-              <label> Password <p style="color: red;">"Should be in six characters"</p></label>
+              <label> Password
+                 <p style="color: red;">Should be atleast six characters</p>
+                 <p style="color: red;">Should include atleast one digit(0-9)</p>
+                 <p style="color: red;">Should include atleast one symbol(@,#,%,*)</p>
+
+
+                </label>
               <input
                 type="password"
+                id="password"
                 name="password"
-                pattern="\d{6}"
+                pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
                 class="form-control"
                 placeholder="Enter Your Password"
                 required
               />
+              <button type="button" onclick="togglePasswordVisibility()">&#x1F441;</button>
             </div>
           </div>
           <div class="col-sm-6">
@@ -87,11 +111,12 @@
               <input
                 type="password"
                 name="cpassword"
-                pattern="\d{6}"
+                pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}"
                 class="form-control"
                 placeholder="Enter Your Password Again"
                 required
               />
+
             </div>
           </div>
         </div>

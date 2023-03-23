@@ -1,5 +1,14 @@
 {%include 'header.html'%}
-
+<script>
+  function togglePasswordVisibility() {
+    var passwordField = document.getElementById("password");
+    if (passwordField.type === "password" ) {
+      passwordField.type = "text";
+    } else {
+      passwordField.type = "password";
+    }
+  }
+</script>
 <div class="card shadow m-5">
   <div class="card-body" style="background-color: #f7f0f5">
     <h5 class="p-2" style="border-bottom: 2px solid orange; color: #561c32">
@@ -33,11 +42,14 @@
               <label> Password</label>
               <input
                 type="password"
+                id="password"
                 name="password"
                 class="form-control"
                 placeholder="Enter Your Password"
                 required
               />
+              <button type="button" onclick="togglePasswordVisibility()">&#x1F441;</button>
+
             </div>
           </div>
         </div>

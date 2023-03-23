@@ -43,14 +43,12 @@ def help(request):
 def register(request):
     if request.method == "POST":
         fname = request.POST.get('firstname')
-        lname = request.POST.get('lastname')
         email = request.POST.get('email')
         password = request.POST.get('password')
         name = request.POST.get("username")
 
         user = User.objects.create_user(name, email, password)
         user.first_name = fname
-        user.last_name = lname
 
         user.save()
         account_type = request.POST.get('account_type', 'jobseeker')
@@ -65,10 +63,10 @@ def register(request):
             userprofile = Userprofile.objects.create(user=user)
             userprofile.save()
 
-        login(request, user)
         messages.info(request, "Sign-up successful")
+        login(request, user)
 
-        return redirect("users:dashboard")
+        return redirect("employee:login")
     else:
 
         return render(request, "register.html", locals())

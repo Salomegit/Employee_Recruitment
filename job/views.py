@@ -36,6 +36,8 @@ def job_pdf(request):
     lines = []
 
     for job in jobs:
+        lines.append("All jobs added by Employer") # type: ignore
+
         lines.append(job.title.encode('utf-8')) # type: ignore
         lines.append(str(job.created_at)) # type: ignore
         lines.append(job.skillset_required.encode('utf-8')) # type: ignore
