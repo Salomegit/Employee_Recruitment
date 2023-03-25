@@ -37,7 +37,7 @@ def job_pdf(request):
 
     for job in jobs:
         lines.append("All jobs added by Employer") # type: ignore
-
+        lines.append("======================")
         lines.append(job.title.encode('utf-8')) # type: ignore
         lines.append(str(job.created_at)) # type: ignore
         lines.append(job.skillset_required.encode('utf-8')) # type: ignore
@@ -72,7 +72,7 @@ def job_detail(request, job_id):
     job = Job.objects.get(pk=job_id)
    
 
-    return render(request, 'job_detail.html', {'job': job})
+    return render(request, 'job_detail.html', {'job': job, 'userprofile':request.user.userprofile})
 
 
 @login_required
@@ -147,8 +147,10 @@ def edit(request,job_id):
             job.status = request.POST.get('status')
             
             job.save()
-
-            return redirect("users:dashboard")
+            messages.info(
+            request,
+            "Job Edited successfully...")
+            return redirect("dashboard")
 
             # return HttpResponse('added a job succesfully')
             # return http ('login')

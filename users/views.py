@@ -24,13 +24,13 @@ def view_application(request, application_id):
       if content:
          conversationmessage = ConversationMessage.objects.create(application = application, content=content, created_by=request.user )
          
-         create_notification(request, application.created_by, 'message', extra_id=application.id)
+         # create_notification(request, application.created_by, 'message', extra_id=application.id)
 
-         return redirect("users:view_application",application_id=application_id)
+         return redirect("view_application",application_id=application_id)
    
 
 
-   return render ( request,'view_application.html' ,{'application': application})
+   return render ( request,'view_application.html' ,{'application': application, 'userprofile': request.user.userprofile})
 
 @login_required
 def view_dashboard_job(request, job_id):

@@ -80,6 +80,16 @@ class Job(models.Model):
     
 class Application(models.Model):
 
+    APPROVED = 'approved'
+    PENDING = 'pending'
+    DECLINED = 'declined'
+
+    
+    CHOICES_STATUS = (
+        (APPROVED,'Approved'),
+        (PENDING,'Pending' ),
+        (DECLINED,'Declined' )
+     )
     job = models.ForeignKey(Job,
                             related_name='applications',
                              on_delete=models.CASCADE)
@@ -106,6 +116,7 @@ class Application(models.Model):
     resume  = models.FileField( upload_to="resumes/", null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True,null=False)
+    status = models.CharField(max_length=20,choices=CHOICES_STATUS,default='pending')
 
     created_by = models.ForeignKey(User,
                                    related_name="applications",

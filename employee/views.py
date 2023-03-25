@@ -83,6 +83,7 @@ def Login(request):
             username=name,
             # email=email,
             password=password)
+
         if user1 is not None:
             login(request, user1)
           

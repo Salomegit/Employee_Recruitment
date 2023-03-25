@@ -1,87 +1,122 @@
 {% include 'header.html' %} {% block content %}
 
 <style>
-  p strong{
-    min-width:400px ;
+  p strong {
+    min-width: 400px;
   }
 </style>
-<div class="container" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; ;">
+<div
+  class="container"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; ;
+  "
+>
   <!-- start of main container  -->
 
-    
-    
-    
-    <div
-    style="margin: 30px; padding: 10px; background-color: #f7f0f5;width:60% "
+  <div
+    style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%"
     class="card"
-    >
-    <div style="display: flex; justify-content: space-between;">
+  >
+    <div style="display: flex; flex-direction:column; justify-content: space-between">
       <div>
-
-        <h1 class=" card-title">Application Details</h1>
-        <h2 class="card-subtitle mb-2 text-muted">Job Positon: {{ application.job.title }}</h2>
+        <h1 class="card-title">Application Details</h1>
+        <h2 class="card-subtitle mb-2 text-muted">
+          Job Positon: {{ application.job.title }}
+        </h2>
+        
+        {%if application.status == 'pending'%}
+        <h6>Status: <span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+        {%elif application.status == 'approved'%}
+        <h6>Status: <span style="color: green; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+        {%elif application.status == 'declined'%}
+        <h6>Status: <span style="color: red; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+        {%endif%} 
+        
       </div>
+      <div>
         <input
-    type="submit"
-    value="Send a Message"
-    class="m-3  px-5 btn btn-primary"
-    style="background-color: #561c32;height :40px; position:static"
-    id="scroll-down-button"
-  />
+          type="submit"
+          value="Send a Message"
+          class="m-3 px-5 btn btn-primary"
+          style="background-color: #561c32; height: 40px; position: static"
+          id="scroll-down-button"
+        />
+        {% if userprofile.is_employer %}
+        <input
+          type="submit"
+          value="Approve"
+          class="m-3 px-5 btn btn-primary"
+          style="background-color: green; height: 40px; position: static"
+          id="scroll-down-button"
+        />
+        <input
+          type="submit"
+          value="Declined"
+          class="m-3 px-5 btn btn-primary"
+          style="background-color: red; height: 40px; position: static"
+          id="scroll-down-button"
+        />
+        {% endif %}
+      </div>
     </div>
 
-    <hr>
+    <hr />
     <small> Date added: {{application.created_at}}</small>
 
     <div class="card-body">
-
-      <div style="display: flex;">
-        <h6 style="min-width: 200px; font-weight: bold;">First Name:</h6>
+      <div style="display: flex">
+        <h6 style="min-width: 200px; font-weight: bold">First Name:</h6>
         <h6>{{application.first_name}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Last Name:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Last Name:</h6>
         <h6>{{application.last_name}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Date of birth:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Date of birth:</h6>
         <h6>{{application.date_of_birth}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Gender:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Gender:</h6>
         <h6>{{application.gender}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Education:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Education:</h6>
         <h6>{{application.education}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Email:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Email:</h6>
         <h6>{{application.email}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Location:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Location:</h6>
         <h6>{{application.location}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Mobile:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Mobile:</h6>
         <h6>{{application.mobile}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="min-width: 200px; font-weight: bold;">Experience:</h6>
+        <h6 style="min-width: 200px; font-weight: bold">Experience:</h6>
         <h6>{{application.experience}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="width: 200px; word-wrap: normal; font-weight: bold;">Additional Comment:</h6>
+        <h6 style="width: 200px; word-wrap: normal; font-weight: bold">
+          Additional Comment:
+        </h6>
         <h6>{{application.content}}</h6>
       </div>
       <div style="display: flex">
-        <h6 style="width: 200px; word-wrap: normal; font-weight: bold;">Resume:</h6>
+        <h6 style="width: 200px; word-wrap: normal; font-weight: bold">
+          Resume:
+        </h6>
         <h6>{{application.resume}}</h6>
       </div>
-    <p>
-    </p>
-  </div>
+      <p></p>
+    </div>
   </div>
   <!-- <input
     type="submit"
@@ -90,51 +125,70 @@
     style="background-color: #561c32;height :40px; position:static"
     id="scroll-down-button"
   /> -->
-
 </div>
-<hr>
+<hr />
 
 <div id="content">
-<h2 class="subtitle">Conversation</h2>
-{% for message in application.conversationmessages.all %}
-<div class="notification" style="display: flex; flex-direction:column; background-color:#d799b1; margin:20px;border-radius: 5px; padding:10px;">
-  <b >{{ message.created_by.username }} - {{ message.created_at|timesince }} ago</b>
-  {{ message.content }}
-  <br>
-</div>
-{% empty %}
+  <h2 class="subtitle">Conversation</h2>
+  {% for message in application.conversationmessages.all %}
+  <div
+    class="notification"
+    style="
+      display: flex;
+      flex-direction: column;
+      background-color: #d799b1;
+      margin: 20px;
+      border-radius: 5px;
+      padding: 10px;
+    "
+  >
+    <b
+      >{{ message.created_by.username }} - {{ message.created_at|timesince }}
+      ago</b
+    >
+    {{ message.content }}
+    <br />
+  </div>
+  {% empty %}
 
-<p>No messages yet...</p>
-{% endfor %}
-<form method="post" action="." >
-  {% csrf_token %}
+  <p>No messages yet...</p>
+  {% endfor %}
+  <form method="post" action=".">
+    {% csrf_token %}
 
-  <div class="field">
-    <div class="col-sm-12">
-      <div class="form-group">
-      <textarea style="border: 2px solid" placeholder="Enter your message"   type="textarea" name="content" class="form-control" id="id_content"  rows="5"  ></textarea>
-  </div>
-  </div>
-  </div>
+    <div class="field">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <textarea
+            style="border: 2px solid"
+            placeholder="Enter your message"
+            type="textarea"
+            name="content"
+            class="form-control"
+            id="id_content"
+            rows="5"
+          ></textarea>
+        </div>
+      </div>
+    </div>
     <input
-    type="submit"
-    value="Send"
-    class="m-3  px-5 btn btn-primary"
-    style="background-color: #561c32"
-  />
+      type="submit"
+      value="Send"
+      class="m-3 px-5 btn btn-primary"
+      style="background-color: #561c32"
+    />
+  </form>
+  <script>
+    document
+      .getElementById("scroll-down-button")
+      .addEventListener("click", function () {
+        window.scroll({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      });
+  </script>
+
+  <!-- end of container  -->
+  {% endblock %}
 </div>
-</div>
-
-</form>
-<script>
-
-  document.getElementById("scroll-down-button").addEventListener("click", function() {
-    window.scroll({
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    });
-  });
-</script>
-
-<!-- end of container  -->
-{% endblock %}

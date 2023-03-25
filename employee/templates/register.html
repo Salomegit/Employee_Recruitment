@@ -25,20 +25,19 @@
   
   
   
-</script>
 
-<div class="card shadow m-5">
-  <div class="card-body" style="background-color: #f7f0f5">
+<div class="card m-5" style="border: none" >
+  <div class="card-body shadow " style="background-color: #f7f0f5; max-width: 400px; margin: auto">
     <h5 class="p-2" style="border-bottom: 2px solid orange; color: #561c32">
       Create an account
     </h5>
     <div class="container-fluid">
       <form method="post"  name="signup" onsubmit="return checkpassword()">
         {% csrf_token %}
-        <div class="form-row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label> First Name</label>
+        <div class="form-row" style="display: flex; flex-direction: column; max-width: 400px; margin: auto">
+          <!-- <div class="col-sm-6"> -->
+            <div class="form-group" style="max-width: 400px">
+              <label style="font-family: monospace; font-weight: lighter;"> First Name</label>
               <input
                 type="text"
                 name="firstname"
@@ -47,7 +46,7 @@
                 required
               />
             </div>
-          </div>
+          <!-- </div> -->
           <!-- <div class="col-sm-6">
             <div class="form-group">
               <label> Last Name</label>
@@ -60,9 +59,9 @@
               />
             </div>
           </div> -->
-          <div class="col-sm-6">
+          <!-- <div class="col-sm-6"> -->
             <div class="form-group">
-              <label> Username</label>
+              <label style="font-family: monospace; font-weight: lighter;"> Username</label>
               <input
                 type="text"
                 name="username"
@@ -71,10 +70,10 @@
                 required
               />
             </div>
-          </div>
-          <div class="col-sm-12">
+          <!-- </div> -->
+          <!-- <div class="col-sm-6"> -->
             <div class="form-group">
-              <label> Email</label>
+              <label style="font-family: monospace; font-weight: lighter;"> Email</label>
               <input
                 type="email"
                 name="email"
@@ -83,16 +82,13 @@
                 required
               />
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label> Password
-                 <p style="color: red;">Should be atleast six characters</p>
-                 <p style="color: red;">Should include atleast one digit(0-9)</p>
-                 <p style="color: red;">Should include atleast one symbol(@,#,%,*)</p>
-
-
-                </label>
+          <!-- </div> -->
+          <!-- <div class="col-sm-6"> -->
+            <div class="form-group" style="display: flex; flex-direction: column">
+              <label style="font-family: monospace; font-weight: lighter;"> Password</label>
+              <span style="color: red; font-style: italic; font-size: .8em;">Should be atleast six characters</span>
+                 <span style="color: red; font-style: italic; font-size: .8em;">Should include atleast one digit(0-9)</span>
+                 <span style="color: red; font-style: italic; font-size: .8em;">Should include atleast one symbol(@,#,%,*)</span>
               <input
                 type="password"
                 id="password"
@@ -102,10 +98,10 @@
                 placeholder="Enter Your Password"
                 required
               />
-              <button type="button" onclick="togglePasswordVisibility()">&#x1F441;</button>
+              <button type="button" style="margin-right: 0px; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center;" onclick="togglePasswordVisibility()">&#x1F441;</button>
             </div>
-          </div>
-          <div class="col-sm-6">
+          <!-- </div> -->
+          <!-- <div class="col-sm-6"> -->
             <div class="form-group">
               <label>Confirm Password</label>
               <input
@@ -118,7 +114,7 @@
               />
 
             </div>
-          </div>
+          <!-- </div> -->
         </div>
         <br />
         <!-- <div class="field" >
@@ -135,8 +131,8 @@
           </div>
           
         </div> -->
-        <hr>
-        <div class="col-auto my-1">
+        <!-- <hr> -->
+        <div class="form-group">
           <label class="mr-sm-2" for="inlineFormCustomSelect">Account Type</label>
           <select name="account_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Choose...</option>
@@ -147,8 +143,8 @@
         <input
           type="submit"
           value="Sign Up"
-          class="m-2 px-3 btn btn-primary"
-          style="background-color: #561c32"
+          class="px-3 btn btn-primary"
+          style="background-color: #561c32; width: 100%;"
         />
         <p>
           Already have an account?<a href="{% url 'employee:login' %}">login</a>

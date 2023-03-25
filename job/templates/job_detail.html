@@ -1,52 +1,51 @@
-{% include 'header.html' %}
+{% include 'header.html' %} {% block content %}
+<div style="display: flex" class="container">
+  <div style="margin: 30px 20px 5px 20px">
+    <h1 style="font-size: x-large">
+      <strong>{{ job.title }} ({{ job.get_status_display }})</strong>
+    </h1>
+    <br />
+    <h6><i class="fas fa-briefcase"></i> {{ job.experience }}</h6>
+    <h6><i class="fas fa-dollar-sign"></i>{{ job.salary }}</h6>
 
+    {% if not userprofile.is_employer and job.status == 'active' %}
 
-{% block content %}
-<div style="display: flex;"class="container" >
-    
-    <div style="margin: 30px 20px 5px 20px;  ">
-        
-        <h1 style="font-size:x-large;"><strong>{{ job.title }} ({{ job.get_status_display }})</strong></h1>
-        <br>
-        <h6 ><i class="fas fa-briefcase"></i> {{ job.experience }}</h6>
-        <h6><i  class="fas fa-dollar-sign"></i>{{ job.salary }}</h6>
-
-
-
-        {% if job.status == 'active' %}
-        <a
-        class="btn custom-btn"
-    style="
+    <a
+      class="btn custom-btn"
+      style="
         font-weight: 100;
         font-size: 1em;
         border: solid 2px grey;
         color: #f7edee;
         background-color: #561c32;
-        "
+      "
       href="{% url 'job:apply_for_job ' job.id %}"
-      >Apply now<i class="fas fa-hand-point-up"></i></a
-      >
-      {% else %}
-<p style="color: red;">This job is not available!</p>
-      {% endif %}
-      <h6><i class="fas fa-timer"></i>Last Date to Apply {{ job.deadline }}</h6>
+      >Apply now<i class="fas fa-hand-point-up"></i
+    ></a>
+    {% elif not userprofile.is_employer and not job.status == 'active' %}
+    <p style="color: red; border: 2px solid red; border-radius: 5px; padding: 5px">This job is not available!</p>
+    {% elif userprofile.is_employer %}
+    <p style="color: red; border: 2px solid red; border-radius: 5px; padding: 5px">Only job seekers can apply!</p>
+    {% endif %}
+    <h6><i class="fas fa-timer"></i>Last Date to Apply {{ job.deadline }}</h6>
+  </div>
 
+  <div style="margin: 30px; width: 100%">
+    <h1 style="font-size: x-large; font-style: italic">
+      <strong>Skillset Required</strong>
+    </h1>
+
+    <p class="is-size-4">{{job.skillset_required }}</p>
+    <h1 style="font-size: x-large; font-style: italic">
+      <strong>About Job</strong>
+    </h1>
+
+    <p>{{job.about_job}}</p>
+
+    <h1 style="font-size: x-large; font-style: italic">
+      <strong>Department Name</strong>
+    </h1>
+    <p>{{job.department_name}}</p>
+  </div>
 </div>
-
-
-<div style="margin: 30px; width: 100%;">
-    
-    <h1 style="font-size:x-large;font-style: italic;"><strong>Skillset Required</strong></h1>
-
-    <p class="is-size-4" >{{job.skillset_required }}</p>
-    <h1 style="font-size:x-large;font-style: italic;"><strong>About Job</strong></h1>
-
-    <p >{{job.about_job}}</p>
-
-    <h1 style="font-size:x-large;font-style: italic;"><strong>Department Name</strong></h1>
-    <p >{{job.department_name}}</p>
-
-</div>
-</div>
-{% endblock %}
-{% include 'footer.html' %}
+{% endblock %} {% include 'footer.html' %}
