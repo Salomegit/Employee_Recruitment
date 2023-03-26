@@ -89,7 +89,7 @@ def Login(request):
           
             message = "Login successful\U0001F44D"
 
-            return render(request, "base.html", {'message': message})
+            return render(request, "dashboard.html", {'message': message})
 
         else:
             message1 = "Invalid username or password"

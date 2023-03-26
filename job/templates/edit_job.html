@@ -88,7 +88,7 @@
             id="id_experience"
             rows="8"
             v-model="experience"
-          >{% if job.about_job %}{{job.about_job}}{% endif %}</textarea>
+          >{% if job.experience %}{{job.experience}}{% endif %}</textarea>
         </div>
       </div>
       <div class="col-sm-12">
@@ -152,7 +152,7 @@
             name="deadline"
             class="form-control"
             id="id_deadline"
-            value=" {% if job.deadline %}{{ job.deadline }}{% endif %}"            
+            value="{{ job.deadline }}"            
 
           />
         </div>

@@ -67,8 +67,8 @@
             <a
             style="color: white;"
             class="nav-item nav-link"
-            href="{% url 'employee:register' %}"
-            ><i class="fas fa-sign-in-alt"></i>Sign-Up</a
+            href="{% url 'employee:login' %}"
+            ><i class="fas fa-sign-in-alt"></i>Login</a
             >
             {% endif %}
             {% if request.user.is_authenticated %}
@@ -77,7 +77,7 @@
             style="color: white;"
             class="nav-item nav-link"
             href="{% url 'dashboard' %}"
-            ><i class="fas fa-sign-in-alt"></i>Dashboard</a
+            ><i class="fas fa-sign-in-alt fa-beat"></i>Dashboard</a
             >
            
             <!-- <a
@@ -94,7 +94,8 @@
             style="color: white;"
             class="nav-item nav-link"
             href="{% url 'job:search' %}"
-            ><i class="fa-solid fa-magnifying-glass"></i>Search</a
+            ><i class="fas
+             fa-magnifying-glass"></i>Search</a
             >
             
            <!-- <div style="justify-content: end;">

@@ -123,13 +123,19 @@
                 >{{ job.created_at }}</span
               >
             </p>
-            <p style="color: black; font-style: italic">
-              Deadline:
-              <span class="title" style="font-weight: bolder"
-                >{{ job.deadline }}</span
-              >
-            </p>
           </div>
+          <div style="display: flex;">
+          <i
+          style="font-size: 20px; color: rgb(32, 19, 19); margin-right: 5px"
+          class="fas fa-clock"
+        ></i>
+          <p style="color: black; font-style: italic">
+            Deadline:
+            <span class="title" style="font-weight: bolder"
+              >{{ job.deadline }}</span
+            >
+          </p>
+        </div>
           <!-- second row -->
           <!-- <div style="display: flex"> -->
           <div style="display: flex">
@@ -150,7 +156,8 @@
             ></i>
             <div style="display: inline; margin: 0px 10px">
               <p style="color: black">Experience:</p>
-              <p class="title" style="height: 40px; font-weight: bolder;">{{ job.experience}}</p>
+              <span class="title" style="font-weight: bolder"
+              >{{ job.experience}}</span>
             </div>
           </div>
           <!-- </div> -->
