@@ -42,11 +42,14 @@
             name="title"
             class="form-control"
             id="id_title"
+            value=" {% if job.title %}{{ job.title }}{% endif %}"            
+
             v-model="title"
           />
         </div>
       </div>
 
+      
       <div class="col-sm-12">
         <div class="form-group">
           <label>Skillset Required:-</label>
@@ -56,10 +59,8 @@
             name="skillset_required"
             class="form-control"
             id="id_skillset_required"
-            value=" {% if job.skillset_required %}{{ job.skillset_required }}{% endif %}"            
-
             rows="5"
-          ></textarea>
+          >{% if job.skillset_required %}{{ job.skillset_required }}{% endif %}</textarea>
         </div>
       </div>
 
@@ -73,8 +74,7 @@
             class="form-control"
             id="id_about_job"
             rows="8"
-           value=" {% if job.about_job %}{{ job.about_job }}{% endif %}"            
-          ></textarea>
+          >{% if job.about_job %}{{ job.about_job }}{% endif %}</textarea>
         </div>
       </div>
       <div class="col-sm-12">
@@ -88,9 +88,7 @@
             id="id_experience"
             rows="8"
             v-model="experience"
-            value=" {% if job.about_job %}{{job.about_job}}{% endif %}"            
-
-          ></textarea>
+          >{% if job.about_job %}{{job.about_job}}{% endif %}</textarea>
         </div>
       </div>
       <div class="col-sm-12">
@@ -114,20 +112,20 @@
           <div class="select">
             <select name="department_name" v-model="department_name">
               <option value="">---</option>
-              <option value="Computer Support Specialist">
+              <option value="Computer Support Specialist" {% if job.department_name == "Computer Support Specialist" %}selected{% endif %}>
                 Computer Support Specialist
               </option>
-              <option value="Hardware Engineer">Hardware Engineer</option>
+              <option value="Hardware Engineer" {% if job.department_name == "Hardware Engineer" %}selected{% endif %}>Hardware Engineer</option>
               <option value="Computer System Analyst">
                 Computer System Analyst
               </option>
-              <option value="Software Developer">Software Developer</option>
-              <option value="Programmer">Programmer</option>
-              <option value="Web Developer">Web developer</option>
-              <option value="Network Engineer">Network engineer</option>
-              <option value="Software Tester">Software Tester</option>
-              <option value="Frontend Developer">Frontend Developer</option>
-              <option value="Backend Developer">Backend Developer</option>
+              <option value="Software Developer" {% if job.department_name == "Software Developer" %}selected{% endif %}>Software Developer</option>
+              <option value="Programmer" {% if job.department_name == "Programmer" %}selected{% endif %}>Programmer</option>
+              <option value="Web Developer" {% if job.department_name == "Web developer" %}selected{% endif %}>Web developer</option>
+              <option value="Network Engineer" {% if job.department_name == "Network engineer" %}selected{% endif %}>Network engineer</option>
+              <option value="Software Tester" {% if job.department_name == "Software Tester" %}selected{% endif %}>Software Tester</option>
+              <option value="Frontend Developer" {% if job.department_name == "Frontend Developer" %}selected{% endif %}>Frontend Developer</option>
+              <option value="Backend Developer" {% if job.department_name == "Backend Developer" %}selected{% endif %}>Backend Developer</option>
             </select>
           </div>
         </div>
@@ -172,7 +170,7 @@
         v-if="errors.length"
         style="color: BLACK; background-color: RED"
       >
-        <p v-for="error in errors">[[ error ]]</p>
+        <p v-for="error in errors">{{ error }}</p>
       </div>
     </form>
 </div>

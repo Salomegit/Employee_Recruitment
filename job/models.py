@@ -55,7 +55,7 @@ class Job(models.Model):
 
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    skillset_required = models.TextField(max_length=2000)
+    skillset_required = models.TextField(null=True)
     about_job= models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="covers/",null=True,blank=True)
     experience = models.CharField(max_length=100,null=True)
