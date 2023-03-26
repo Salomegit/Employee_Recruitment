@@ -1,12 +1,10 @@
-{% load static %}
-{% include 'header.html' %}
-{% if message %}
-    <div id="alert" class="alert alert-success">{{ message }}</div>
-    <script>
-        setTimeout(function() {
-            document.getElementById("alert").style.display = "none";
-        }, 5000);
-    </script>
+{% load static %} {% include 'header.html' %} {% if message %}
+<div id="alert" class="alert alert-success">{{ message }}</div>
+<script>
+  setTimeout(function () {
+    document.getElementById("alert").style.display = "none";
+  }, 5000);
+</script>
 {% endif %}
 <div
   class="jumbotron feature custom-land-page-bg"
@@ -18,27 +16,33 @@
   "
 >
   <div
-    style=" width: 100%; color: black; align-items: center; display: flex; justify-content: space-between; margin-left: 100px"
+    style="
+      width: 100%;
+      color: black;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-left: 100px;
+    "
   >
-  <div>
+    <div>
+      <h1 style="font-weight: bolder; font-size: 4em">We're hiring</h1>
+      <p style="font-size: 2em">Get your <span>Dream Job</span> today</p>
+      <p style="font-size: 2em">At 4IQ Technologies</p>
 
-    <h1 style="font-weight: bolder; font-size: 4em">We're hiring</h1>
-    <p style="font-size: 2em">Get your <span>Dream Job</span> today</p>
-    <p style="font-size: 2em">At 4IQ Technologies</p>
-    
-    <p>
-      <a
-      class="btn custom-btn"
-      style="
-          font-weight: 100;
-          font-size: 1em;
-          border: solid 2px grey;
-          color: #f7edee;
-          background-color: #561c32;
-          border-radius: 10cm;
+      <p>
+        <a
+          class="btn custom-btn"
+          style="
+            font-weight: 100;
+            font-size: 1em;
+            border: solid 2px grey;
+            color: #f7edee;
+            background-color: #561c32;
+            border-radius: 10cm;
           "
-        href=""
-        >Apply now</a
+          href=""
+          >Apply now</a
         >
       </p>
     </div>
@@ -61,7 +65,7 @@
 <center>
   <h2
     class="subtitle has-text-centered"
-    style="color: #561c32;font-size: 55px; text-decoration: underline;"
+    style="color: #561c32; font-size: 55px; text-decoration: underline"
   >
     Newest jobs
   </h2>
@@ -70,93 +74,86 @@
 <br />
 <div
   class="container row"
-  style="width: 100%;margin : auto; display: flex; justify-content: center"
+  style="width: 100%; margin: auto; display: flex; justify-content: center"
 >
   {% for job in jobs %}
 
   <!-- <div class="col-sm-1 col-md-3 " style="margin: 5px;"> -->
   <div class="card" style="width: 350px; margin: 10px">
-    <h1>
-      {{job.title }}</h1>
-     
     {% if job.image %}
-     <img
+    <img
       class="card-img-top"
       src="{{ job.image.url }}"
-      style="height: 200px; object-fit: cover; overflow: hidden"
+      style="height: 100px; object-fit: cover; overflow: hidden"
       alt="Card image cap"
-    /> 
+    />
     {% else %}
     <img
       class="card-img-top"
       src="https://business.uonbi.ac.ke/sites/default/files/2020-11/job.jpg"
       style="height: 200px; object-fit: cover; overflow: hidden"
       alt="Card image cap"
-    /> 
+    />
     {% endif %}
 
+    <h4
+      class="card-title"
+      style="
+        margin: 0px;
+        font-weight: bolder;
+        padding: 5px;
+        text-align: center;
+        background-color: black;
+        color: white;
+      "
+    >
+      {{job.title }}
+    </h4>
     <div class="card-body" style="background-color: #f0deef">
       <div class="media">
         <div class="media-content">
           <div style="display: flex">
-            <div style="display: flex">
-              <i
-                style="font-size: 30px; color: rgb(32, 19, 19)"
-                class="fas fa-user"
-              ></i>
-              <div
-                style="display: inline; margin: 0px 10px; margin-right: 50px"
+            <i
+              style="font-size: 20px; color: rgb(32, 19, 19); margin-right: 5px"
+              class="fas fa-clock"
+            ></i>
+            <p style="color: black; font-style: italic">
+              Posted on:
+              <span class="title" style="font-weight: bolder"
+                >{{ job.created_at }}</span
               >
-                <i>
-                  <p style="color: grey">Looking for:</p>
-                </i>
-                <p class="title">{{ job.title }}</p>
-              </div>
-            </div>
-
-            <div style="display: flex">
-              <i
-                style="font-size: 30px; color: rgb(32, 19, 19)"
-                class="fas fa-clock"
-              ></i>
-              <div style="display: inline; margin: 0px 10px">
-                <i>
-                  <p style="color: grey">Posted on:</p>
-                </i>
-                <p class="title">{{ job.created_at }}</p>
-              </div>
-            </div>
+            </p>
+            <p style="color: black; font-style: italic">
+              Deadline:
+              <span class="title" style="font-weight: bolder"
+                >{{ job.deadline }}</span
+              >
+            </p>
           </div>
           <!-- second row -->
+          <!-- <div style="display: flex"> -->
           <div style="display: flex">
-            <div style="display: flex">
-              <i
-                style="font-size: 30px; color: rgb(32, 19, 19)"
-                class="fas fa-dollar-sign"
-              ></i>
-              <div
-                style="display: inline; margin: 0px 10px; margin-right: 100px"
-              >
-                <i>
-                  <p style="color: grey">Salary:</p>
-                </i>
-                <p class="title">{{ job.salary }} </p>
-              </div>
-            </div>
-
-            <div style="display: flex">
-              <i
-                style="font-size: 30px; color: rgb(32, 19, 19)"
-                class="fas fa-briefcase"
-              ></i>
-              <div style="display: inline; margin: 0px 10px">
-                <i>
-                  <p style="color: grey">Experience:</p>
-                </i>
-                <p class="title">{{ job.experience}}</p>
-              </div>
+            <i
+              style="font-size: 20px; color: rgb(32, 19, 19)"
+              class="fas fa-dollar-sign"
+            ></i>
+            <div style="display: inline; margin: 0px 10px; margin-right: 100px">
+                <p style="color: black">Salary: <span class="title" style="font-weight: bolder;">{{ job.salary }}</span></p>
+              
             </div>
           </div>
+
+          <div style="display: flex">
+            <i
+              style="font-size: 20px; color: rgb(32, 19, 19)"
+              class="fas fa-briefcase"
+            ></i>
+            <div style="display: inline; margin: 0px 10px">
+              <p style="color: black">Experience:</p>
+              <p class="title" style="height: 40px; font-weight: bolder;">{{ job.experience}}</p>
+            </div>
+          </div>
+          <!-- </div> -->
         </div>
       </div>
 
@@ -290,7 +287,6 @@ style="
  height: 200px; margin-left: 100px;"></div>
 </div> -->
 
-<br>
+<br />
 
 {% include 'footer.html' %}
-

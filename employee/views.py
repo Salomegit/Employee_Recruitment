@@ -57,7 +57,7 @@ def register(request):
                                                      is_employer=True)
             userprofile.save()
 
-            return redirect("users:dashboard")
+            return redirect("dashboard")
 
         else:
             userprofile = Userprofile.objects.create(user=user)

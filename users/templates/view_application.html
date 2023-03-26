@@ -45,7 +45,12 @@
           id="scroll-down-button"
         />
         {% if userprofile.is_employer %}
-        <input
+        <form 
+        method="post">
+          {% csrf_token %}
+          <button type="submit" name="status" value="approved">Approve</button>
+          <button type="submit" name="status" value="declined">Decline</button>
+        <!-- <input
           type="submit"
           value="Approve"
           class="m-3 px-5 btn btn-primary"
@@ -58,7 +63,9 @@
           class="m-3 px-5 btn btn-primary"
           style="background-color: red; height: 40px; position: static"
           id="scroll-down-button"
-        />
+        /> -->
+      </form>
+
         {% endif %}
       </div>
     </div>

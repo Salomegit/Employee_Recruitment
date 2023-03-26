@@ -16,6 +16,21 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 
 # Create your views here.
+def approve_application(request, application_id):
+    application = get_object_or_404(Application, pk=application_id)
+    if request.method == 'POST':
+            status = request.POST.get('status')
+            if status == 'approved':
+                application.status = 'approved'
+                application.save()
+                # return a response indicating that the application has been approved
+            elif status == 'declined':
+                application.status = 'declined'
+                application.save()
+                # return a response indicating that the application has been declined
+        # return a response indicating that the form was not submitted correctly
+            print(status)
+        # return a response indicating that the user is not authorized to approve this application
 
 def job_pdf(request):
     buf = io.BytesIO()
