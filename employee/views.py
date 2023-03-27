@@ -46,7 +46,17 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         name = request.POST.get("username")
+         # Check if the username or email already exists in the database
 
+
+        if User.objects.filter(username=name).exists():
+            messages.error(request, 'Username already exists!!!')
+            return redirect('employee:register')
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already exists!!!')
+            return redirect('employee:register')
+        
         user = User.objects.create_user(name, email, password)
         user.first_name = fname
 
@@ -81,19 +91,28 @@ def Login(request):
         user1 = authenticate(
             request,
             username=name,
-            # email=email,
             password=password)
 
         if user1 is not None:
             login(request, user1)
           
             message = "Login successful\U0001F44D"
-
-            return render(request, "dashboard.html", {'message': message})
+           
+            return render(request, "base.html", {'message': message})
 
         else:
-            message1 = "Invalid username or password"
-            return render(request, "login.html", {'message1': message1})
+            # try:
+            #     message1 = "Invalid username or password!!!"
+            #     return render(request, "login.html", {'message1': message1})
+            # except:
+            #     user1 = User.objects.get(username=name)
+            #     messages.error(request, 'Invalid password!!!.')
+            try:
+                user1 = User.objects.get(username=name)
+                messages.error(request, 'Invalid password.')
+            except User.DoesNotExist:
+                messages.error(request, 'Invalid username or password.')
+            return redirect("employee:login")
 
     return render(
         request,

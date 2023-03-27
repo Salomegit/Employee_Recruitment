@@ -20,10 +20,20 @@
   </script>
   
   
-  
-  
-  
-  
+  {% if messages %}
+
+  {% for message in messages %}
+
+  <div id="alert" class="alert alert-danger " >{{ message }}</div>
+
+  <script>
+    setTimeout(function () {
+      document.getElementById("alert").style.display = "none";
+    }, 5000);
+  </script>
+  {% endfor %}
+  {% endif %}
+
   
 
 <div class="card m-5" style="border: none" >

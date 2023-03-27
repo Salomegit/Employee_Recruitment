@@ -9,6 +9,18 @@
     }
   }
 </script>
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-danger">{{ message }}</div>
+  <script>
+    setTimeout(function () {
+      document.getElementById("alert").style.display = "none";
+    }, 5000);
+  </script>
+{% endfor %}
+{% endif %}
+
+
 <div class="card m-5" style="margin: auto; border: none">
   <div class="card-body shadow " style="background-color: #f7f0f5; margin: auto">
     <h5 class="p-2" style="border-bottom: 2px solid orange; color: #561c32">
