@@ -1,0 +1,291 @@
+{% include 'header.html' %} {% block content %}
+<center
+  class="title"
+  style="
+    font-size: 50px;
+    font-weight: 100;
+    text-decoration: underline;
+    color: #561c32;
+  "
+>
+ Edit Application - {{ job.title }}
+</center>
+<div  id="edit-job-application">
+<form
+v-on:submit="validateForm"
+  method="POST"
+  action="."
+  style="
+    color: #561c32;
+    font: 100% / normal sans-serif;
+    justify-content: space-between;
+    font-size: large;
+    padding: 20px;
+    justify-content: start;
+    align-items: flex-start;
+  "
+  enctype="multipart/form-data"
+>
+  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+  <div class="alert alert-danger">{{ error }}</div>
+  {% endfor %} {% endif %}
+
+  <div
+    class="card mx-auto"
+    style="width: 70%; background-color: #d5abb9; justify-content: center"
+  >
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Firstname:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          placeholder="Your First Name"
+          name="first_name"
+          class="form-control"
+          id="id_first_name"
+          value=" {% if application.first_name %}{{ application.first_name }}{% endif %}"            
+          v-model="first_name"
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Lastname:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          name="last_name"
+          placeholder="Your Last Name"
+          class="form-control"
+          id="id_last_name"
+          value=" {% if application.last_name %}{{ application.last_name }}{% endif %}"            
+          v-model="last_name"
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Date of Birth:-</label>
+        <input
+          style="border: 2px solid"
+          type="date"
+          name="date_of_birth"
+          placeholder="Your Date of Birth"
+          class="form-control"
+          id="id_date_of_birth"
+          value="{{ application.date_of_birth }}"            
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Gender</label>
+        <div style="margin-left: 20px">
+          <label>Male</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="M"
+            name="gender"
+            id="id_gender"
+            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
+
+          />
+        </div>
+        <div style="margin-left: 20px">
+          <label>Female</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="F"
+            name="gender"
+            id="id_gender"
+            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
+
+          />
+        </div>
+        <div style="margin-left: 20px">
+          <label>Other</label>
+          <input
+            type="radio"
+            placeholder="gender"
+            value="O"
+            name="gender"
+            id="id_gender"
+            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
+
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Education acquired:-</label>
+        <textarea
+          style="border: 2px solid"
+          placeholder="Levels of Education Acquired"
+          type="textarea"
+          name="education"
+          class="form-control"
+          id="education"
+          rows="5"
+          required
+        >{% if application.education %}{{application.education}}{% endif %}</textarea>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Email:-</label>
+        <input
+          style="border: 2px solid"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          class="form-control"
+          id="id_email"
+          value=" {% if application.email %}{{ application.email }}{% endif %}"            
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Your Location:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          placeholder="Your location"
+          name="location"
+          class="form-control"
+          id="id_location"
+          value=" {% if application.location %}{{ application.location }}{% endif %}"            
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label> Your Mobile Number:-</label>
+        <input
+          style="border: 2px solid"
+          type="text"
+          placeholder="eg 07XX XXX XXX"
+          name="mobile"
+          class="form-control"
+          id="id_mobile"
+          value=" {% if application.mobile %}{{ application.mobile }}{% endif %}"            
+
+          required
+        />
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Any Work Experience Acquired:-</label>
+        <textarea
+          style="border: 2px solid"
+          type="textarea"
+          name="experience"
+          placeholder="Any Experience Acquired"
+          class="form-control"
+          id="id_experience"
+          rows="5"
+          required
+        > {% if application.experience %}{{ application.experience }}{% endif %}           
+    </textarea>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>Any Other Information/Comment:-</label>
+        <textarea
+          style="border: 2px solid"
+          type="textarea"
+          name="content"
+          placeholder="Any Comment"
+          class="form-control"
+          id="id_content"
+          rows="5"
+          required
+        >{% if application.content %}{{ application.content }}{% endif %} </textarea>
+      </div>
+
+      <div>
+    <label for="file">Resume:-</label>
+    <br>
+    <input   type="file" id="file" name="resume" 
+    
+    value =  "{% if application.resume %}{{ application.resume }}{% endif %}   "      
+    />
+   </div>
+<div>
+    <input
+    type="submit"
+    value="Save Changes"
+    class="m-2 px-3 btn btn-primary"
+    style="background-color: #561c32; justify-content: center"
+  />
+    </div>
+  </div>
+</form>
+</div>
+
+
+<script>
+    const EditjobApplication = {
+      data() {
+        return {
+          first_name: "{{ application.first_name }}",
+          last_name: "{{ application.skillset_required }}",
+          date_of_birth: "{{ application.experience }}",
+          email: "{{ application.email }}",
+      
+          errors: [],
+        };
+      },
+      delimiters: ["[[", "]]"],
+      methods: {
+        validateForm(e) {
+          this.errors = [];
+
+          if (this.first_name === "") {
+            this.errors.push("The First Name field is missing!");
+          }
+
+          if (this.last_name === "") {
+            this.errors.push("The Last name field is missing!");
+          }
+
+          if (this.date_of_birth === "") {
+            this.errors.push("The Date of Birth field is missing!");
+          }
+
+
+          if (this.email === "") {
+            this.errors.push("The Email field is missing!");
+          }
+
+        
+          
+          if (this.errors.length) {
+            e.preventDefault();
+            return false;
+          } else {
+            return true;
+          }
+        },
+      },
+    };
+    Vue.createApp(EditjobApplication).mount("#edit-job-application");
+  </script>
+{% endblock %}

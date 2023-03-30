@@ -176,3 +176,25 @@ def edit(request,job_id):
     return render(request, 'edit_job.html', {'form': form,'job':job})
 
 
+@login_required
+def edit_app(request,application_id):
+    application = get_object_or_404(Application,pk=application_id,created_by=request.user)
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST,instance=application)
+
+        if form.is_valid():
+            application = form.save(commit=False)
+            
+            application.save()
+            messages.info(
+            request,
+            "Application Edited successfully...")
+            return redirect("dashboard")
+
+            # return HttpResponse('added a job succesfully')
+            # return http ('login')
+
+    else:
+        form = ApplicationForm(instance=application)
+
+    return render(request, 'edit_application.html', {'form': form,'application':application})

@@ -10,6 +10,7 @@ urlpatterns = [
     path("api/search",api_search,name = "api_search"),
     path("search/",views.search,name = "search"),
     path("<int:job_id>/edit", views.edit, name="edit"),
+    path("<int:application_id>/edit_app", views.edit_app, name="edit_app"),
 
     path("<int:job_id>", views.job_detail, name="job_detail"),
     path("job/add" ,views.add, name="add"),

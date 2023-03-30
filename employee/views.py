@@ -101,17 +101,12 @@ def Login(request):
             return render(request, "base.html", {'message': message})
 
         else:
-            # try:
-            #     message1 = "Invalid username or password!!!"
-            #     return render(request, "login.html", {'message1': message1})
-            # except:
-            #     user1 = User.objects.get(username=name)
-            #     messages.error(request, 'Invalid password!!!.')
+           
             try:
                 user1 = User.objects.get(username=name)
-                messages.error(request, 'Invalid password.')
+                messages.error(request, 'Invalid password!!!')
             except User.DoesNotExist:
-                messages.error(request, 'Invalid username or password.')
+                messages.error(request, 'Invalid username or password!!!')
             return redirect("employee:login")
 
     return render(

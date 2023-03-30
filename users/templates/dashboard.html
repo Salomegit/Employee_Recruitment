@@ -1,4 +1,6 @@
 {% include 'header.html' %} 
+{% load static %}
+
 {% block content %}
 {% if message %}
     <div id="alert" class="alert alert-success">{{ message }}</div>
@@ -18,11 +20,16 @@
         <ul class="alert alert-danger">
             {% for message1 in messages %}
                 <li>{{ message1 }}</li>
+                <script>
+                  setTimeout(function () {
+                    document.getElementById("alert").style.display = "none";
+                  }, 5000);
+                </script>
             {% endfor %}
         </ul>
     {% endif %}
 {% if userprofile.is_employer %}
-<h4 class="subtitle">Welcome  Employer..{{username}}</h4>
+<h4 class="subtitle">Welcome  Employer..{{userprofile.user}}</h4>
 <div style="display: flex;">
 
   <div><a href="{% url 'job:add'  %}">
@@ -69,7 +76,18 @@
   </tbody>
 </table>
 {% else %}
-
+{% if messages %}
+<ul class="alert alert-danger">
+    {% for message1 in messages %}
+        <li>{{ message1 }}</li>
+        <script>
+          setTimeout(function () {
+            document.getElementById("alert").style.display = "none";
+          }, 5000);
+        </script>
+    {% endfor %}
+</ul>
+{% endif %}
 <h4 class="subtitle">Welcome  jobseeker </h4>
 <h5 class="subtitle" style="font-family: 'Courier New', Courier, monospace;">All Applications Aplied</h5>
 <!-- <style>
@@ -91,6 +109,8 @@
       <th scope="col">Location</th>
       <th scope="col">View Application</th>
       <th scope="col">Delete Application</th>
+      <th scope="col">Edit </th>
+
     </tr>
   </thead>
   
@@ -130,6 +150,12 @@
           style="background-color: #fa0303"
           />
         </a> -->
+      </td>
+      <td>
+        <a href="{% url 'job:edit_app' application.id %}">
+
+          <img src="{% static 'search.svg' %}" alt="My Image">
+        </a>
       </td>
     </tr>
   </tbody>
