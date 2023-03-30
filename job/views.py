@@ -80,7 +80,7 @@ def search(request):
 def delete_application(request, application_id):
     application = Application.objects.get(pk=application_id)
     application.delete()
-    return redirect("users:dashboard")
+    return redirect("dashboard")
 
 
 def job_detail(request, job_id):

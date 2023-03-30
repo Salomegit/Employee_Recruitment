@@ -29,7 +29,6 @@ def contact(request):
         ccontent = request.POST.get("content")
  
         # Handle invalid email address
-        messages.error(request, 'Please enter a valid email address')
         query = Contact(full_name=cfull_name, email=cemail, content=ccontent)
         query.save()
         messages.info(

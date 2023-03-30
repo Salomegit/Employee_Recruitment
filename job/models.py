@@ -106,7 +106,7 @@ class Application(models.Model):
         null=True
     )
     mobile = models.IntegerField(null=True, blank=True)
-    education   = models.CharField( max_length=255, null=True, blank=True)
+    education   = models.CharField( max_length=2553, null=True, blank=True)
 
 
 

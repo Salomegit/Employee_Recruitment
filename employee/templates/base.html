@@ -1,4 +1,5 @@
-{% load static %} {% include 'header.html' %} {% if message %}
+{% load static %} {% include 'header.html' %} 
+{% if message %}
 <div id="alert" class="alert alert-success">{{ message }}</div>
 <script>
   setTimeout(function () {
