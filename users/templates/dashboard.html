@@ -16,6 +16,7 @@
       <center style="text-decoration: underline; color: #561c32 ;font-family: 'Courier New', Courier, monospace;">Dashboard</center>
     </h3>
 
+    {% if userprofile.is_employer %}
     {% if messages %}
         <ul class="alert alert-danger">
             {% for message1 in messages %}
@@ -28,8 +29,10 @@
             {% endfor %}
         </ul>
     {% endif %}
-{% if userprofile.is_employer %}
-<h4 class="subtitle">Welcome  Employer..{{userprofile.user}}</h4>
+<h4 class="subtitle">Welcome  {{userprofile.user}}
+  (Employer)
+  
+</h4>
 <div style="display: flex;">
 
   <div><a href="{% url 'job:add'  %}">
@@ -59,6 +62,8 @@
       <th scope="col">Job name</th>
       <th scope="col">Date created</th>
       <th scope="col">View Aplicants</th>
+      <th scope="col">Edit Job</th>
+
     </tr>
   </thead>
   <tbody>
@@ -68,6 +73,11 @@
       <td>  {{ job.title }} ({{job.get_status_display}})</td>
       <td>  {{ job.created_at }}</td>
       <td><a href="{% url 'view_dashboard_job' job.id%}"><i class="fas fa-bars"></i> Candidates</td>
+        <td>
+          <a href="{% url 'job:edit' job.id %}">
+  
+            <img src="{% static 'edit.png' %}" width= "20" height="20"alt="My Image">
+          </a>
     </tr>
     
     {% empty %}
@@ -88,7 +98,7 @@
     {% endfor %}
 </ul>
 {% endif %}
-<h4 class="subtitle">Welcome  jobseeker </h4>
+<h4 class="subtitle">Welcome {{userprofile.user}}(Jobseeker) </h4>
 <h5 class="subtitle" style="font-family: 'Courier New', Courier, monospace;">All Applications Aplied</h5>
 <!-- <style>
   table,
@@ -154,7 +164,7 @@
       <td>
         <a href="{% url 'job:edit_app' application.id %}">
 
-          <img src="{% static 'search.svg' %}" alt="My Image">
+          <img src="{% static 'edit.png' %}" width= "20" height="20" alt="My Image">
         </a>
       </td>
     </tr>

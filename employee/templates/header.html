@@ -70,6 +70,12 @@
             href="{% url 'employee:register' %}"
             ><i class="fas fa-sign-in-alt"></i>Sign-Up</a
             >
+            <a
+            style="color: white;"
+            class="nav-item nav-link"
+            href="{% url 'employee:login' %}"
+            ><i class="fas fa-sign-in-alt"></i>login</a
+            >
             {% endif %}
             {% if request.user.is_authenticated %}
 
@@ -94,7 +100,9 @@
             style="color: white;"
             class="nav-item nav-link"
             href="{% url 'job:search' %}"
-            ><i class="fas fa-magnifying-glass"></i>Search</a
+            >
+            <img style="font-size: 20px;" src="{% static 'newsearch.png' %}" width="20" height="20"alt="My Image">
+            Search</a
             >
             
            <!-- <div style="justify-content: end;">

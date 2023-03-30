@@ -167,8 +167,7 @@ def edit(request,job_id):
             "Job Edited successfully...")
             return redirect("dashboard")
 
-            # return HttpResponse('added a job succesfully')
-            # return http ('login')
+            
 
     else:
         form = AddJobForm(instance=job)
@@ -190,10 +189,9 @@ def edit_app(request,application_id):
             request,
             "Application Edited successfully...")
             return redirect("dashboard")
+        
 
-            # return HttpResponse('added a job succesfully')
-            # return http ('login')
-
+            
     else:
         form = ApplicationForm(instance=application)
 

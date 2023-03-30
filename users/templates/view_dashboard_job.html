@@ -10,7 +10,6 @@
   <div style="display: flex; justify-content: space-between">
     <div>
       
-      <a href="{% url 'job:edit' job.id %}" class="button is-success mb-4"><button style="background-color: green;color:white;border-radius: 10px; margin:10px; padding:10px;">Edit Job Details</button></a>
       <h1 class="card-title">Job Vacancy Details</h1>
       <h2 class="card-subtitle mb-2 text-muted">
         Job Positon: {{ job.title }}
@@ -73,7 +72,6 @@
         <th scope="col">Time Applied</th>
 
         <th scope="col">View Application</th>
-        <th scope="col">Delete Applicant</th>
       </tr>
     </thead>
     <tbody>
@@ -91,7 +89,6 @@
             ><i class="fas fa-list"></i>Application</a
           >
         </td>
-        <td style="color: red"><i class="fas fa-trash"></i></td>
       </tr>
 
       {% empty %}

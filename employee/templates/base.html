@@ -168,6 +168,8 @@
       <div>
         <hr />
         <center>
+          {% if request.user.is_authenticated %}
+
           <a
             class="btn custom-btn"
             style="
@@ -183,6 +185,23 @@
             href="{% url 'job:job_detail' job.id %}"
             >View</a
           >
+          {% else %}
+          <a
+          class="btn custom-btn"
+          style="
+            font-weight: 100;
+            font-size: 1em;
+            border: solid 2px grey;
+            color: #f7edee;
+            background-color: #561c32;
+            border-radius: 10cm;
+            width: 5cm;
+            align-items: center;
+          "
+          href="{% url 'employee:login'  %}"
+          >Login to view more </a
+        >
+          {% endif %}
         </center>
       </div>
     </div>

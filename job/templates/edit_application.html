@@ -2,19 +2,18 @@
 <center
   class="title"
   style="
-    font-size: 50px;
+    font-size: 20px;
     font-weight: 100;
     text-decoration: underline;
     color: #561c32;
   "
 >
- Edit Application - {{ job.title }}
+ Edit Application 
 </center>
-<div  id="edit-job-application">
+<div  >
 <form
-v-on:submit="validateForm"
   method="POST"
-  action="."
+
   style="
     color: #561c32;
     font: 100% / normal sans-serif;
@@ -26,9 +25,9 @@ v-on:submit="validateForm"
   "
   enctype="multipart/form-data"
 >
-  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
-  <div class="alert alert-danger">{{ error }}</div>
-  {% endfor %} {% endif %}
+{% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+<div class="alert alert-danger">Error in {{ error }} Field or field is empty</div>
+{% endfor %} {% endif %}
 
   <div
     class="card mx-auto"
@@ -92,10 +91,10 @@ v-on:submit="validateForm"
           <input
             type="radio"
             placeholder="gender"
-            value="M"
+            
             name="gender"
+            value="M"{% if gender == "M" %} checked {% endif %}
             id="id_gender"
-            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
 
           />
         </div>
@@ -104,11 +103,10 @@ v-on:submit="validateForm"
           <input
             type="radio"
             placeholder="gender"
-            value="F"
+            
             name="gender"
+            value="F" {% if gender == "F" %} checked {% endif %}
             id="id_gender"
-            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
-
           />
         </div>
         <div style="margin-left: 20px">
@@ -116,10 +114,10 @@ v-on:submit="validateForm"
           <input
             type="radio"
             placeholder="gender"
-            value="O"
+            
             name="gender"
+            value="O" {% if gender == "O" %} checked {% endif %}
             id="id_gender"
-            value=" {% if application.gender %}{{ application.gender }}{% endif %}"            
 
           />
         </div>
@@ -219,29 +217,30 @@ v-on:submit="validateForm"
           required
         >{% if application.content %}{{ application.content }}{% endif %} </textarea>
       </div>
-
+    </div>
       <div>
     <label for="file">Resume:-</label>
     <br>
-    <input   type="file" id="file" name="resume" 
+    <input   type="file" id="id_resume" name="resume" accept=".pdf,.doc,.docx"
     
-    value =  "{% if application.resume %}{{ application.resume }}{% endif %}   "      
-    />
+     {{% if not application.resume %}required{% endif %}
+
+     required 
+     />
    </div>
-<div>
+
     <input
     type="submit"
     value="Save Changes"
     class="m-2 px-3 btn btn-primary"
     style="background-color: #561c32; justify-content: center"
   />
-    </div>
-  </div>
+  
 </form>
 </div>
 
 
-<script>
+<!-- <script>
     const EditjobApplication = {
       data() {
         return {
@@ -287,5 +286,5 @@ v-on:submit="validateForm"
       },
     };
     Vue.createApp(EditjobApplication).mount("#edit-job-application");
-  </script>
+  </script> -->
 {% endblock %}
