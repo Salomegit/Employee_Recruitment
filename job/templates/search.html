@@ -1,8 +1,6 @@
 {% include 'header.html' %} {% block content %}
 <div id="search-app">
-  <br />
-  <h4  style="text-align: center; font-size: 30px ;       color: #561c32;
-  ">Search For a Job</h4>
+  <h5  style="text-decoration: underline; color: #561c32 ;font-family: 'Courier New', Courier, monospace; text-align: center;">Search For a Job</h5>
 
   <form
     @submit.prevent="performSearch()"
@@ -64,7 +62,7 @@
 
   <div v-if="jobs.length" style="margin: 10px auto; display: flex; align-items: center; justify-content: center; flex-direction: column;">
     <div  style="font-size: large; font-weight: 300;">
-      <h3 style="text-align: center; width: 100%">Found Results</h3>
+      <h5 style="text-decoration: underline; color: #561c32 ;font-family: 'Courier New', Courier, monospace; text-align: center;">Found Results</h5>
     </div>
     <div class="row" style="margin: auto; display: flex; align-items: center; justify-content: center;">
       <div

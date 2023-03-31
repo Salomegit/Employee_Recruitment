@@ -121,6 +121,12 @@ class Application(models.Model):
     created_by = models.ForeignKey(User,
                                    related_name="applications",
                                    on_delete=models.CASCADE)
-    
+
     class Meta:
         ordering = ['-created_at']
+
+class ApplicationSummary(Application):
+        class Meta:
+          proxy = True
+        verbose_name = 'Application Summary'
+        verbose_name_plural = 'Sales Summary'

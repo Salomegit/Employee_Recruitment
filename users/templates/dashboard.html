@@ -120,6 +120,8 @@
       <th scope="col">View Application</th>
       <th scope="col">Delete Application</th>
       <th scope="col">Edit </th>
+      <th scope="col">Status </th>
+
 
     </tr>
   </thead>
@@ -167,6 +169,16 @@
           <img src="{% static 'edit.png' %}" width= "20" height="20" alt="My Image">
         </a>
       </td>
+      <td>     
+    {%if application.status == 'pending'%}
+    <h6> <span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+    {%elif application.status == 'approved'%}
+    <h6> <span style="color: green; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+    {%elif application.status == 'declined'%}
+    <h6> <span style="color: red; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+    {%endif%} 
+  </td>
+
     </tr>
   </tbody>
     {% empty %}

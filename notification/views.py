@@ -9,6 +9,8 @@ def notifications(request):
     goto = request.GET.get('goto', '')
     notification_id = request.GET.get('notification', 0)
     extra_id = request.GET.get('extra_id',0)
+    notification1 = Notification.objects.all()
+    notification1_count = notification1.count()
     if goto != '':
         notification = Notification.objects.get.all(pk=notification_id)
         notification.is_read = True
@@ -18,5 +20,8 @@ def notifications(request):
             return redirect('users:view_application',application_id=notification.extra_id)
         elif notification.notification_type == Notification.APPLICATION:
             return redirect('users:view_application',application_id=notification.extra_id)
-
-    return render(request, 'notification.html')
+    context = {
+        'notification1':notification1,
+        'notification1_count':notification1_count
+    }
+    return render(request, 'notification.html',context)

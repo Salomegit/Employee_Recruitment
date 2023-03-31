@@ -5,6 +5,18 @@
     min-width: 400px;
   }
 </style>
+{% if messages %}
+<ul class="alert alert-danger">
+    {% for message1 in messages %}
+        <li>{{ message1 }}</li>
+        <script>
+          setTimeout(function () {
+            document.getElementById("alert").style.display = "none";
+          }, 5000);
+        </script>
+    {% endfor %}
+</ul>
+{% endif %}
 <div
   class="container"
   style="
@@ -20,7 +32,8 @@
     style="margin: 30px; padding: 10px; background-color: #f7f0f5; width: 60%"
     class="card"
   >
-    <div style="display: flex; flex-direction:column; justify-content: space-between">
+    <div style="display: flex; flex-direction:column; justify-content: space-between;    flex-direction: column;
+    ">
       <div>
         <h1 class="card-title">Application Details</h1>
         <h2 class="card-subtitle mb-2 text-muted">
@@ -31,8 +44,11 @@
         <h6>Status: <span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
         {%elif application.status == 'approved'%}
         <h6>Status: <span style="color: green; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+        <p style="color: green;">Send a message to inform the jobseeker</p>
         {%elif application.status == 'declined'%}
         <h6>Status: <span style="color: red; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
+        <p style="color: rgb(128, 64, 0);">Send a message to inform the jobseeker</p>
+
         {%endif%} 
         
       </div>
@@ -44,28 +60,22 @@
           style="background-color: #561c32; height: 40px; position: static"
           id="scroll-down-button"
         />
-        
         {% if userprofile.is_employer %}
-        <form 
-        method="post">
-          {% csrf_token %}
-          <button type="submit" name="status" value="approved">Approve</button>
-          <button type="submit" name="status" value="declined">Decline</button>
-        <!-- <input
-          type="submit"
-          value="Approve"
-          class="m-3 px-5 btn btn-primary"
-          style="background-color: green; height: 40px; position: static"
-          id="scroll-down-button"
-        />
-        <input
-          type="submit"
-          value="Declined"
-          class="m-3 px-5 btn btn-primary"
-          style="background-color: red; height: 40px; position: static"
-          id="scroll-down-button"
-        /> -->
-      </form>
+       <div style="display: flex; ">
+
+         <form method="POST" action="{% url 'job:approve_job_application' application.id %}">
+           {% csrf_token %}
+           <button type="submit" name="status" value="approved" style="background-color: green;" class="approve-btn">Approve</button>
+          </form>
+          
+          <form method="POST" action="{% url 'job:decline_job_application' application.id %}">
+            {% csrf_token %}
+            <button type="submit"  name="status"  value="declined" style="background-color: red;" class="decline-btn">Decline</button>
+          </form>
+        </div>
+        
+        
+        
 
         {% endif %}
       </div>

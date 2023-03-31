@@ -88,12 +88,33 @@ def job_detail(request, job_id):
    
 
     return render(request, 'job_detail.html', {'job': job, 'userprofile':request.user.userprofile})
+from django.shortcuts import render, redirect
+from .models import Application
+
+def approve_job_application(request, application_id):
+    application = Application.objects.get(id=application_id)
+    application.status = Application.APPROVED
+    application.save()
+    messages.info(
+            request,
+            "Application Accepted...")
+    return redirect('view_application', application_id=application_id)
+
+def decline_job_application(request, application_id):
+    application = Application.objects.get(id=application_id)
+    application.status = Application.DECLINED
+    application.save()
+    messages.info(
+            request,
+            "Application declined...")
+    return redirect('view_application', application_id=application_id)
 
 
 @login_required
 def apply_for_job(request, job_id):
     job = Job.objects.get(pk=job_id)
-
+    new_app = Application.objects.all()
+    new_app_count = new_app.count()
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
 
@@ -117,11 +138,13 @@ def apply_for_job(request, job_id):
  
     else:
         form = ApplicationForm()
-
-    return render(request, 'apply_for_job.html', {
-            'form': form,
-            'job': job
-        })
+    context = {
+        'new_app':new_app,
+        'new_app_count':new_app_count ,
+        'form': form,
+        'job': job
+    }
+    return render(request, 'apply_for_job.html', context)
 
 
 @login_required

@@ -30,7 +30,7 @@ urlpatterns = [
     path('__debug__/',include('debug_toolbar.urls')),
     path('job/',include("job.urls")),
     path('users/',include("users.urls")),
-    path('notification/',include("notification.urls")),
+    path('notification/',include("notification.urls"))
 
     # path('images/covers')                        
 
