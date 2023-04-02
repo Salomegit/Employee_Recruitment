@@ -1,15 +1,25 @@
 {% include 'header.html' %} {% block content %}
-<center
+{% if message %}
+    <div id="alert" class="alert alert-success">{{ message }}</div>
+    <script>
+        setTimeout(function() {
+            document.getElementById("alert").style.display = "none";
+        }, 5000);
+    </script>
+{% endif %}
+
+<h4
   class="title"
   style="
     font-size: 20px;
     font-weight: 100;
     text-decoration: underline;
     color: #561c32;
+    justify-items: center;
   "
 >
   Apply for a job - {{ job.title }}
-</center>
+</h4>
 <form
   method="POST"
   action="."
@@ -24,10 +34,12 @@
   "
   enctype="multipart/form-data"
 >
-  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
-  <div class="alert alert-danger">{{ error }}</div>
-  {% endfor %} {% endif %}
+  {% csrf_token %} 
 
+   {%if form.errors %} {% for error in form.errors %}
+  <div class="alert alert-danger"> Error at {{ error }} Field</div>
+  {% endfor %} {% endif %} 
+  
   <div
     class="card mx-auto"
     style="width: 70%; background-color: #d5abb9; justify-content: center"

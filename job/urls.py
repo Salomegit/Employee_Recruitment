@@ -11,6 +11,7 @@ urlpatterns = [
     path("search/",views.search,name = "search"),
     path("<int:job_id>/edit", views.edit, name="edit"),
     path("<int:application_id>/edit_app", views.edit_app, name="edit_app"),
+    path("search_jobs", views.search_jobs, name="search_jobs"),
 
     path("<int:job_id>", views.job_detail, name="job_detail"),
     path("job/add" ,views.add, name="add"),

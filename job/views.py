@@ -109,38 +109,84 @@ def decline_job_application(request, application_id):
             "Application declined...")
     return redirect('view_application', application_id=application_id)
 
+def search_jobs(request):
+  status = request.GET.get('status', '')
+  job_id = request.GET.get('job_id', '')
+
+
+
+  if job_id:
+        job = Job.objects.get(id=job_id)
+        if status:
+            applications = job.applications.filter(status=status) # type: ignore
+        else:
+            applications = job.applications.all() # type: ignore
+  else:
+        if status:
+            applications = Application.objects.filter(status=status)
+        else:
+            applications = Application.objects.all()
+#   if status:
+#     applications = Application.objects.filter(status=status)
+#   else:
+#     applications = Application.objects.all()
+#     messages.info(
+#             request,
+#             "Found Results...")
+  context = {
+    'applications': applications,
+    'status': status
+  }
+
+  return render(request, 'search_job.html', context)
 
 @login_required
 def apply_for_job(request, job_id):
     job = Job.objects.get(pk=job_id)
-    new_app = Application.objects.all()
-    new_app_count = new_app.count()
+   
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
+    
+      
 
         if form.is_valid():
-            application = form.save(commit=False)
-            application.job = job
-            application.created_by = request.user
-            application.resume = request.FILES["resume"]
-            
-            
-            application.save()
-            messages.info(
-            request,
-            "Applied successfully...")
-            create_notification(request,
-                                job.created_by,
-                                'application',
-                                extra_id=application.id)
+            email = form.cleaned_data['email']
+            if Application.objects.filter(job=job, email=email).exists():
+                messages.info(request, 'This email has already been used to apply for this job')
 
-            return redirect("dashboard")
+                return redirect('job:apply_for_job')
+
+            else:
+                application = form.save(commit=False)
+                application.job = job
+                application.created_by = request.user
+                application.resume = request.FILES["resume"]
+                application.save()
+                messages.success(request, 'Applied successfully.')
+                create_notification(request, job.created_by, 'application', extra_id=application.id)
+                return redirect("dashboard")
+        # if form.is_valid():
+        #     application = form.save(commit=False)
+        #     application.job = job
+        #     application.created_by = request.user
+        #     application.resume = request.FILES["resume"]
+            
+            
+        #     application.save()
+        #     messages.info(
+        #     request,
+        #     "Applied successfully...")
+        #     create_notification(request,
+        #                         job.created_by,
+        #                         'application',
+        #                         extra_id=application.id)
+
+        #     return redirect("dashboard")
  
     else:
         form = ApplicationForm()
     context = {
-        'new_app':new_app,
-        'new_app_count':new_app_count ,
+       
         'form': form,
         'job': job
     }

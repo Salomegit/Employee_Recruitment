@@ -121,6 +121,8 @@
       <th scope="col">Delete Application</th>
       <th scope="col">Edit </th>
       <th scope="col">Status </th>
+      <th scope="col">View/Send Message</th>
+
 
 
     </tr>
@@ -143,7 +145,7 @@
         <input
         type="submit"
         value="view"
-        class="m-1 px-5 btn btn-primary"
+        class="m-1 px-2 btn btn-primary"
           style="background-color: #561c32"
           />
         </a>
@@ -151,7 +153,7 @@
       <td>
         <form action="{% url 'job:delete_application' application.id %}" method="post">
           {% csrf_token %}
-          <input type="submit" value="Delete"   class="m-1 px-5 btn btn-primary"
+          <input type="submit" value="Delete"   class="m-1 px-2 btn btn-primary"
           style="background-color: #fa0303" onclick="return confirmDelete();">
         </form>
         <!-- <a href="{% url 'job:delete_application' application.id %}">
@@ -178,7 +180,12 @@
     <h6> <span style="color: red; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
     {%endif%} 
   </td>
+<td> 
+  <a href="{% url 'view_application' application.id%}">
+    <img src="{% static 'edit.png' %}" width= "20" height="20" alt="My Image">
 
+  </a>
+</td>
     </tr>
   </tbody>
     {% empty %}

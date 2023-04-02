@@ -1,0 +1,74 @@
+{% include 'header.html' %} 
+{% load static %}
+
+{% block content %}
+{% if message %}
+    <div id="alert" class="alert alert-success">{{ message }}</div>
+    <script>
+        setTimeout(function() {
+            document.getElementById("alert").style.display = "none";
+        }, 5000);
+    </script>
+{% endif %}
+{% if applications %}
+    <center style="text-decoration: underline; color: #561c32 ;font-family: 'Courier New', Courier, monospace;"> Search Results:
+
+    </center>
+
+
+<div class="container">
+    <table class="table "width="100%">
+      <thead class="thead-dark table-striped table-bordered">
+        <tr>
+          <th scope="col">Job id</th>
+          <th scope="col">Aplicant Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Location</th>
+          <th scope="col">Time Applied</th>
+  
+          <th scope="col">View Application</th>
+          <th scope="col">Status</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        {% for application in applications %}
+        <tr>
+          <th>{{ application.job.id }}</th>
+          <td>{{application.first_name}} {{application.last_name}}</td>
+          <td>{{application.email}}</td>
+          <td>{{application.location}}</td>
+          <td>{{application.created_at}}</td>
+  
+          <td>
+            <a href="{% url 'view_application' application.id %}"
+              ><i class="fas fa-list"></i>Application</a
+            >
+          </td>
+            <td>     
+                {% if application.status == 'pending' %}
+                <h6><span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{ application.status }}</span></h6>
+              {% elif application.status == 'approved' %}
+                <h6><span style="color: green; border-radius: 5px; padding: 5px; background-color: black">{{ application.status }}</span></h6>
+              {% elif application.status == 'declined' %}
+                <h6><span style="color: red; border-radius: 5px; padding: 5px; background-color: black">{{ application.status }}</span></h6>
+              {% endif %} 
+            </td>
+          
+        </tr>
+        
+        {% endfor %}
+      </tbody>
+   
+    </table>
+    {% else %}
+   <div class="card">
+
+       <h4>No applications found.</h4>
+    </div>
+  {% endif %}
+  <a href="{% url 'dashboard' %}"  class="btn btn-secondary">Go Back</a>
+  {% endblock %}
+
+  
+

@@ -5,6 +5,8 @@
     min-width: 400px;
   }
 </style>
+{% if userprofile.is_employer %}
+
 {% if messages %}
 <ul class="alert alert-danger">
     {% for message1 in messages %}
@@ -17,6 +19,8 @@
     {% endfor %}
 </ul>
 {% endif %}
+{% endif %}
+
 <div
   class="container"
   style="
@@ -39,7 +43,8 @@
         <h2 class="card-subtitle mb-2 text-muted">
           Job Positon: {{ application.job.title }}
         </h2>
-        
+        {% if userprofile.is_employer %}
+
         {%if application.status == 'pending'%}
         <h6>Status: <span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>
         {%elif application.status == 'approved'%}
@@ -50,14 +55,15 @@
         <p style="color: rgb(128, 64, 0);">Send a message to inform the jobseeker</p>
 
         {%endif%} 
-        
+        {%endif%} 
+
       </div>
       <div>
         <input
           type="submit"
           value="Send a Message"
           class="m-3 px-5 btn btn-primary"
-          style="background-color: #561c32; height: 40px; position: static"
+          style="background-color: #561c32; height: 40px; position: static ; padding-left: 0%;"
           id="scroll-down-button"
         />
         {% if userprofile.is_employer %}
@@ -65,13 +71,31 @@
 
          <form method="POST" action="{% url 'job:approve_job_application' application.id %}">
            {% csrf_token %}
-           <button type="submit" name="status" value="approved" style="background-color: green;" class="approve-btn">Approve</button>
-          </form>
+           <div><a href="{% url 'job:approve_job_application' application.id   %}">
+            <input
+            type="submit"
+            value="approved"
+            name="status"
+            class="m-1 px-5 btn btn-primary"
+            style="background-color: green"
+            /> 
+          </div>
+        </form>
+
+          
+           
           
           <form method="POST" action="{% url 'job:decline_job_application' application.id %}">
             {% csrf_token %}
-            <button type="submit"  name="status"  value="declined" style="background-color: red;" class="decline-btn">Decline</button>
-          </form>
+            <div><a href="{% url 'job:decline_job_application' application.id %}">
+              <input
+              type="submit"
+              value="declined"
+              class="m-1 px-5 btn btn-primary"
+              style="background-color: red"
+              /> <a href=""></a>
+            </div>
+           
         </div>
         
         
@@ -145,7 +169,18 @@
   /> -->
 </div>
 <hr />
-
+{% if messages %}
+<ul class="alert alert-danger">
+    {% for message1 in messages %}
+        <li>{{ message1 }}</li>
+        <script>
+          setTimeout(function () {
+            document.getElementById("alert").style.display = "none";
+          }, 5000);
+        </script>
+    {% endfor %}
+</ul>
+{% endif %}
 <div id="content">
   <h2 class="subtitle">Conversation</h2>
   {% for message in application.conversationmessages.all %}

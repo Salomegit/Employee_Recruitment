@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from job.models import Application, Job
 from xhtml2pdf import pisa
 from notification.utilities import create_notification
+from django.contrib import messages
 
 
 from users.models import ConversationMessage
@@ -25,7 +26,9 @@ def view_application(request, application_id):
          conversationmessage = ConversationMessage.objects.create(application = application, content=content, created_by=request.user )
          
          # create_notification(request, application.created_by, 'message', extra_id=application.id)
-
+         messages.info(
+            request,
+            "Message Sent Successfully...")
          return redirect("view_application",application_id=application_id)
    
 
