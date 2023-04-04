@@ -1,6 +1,5 @@
 {% include 'header.html' %} 
 {% load static %}
-
 {% block content %}
 {% if message %}
     <div id="alert" class="alert alert-success">{{ message }}</div>
@@ -182,7 +181,7 @@
   </td>
 <td> 
   <a href="{% url 'view_application' application.id%}">
-    <img src="{% static 'edit.png' %}" width= "20" height="20" alt="My Image">
+    <img src="{% static 'mesage.png' %}" width= "30" height="30" alt="My Image">
 
   </a>
 </td>
@@ -193,6 +192,7 @@
   {% endfor %}
 </table>
 {% endif %}
+
 
 
 

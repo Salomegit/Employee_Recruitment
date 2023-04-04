@@ -9,14 +9,7 @@ GENDER = (('M', 'Male'), ('F', 'Female') )
 
 class Job(models.Model):
 
-    # CHOICES_SIZE =   ( ('CSS', 'Computer Support Specialist'),
-    # ('HWA' , 'Hardware Engineer'),
-    # ('CSA' , 'Computer System Analyst '),
-    # ('SWD' , 'Software Developer'),
-    # ('PRG','Programmer'),
-    # ('WBD','Web developer',),
-    # ('NWE','Network engineer'),
-    # ('SWT', 'Software Tester'))
+    
 
     COMPUTER_SUPPORT_SPECIALIST = 'Computer Support Specialist'
     HARDWARE_ENGINEER = 'Hardware Engineer'
@@ -129,4 +122,4 @@ class ApplicationSummary(Application):
         class Meta:
           proxy = True
         verbose_name = 'Application Summary'
-        verbose_name_plural = 'Sales Summary'
+        verbose_name_plural = 'Application Summary'

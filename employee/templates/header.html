@@ -85,6 +85,14 @@
             href="{% url 'dashboard' %}"
             ><i class="fas fa-sign-in-alt fa-beat"></i>Dashboard</a
             >
+            <a
+            style="color: white;"
+            class="nav-item nav-link"
+            href="{% url 'job:search' %}"
+            >
+            <img style="font-size: 20px;" src="{% static 'newsearch.png' %}" width="20" height="20"alt="My Image">
+            Search</a
+            >
 <!--            
             <a
             style="color: white;"
@@ -95,14 +103,7 @@
 
             {% endif %}
 
-            <a
-            style="color: white;"
-            class="nav-item nav-link"
-            href="{% url 'job:search' %}"
-            >
-            <img style="font-size: 20px;" src="{% static 'newsearch.png' %}" width="20" height="20"alt="My Image">
-            Search</a
-            >
+           
             
            <!-- <div style="justify-content: end;">
 

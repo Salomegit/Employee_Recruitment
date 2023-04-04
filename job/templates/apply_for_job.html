@@ -50,7 +50,9 @@
         <input
           style="border: 2px solid"
           type="text"
-          placeholder="Your First Name"
+          pattern="[a-zA-Z]+"
+
+          placeholder="Johndoe"
           name="first_name"
           class="form-control"
           id="id_first_name"
@@ -65,7 +67,9 @@
           style="border: 2px solid"
           type="text"
           name="last_name"
-          placeholder="Your Last Name"
+          pattern="[a-zA-Z]+"
+
+          placeholder="Johndoe"
           class="form-control"
           id="id_last_name"
           required
@@ -144,7 +148,8 @@
           style="border: 2px solid"
           type="email"
           name="email"
-          placeholder="Your Email"
+          placeholder="johndoe@gmail.com"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           class="form-control"
           id="id_email"
           required
@@ -170,12 +175,15 @@
         <label> Your Mobile Number:-</label>
         <input
           style="border: 2px solid"
-          type="number"
-          placeholder="eg 07XX XXX XXX"
+          type="tel"
+          placeholder="+254712345678"
+          pattern="\+254[0-9]{3}[0-9]{3}[0-9]{3}"
+          minlength="13"
+          maxlength="13"
           name="mobile"
           class="form-control"
           id="id_mobile"
-          required
+          required value="+254"
         />
       </div>
     </div>

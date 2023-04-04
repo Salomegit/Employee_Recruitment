@@ -52,7 +52,8 @@
                 type="text"
                 name="firstname"
                 class="form-control"
-                placeholder="Enter your First Name"
+                pattern="[a-zA-Z]+"
+                placeholder="Johndoe"
                 required
               />
             </div>
@@ -76,7 +77,9 @@
                 type="text"
                 name="username"
                 class="form-control"
-                placeholder="Enter Your preferred Username"
+                pattern="[a-zA-Z]+"
+
+                placeholder="Johndoe"
                 required
               />
             </div>
@@ -88,7 +91,8 @@
                 type="email"
                 name="email"
                 class="form-control"
-                placeholder="Enter Your Email"
+                placeholder="johndoe@gmail.com"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 required
               />
             </div>
@@ -124,24 +128,9 @@
               />
 
             </div>
-          <!-- </div> -->
         </div>
         <br />
-        <!-- <div class="field" >
-
-            <hr>
-            <label>Account Type</label>
-          <div class="control">
-            <div class="select">
-              <select name="account_type" >
-                <option value="jobseeker" selected>Job Seeker</option>
-                <option value="employer" >Employer</option>
-              </select>
-            </div>
-          </div>
-          
-        </div> -->
-        <!-- <hr> -->
+    
         <div class="form-group">
           <label class="mr-sm-2" for="inlineFormCustomSelect">Account Type</label>
           <select name="account_type" class="custom-select mr-sm-2" id="inlineFormCustomSelect">

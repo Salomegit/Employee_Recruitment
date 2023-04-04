@@ -1,7 +1,8 @@
+from click import File
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from .models import Job, Application,ApplicationSummary
-from django.db.models import Count, Sum, Case, When, IntegerField
+from django.db.models import Count, Sum, Case, When, IntegerField, F
 
 # Register your models here.
 
@@ -27,8 +28,12 @@ class ApplicationSummaryAdmin(admin.ModelAdmin):
         )
         metrics = {
             'total': Count('id'),
-            'total_selected': Sum(Case(When(status='ACCEPTED', then=1), default=0, output_field=IntegerField())),
-            'total_rejected': Sum(Case(When(status='DECLINED', then=1),default=0 ,output_field=IntegerField())),
+            'total_selected': Sum(Case(When(status='approved', then=1), default=0, output_field=IntegerField())),
+            'total_rejected': Sum(Case(When(status='declined', then=1),default=0 ,output_field=IntegerField())),
+            # 'percent_selected': Cast(100.0 * Sum(Case(When(status='accepted', then=1), default=0, output_field=IntegerField())) / Count('id'), FloatField()),
+            # 'percent_rejected': Cast(100.0 * Sum(Case(When(status='declined', then=1), default=0, output_field=IntegerField())) / Count('id'), FloatField()),
+              'percent_selected': 100.0 * F('total_selected') / F('total'),
+              'percent_rejected': 100.0 * F('total_rejected') / F('total'),
         }
 
         context_data = response.context_data
@@ -45,9 +50,17 @@ class ApplicationSummaryAdmin(admin.ModelAdmin):
         qs
         .values('job__title')
         .annotate(**metrics)
+       .filter(total__gt=0)  # exclude jobs with 0 applications
+
         .order_by('-total')
           )
         return response
+
+
+
+
+
+
 
 
 
