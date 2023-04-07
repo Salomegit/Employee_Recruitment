@@ -6,6 +6,14 @@
         {% endfor %}
     </ul>
 {% endif %}
+
+{% if form.errors %}
+{% for field, errors in form.errors.items %}
+  {% for error in errors %}
+    <div class="alert alert-danger"> Error at {{ field }} field: {{ error }}</div>
+  {% endfor %}
+{% endfor %}
+{% endif %}
 <center>
   <div class="container" style="font-family: arial narrow; color: #561c32">
     <strong>
@@ -49,9 +57,10 @@
               <input
                 type="email"
                 name="email"
+                placeholder="johndoe@gmail.com"
+
                 id="id_email"
                 class="form-control"
-                placeholder="Enter Your Email"
                 required
               />
             </div>

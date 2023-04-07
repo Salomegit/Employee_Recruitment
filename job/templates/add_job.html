@@ -29,6 +29,13 @@
     <div class="alert alert-danger">Error in {{ error }} Field</div>
     {% endfor %} {% endif %}
 
+    {% if form.errors %}
+    {% for field, errors in form.errors.items %}
+      {% for error in errors %}
+        <div class="alert alert-danger"> Error at {{ field }} field: {{ error }}</div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
     <div
       class="card mx-auto"
       style="width: 70%; background-color: #d5abb9; justify-content: center"

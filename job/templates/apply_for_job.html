@@ -16,6 +16,7 @@
     text-decoration: underline;
     color: #561c32;
     justify-items: center;
+    text-align: center;
   "
 >
   Apply for a job - {{ job.title }}
@@ -39,7 +40,14 @@
    {%if form.errors %} {% for error in form.errors %}
   <div class="alert alert-danger"> Error at {{ error }} Field</div>
   {% endfor %} {% endif %} 
-  
+
+  {% if form.errors %}
+  {% for field, errors in form.errors.items %}
+    {% for error in errors %}
+      <div class="alert alert-danger"> Error at {{ field }} field: {{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+{% endif %}
   <div
     class="card mx-auto"
     style="width: 70%; background-color: #d5abb9; justify-content: center"
@@ -50,10 +58,10 @@
         <input
           style="border: 2px solid"
           type="text"
-          pattern="[a-zA-Z]+"
-
-          placeholder="Johndoe"
           name="first_name"
+          pattern="[A-Za-z]+"
+
+          placeholder="First Name"
           class="form-control"
           id="id_first_name"
           required
@@ -67,9 +75,9 @@
           style="border: 2px solid"
           type="text"
           name="last_name"
-          pattern="[a-zA-Z]+"
+          pattern="[A-Za-z]+"
 
-          placeholder="Johndoe"
+          placeholder="Last Name"
           class="form-control"
           id="id_last_name"
           required
@@ -149,7 +157,6 @@
           type="email"
           name="email"
           placeholder="johndoe@gmail.com"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           class="form-control"
           id="id_email"
           required

@@ -60,7 +60,8 @@ def register(request):
             return redirect('employee:register')
         
         user = User.objects.create_user(name, email, password)
-        user.first_name = fname
+        if fname:
+           user.first_name = fname
 
         user.save()
         account_type = request.POST.get('account_type', 'jobseeker')

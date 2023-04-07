@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 
 
-GENDER = (('M', 'Male'), ('F', 'Female') )
+GENDER = (('M', 'Male'), ('F', 'Female'), ('O', 'Other'))
 
 
 
@@ -118,8 +118,13 @@ class Application(models.Model):
     class Meta:
         ordering = ['-created_at']
 
+
+    
+
 class ApplicationSummary(Application):
         class Meta:
           proxy = True
         verbose_name = 'Application Summary'
-        verbose_name_plural = 'Application Summary'
+
+        def job_title(self):
+            return self.job.title

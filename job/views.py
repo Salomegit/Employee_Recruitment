@@ -192,6 +192,7 @@ def apply_for_job(request, job_id):
     }
     return render(request, 'apply_for_job.html', context)
 
+    
 
 @login_required
 def add(request):
