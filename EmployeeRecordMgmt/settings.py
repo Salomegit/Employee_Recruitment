@@ -36,7 +36,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+JAZZMIN_SETTINGS = {
+    # ... other settings ...
+    'show_version': False,
+}
 INSTALLED_APPS = [
         'jazzmin',
 

@@ -62,13 +62,20 @@
    
     </table>
     {% else %}
-   <div class="card">
-
-       <h4>No applications found.</h4>
+    <div
+    class="card mx-auto"
+    style="width: 50%; background-color: #d5abb9; justify-content: center; margin-top: 5%;"
+  >
+    <div class="col-sm-12">
+      <div class="form-group">
+        <h3 style="text-align: center;">No applications found.</h3>
+        {% endif %}
+        <a href="{% url 'dashboard' %}" style="justify-content: center;text-align:center; display:flex;"  class="btn btn-secondary">Go Back</a>
+        {% endblock %}
+      
+        </div>
+        </div>
     </div>
-  {% endif %}
-  <a href="{% url 'dashboard' %}"  class="btn btn-secondary">Go Back</a>
-  {% endblock %}
-
+ 
   
 

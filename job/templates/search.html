@@ -16,19 +16,22 @@
   >
     <div
       class="card mx-auto"
-      style="width: 50%; background-color: #d5abb9; justify-content: center"
+      style="width: 35%; background-color: #d5abb9; justify-content: center"
     >
-      <div class="col-sm-12">
-        <div class="form-group">
-          <label>Query now</label>
-          <div class="control">
-            <input type="text" name="query" class="input" v-model="query" />
+      <div class="form-column">
+        
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label> Query now</label>
+            <input
+            type="text" name="query" class="input" v-model="query" 
+            />
           </div>
-
-          <div class="field">
+        </div>
+          <div class="field form-group col-sm-6">
             <label> Department Name </label>
-            <div class="control">
-              <div class="select">
+            <div  class="control ">
+              <div class="select ">
                 <select name="department_name" v-model="department_name">
                   <option value="">All</option>
                   <option value="Computer Support Specialist">
