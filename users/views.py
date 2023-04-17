@@ -4,11 +4,14 @@ from job.models import Application, Job
 from xhtml2pdf import pisa
 from notification.utilities import create_notification
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 
+# add this decorator to the view that requires authentication
 
 from users.models import ConversationMessage
 # Create your views here.
-@login_required
+@user_passes_test(lambda user: user.is_authenticated)
+
 def dashboard(request):
    return render ( request,'dashboard.html' ,{'userprofile': request.user.userprofile})
 

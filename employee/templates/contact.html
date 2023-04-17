@@ -1,4 +1,27 @@
 {% include 'header.html' %}
+<script src="path/to/validator.min.js">
+
+</script>
+<script>
+    const form = document.querySelector('form');
+    const emailInput = form.querySelector('#email');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      
+      // Get the value of the email input field
+      const email = emailInput.value;
+      
+      // Validate the email using Validator.js
+      if (validator.isEmail(email)) {
+        // If the email is valid, submit the form
+        form.submit();
+      } else {
+        // If the email is invalid, show an error message
+        alert('Please enter a valid email address.');
+      }
+    });
+</script>
 {% if messages %}
     <ul class="alert alert-danger">
         {% for message1 in messages %}
@@ -6,6 +29,9 @@
         {% endfor %}
     </ul>
 {% endif %}
+{%if form.errors %} {% for error in form.errors %}
+  <div class="alert alert-danger"> Error at {{ error }} Field</div>
+  {% endfor %} {% endif %} 
 
 {% if form.errors %}
 {% for field, errors in form.errors.items %}

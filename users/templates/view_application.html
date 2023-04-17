@@ -5,7 +5,7 @@
     min-width: 400px;
   }
 </style>
-{% if userprofile.is_employer %}
+<!-- {% if userprofile.is_employer %}
 
 {% if messages %}
 <ul class="alert alert-danger">
@@ -19,7 +19,7 @@
     {% endfor %}
 </ul>
 {% endif %}
-{% endif %}
+{% endif %} -->
 
 <div
   class="container"
@@ -91,11 +91,14 @@
               <input
               type="submit"
               value="declined"
+              name="status"
+
               class="m-1 px-5 btn btn-primary"
               style="background-color: red"
               /> <a href=""></a>
             </div>
-           
+          </form>
+
         </div>
         
         
@@ -169,19 +172,8 @@
   /> -->
 </div>
 <hr />
-{% if messages %}
-<ul class="alert alert-danger">
-    {% for message1 in messages %}
-        <li>{{ message1 }}</li>
-        <script>
-          setTimeout(function () {
-            document.getElementById("alert").style.display = "none";
-          }, 5000);
-        </script>
-    {% endfor %}
-</ul>
-{% endif %}
-<div id="content">
+
+<div >
   <h2 class="subtitle">Conversation</h2>
   {% for message in application.conversationmessages.all %}
   <div
@@ -206,7 +198,7 @@
 
   <p>No messages yet...</p>
   {% endfor %}
-  <form method="post" action=".">
+  <form method="post" >
     {% csrf_token %}
 
     <div class="field">

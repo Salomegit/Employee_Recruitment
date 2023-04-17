@@ -17,29 +17,23 @@
       passwordField.type = "password";
     }
   }
-  </script>
-  <script src="path/to/validator.min.js">
-
-  </script>
+</script>
+  
 <script>
-      const form = document.querySelector('form');
-      const emailInput = form.querySelector('#email');
-      
-      form.addEventListener('submit', function(event) {
-        event.preventDefault()
-        
-        // Get the value of the email input field
-        const email = emailInput.value;
-        
-        // Validate the email using Validator.js
-        if (validator.isEmail(email)) {
-          // If the email is valid, submit the form
-          form.submit();
-        } else {
-          // If the email is invalid, show an error message
-          alert('Please enter a valid email address.');
-        }
-      });
+  function validateEmail() {
+    const emailInput = document.getElementById('validateemail');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,5}$/;
+  
+    emailInput.addEventListener('input', function() {
+      const email = emailInput.value;
+      if (!emailRegex.test(email)) {
+        emailInput.setCustomValidity('Please enter a valid email address');
+      } else {
+        emailInput.setCustomValidity('');
+      }
+    });
+  }
+  
  </script>
  {% if form.errors %}
   {% for field, errors in form.errors.items %}
@@ -80,6 +74,8 @@
               <input
                 type="text"
                 name="firstname"
+                title="Only letters accepted"
+
                 class="form-control"
                 pattern="[A-Za-z]+"
                 placeholder="firstname"
@@ -107,8 +103,9 @@
                 name="username"
                 class="form-control"
                 pattern="[A-Za-z]+"
+                title="Only letters accepted"
 
-                placeholder="Johndoe"
+                placeholder="username"
                 required
               />
             </div>
@@ -119,8 +116,10 @@
               <input
                 type="email"
                 name="email"
+                title="Enter a valid email"
+                id="validateemail"
                 class="form-control"
-                placeholder="johndoe@gmail.com"
+                placeholder="example:- johndoe@gmail.com"
 
                 required
               />

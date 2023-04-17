@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 # from django.contrib.auth.models import Group
 
-admin.site.site_header = "Employee_Recruitment"
+admin.site.site_header = "Jobseeker Records"
 # admin.site.unregister(Group)
 
 

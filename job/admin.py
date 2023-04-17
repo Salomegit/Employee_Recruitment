@@ -112,7 +112,7 @@ class ApplicationSummaryAdmin(admin.ModelAdmin):
 
         summary_over_time = summary_over_time.filter(
             created_at__range=[start_date, end_date])
-        print(summary_over_time)
+        # print(summary_over_time)
         summary_range = summary_over_time.aggregate(
             low=Min('total'),
             high=Max('total'),
