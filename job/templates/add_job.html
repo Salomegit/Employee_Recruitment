@@ -141,6 +141,8 @@
           <input
             style="border: 2px solid"
             type="date"
+           min=" {{ date.today() }}"
+           max="2023-12-31"
             name="deadline"
             class="form-control"
             id="id_deadline"
@@ -149,11 +151,11 @@
         </div>
       </div>
 
-      <div>
+      <!-- <div>
         <label for="image">Image:-</label>
         <br />
         <input type="file" id="id_image" name="image" />
-      </div>
+      </div> -->
 <div>
 
   <input

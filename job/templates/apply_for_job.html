@@ -64,6 +64,7 @@
           placeholder="First Name"
           class="form-control"
           id="id_first_name"
+          {{userprofile.user}}
           required
         />
       </div>
@@ -94,7 +95,7 @@
           name="date_of_birth"
           placeholder="Your Date of Birth"
           title="Valid date of birth"
-
+          min="1960-01-01" max="2005-12-31"
           class="form-control"
           id="id_date_of_birth"
           required
@@ -136,13 +137,34 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-12">
 
+      <div class="form-group">
+
+        <label>Level of Education:</label>
+       <div class="select">
+
+         <select name="level_education" >
+           <option value="">-- Select --</option>
+           <option value="High School">High School</option>
+           <option value="Associate Degree">Associate Degree</option>
+           <option value="Bachelor Degree">Bachelor's Degree</option>
+           <option value="Master Degree">Master's Degree</option>
+           <option value="Doctorate">Doctoral Degree</option>
+           <option value="Professional Degree">Professional Degree</option>
+           <option value="Certificate">Certificate</option>
+           <option value="Diploma">Diploma</option>
+           
+          </select>
+        </div>
+      </div>
+  </div>
     <div class="col-sm-12">
       <div class="form-group">
         <label>Education acquired:-</label>
         <textarea
           style="border: 2px solid"
-          placeholder="Levels of Education Acquired"
+          placeholder="Education Acquired"
           type="textarea"
           name="education"
           class="form-control"

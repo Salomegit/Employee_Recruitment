@@ -83,6 +83,27 @@ class Application(models.Model):
         (PENDING,'Pending' ),
         (DECLINED,'Declined' )
      )
+    
+
+    CERTIFICATE = 'Certificate'
+    DIPLOMA = 'Diploma'
+    ASSOCIATE_DEGREE = "Associate Degree"
+    BACHELOR_DEGREE = "Bachelor Degree"
+    MASTER_DEGREE = "Master Degree"
+    DOCTORATE = 'Doctorate'
+    HIGH_SCHOOL = 'High School'
+    PROFESSIONAL_DEGREE =  "Professional Degree"
+    
+    CHOICES_EDUCATION = (
+        (CERTIFICATE, 'CERTIFICATE'),
+        (DIPLOMA, 'DIPLOMA'),
+        (ASSOCIATE_DEGREE, "ASSOCIATE_DEGREE"),
+        (BACHELOR_DEGREE, "BACHELOR_DEGREE"),
+        (MASTER_DEGREE, "MASTER_DEGREE"),
+        (DOCTORATE, 'DOCTORATE'),
+        ( HIGH_SCHOOL," HIGH_SCHOOL"),
+        ( PROFESSIONAL_DEGREE,"PROFESSIONAL_DEGREE")
+    )
     job = models.ForeignKey(Job,
                             related_name='applications',
                              on_delete=models.CASCADE)
@@ -101,6 +122,7 @@ class Application(models.Model):
     mobile = models.IntegerField(null=True, blank=True)
     education   = models.CharField( max_length=2553, null=True, blank=True)
 
+    level_education =  models.CharField(max_length=40,choices= CHOICES_EDUCATION)
 
 
     content = models.TextField()

@@ -1,129 +1,149 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4IQ TECHNOLOGIES Employee Recruitement management system</title>
     {% load static %}
 
-    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+
     <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-    crossorigin="anonymous"
-     />
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
     />
-  
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg  " style="display: flex; background-color: #561C32;" > 
-        <button
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg"
+      style="display: flex; background-color: #561c32"
+    >
+      <button
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbar"
-    >
+      >
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbar" style="padding: 5px 30px">
-        <div class="navbar-nav" style="width: 100%;">
-            <a class="navbar-brand" style="color: #D5ABB9" href="{% url 'employee:base' %}">4IQ Technologies</a>
-    
-            <a style="color: white;" class="nav-item nav-link" id="home" href="{% url 'employee:base' %}">
- 
-            <i class="fa fa-home"></i>Home</a>
-    
-            <a
-            style="color: white; "
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        id="navbar"
+        style="padding: 5px 30px"
+      >
+        <div class="navbar-nav" style="width: 100%">
+          <a
+            class="navbar-brand"
+            style="color: #d5abb9"
+            href="{% url 'employee:base' %}"
+            >4IQ Technologies</a
+          >
+
+          <a
+            style="color: white"
+            class="nav-item nav-link"
+            id="home"
+            href="{% url 'employee:base' %}"
+          >
+            <i class="fa fa-home"></i>Home</a
+          >
+
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:about'%}"
-            ><i class="fas fa-address-card"></i>About Us</a>
-            
- 
- 
-            <a
-            style="color: white;"
+            ><i class="fas fa-address-card"></i>About Us</a
+          >
+
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:contact'%}"
             ><i class="fas fa-phone"></i>Contact Us</a
-            >
-            <a
-            style="color: white;"
+          >
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:help'%}"
             ><i class="fas fa-phone"></i>Help</a
-            >
-           {% if request.user.is_authenticated %}
-           <a
-           style="color: white;"
-           class="nav-item nav-link"
-           href="{% url 'employee:logout' %}"
-           ><i class="fas fa-phone"></i>Logout</a
-           >
-           {% else %}
-            <a
-            style="color: white;"
+          >
+          {% if request.user.is_authenticated %}
+          <a
+            style="color: white"
+            class="nav-item nav-link"
+            href="{% url 'employee:logout' %}"
+            ><i class="fas fa-phone"></i>Logout</a
+          >
+          {% else %}
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:register' %}"
             ><i class="fas fa-sign-in-alt"></i>Sign-Up</a
-            >
-            <a
-            style="color: white;"
+          >
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:login' %}"
             ><i class="fas fa-sign-in-alt"></i>login</a
-            >
+          >
 
-            {% endif %}
-            {% if request.user.is_authenticated %}
+          {% endif %} {% if request.user.is_authenticated %}
 
-            <a
-            style="color: white;"
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'dashboard' %}"
             ><i class="fas fa-sign-in-alt fa-beat"></i>Dashboard</a
-            >
-            <a
-            style="color: white;"
+          >
+          <a
+            style="color: white"
             class="nav-item nav-link"
             href="{% url 'job:search' %}"
-            >
-            <img style="font-size: 20px;" src="{% static 'newsearch.png' %}" width="20" height="20"alt="My Image">
+          >
+            <img
+              style="font-size: 20px"
+              src="{% static 'newsearch.png' %}"
+              width="20"
+              height="20"
+              alt="My Image"
+            />
             Search</a
-            >
-           {% if request.user.notification1.count > 0 %}
-        <a
-        style="color: white;"
-        class="nav-item nav-link"
-        href="{% url 'notifications' %}"
-        ><i class="fas fa-envelope"></i>Notifications 
-       ({{request.user.notification1.count}})</a>
-    {% endif %}
+          >
+          {% if request.user.notification1.count > 0 %}
+          <a
+            style="color: white"
+            class="nav-item nav-link"
+            href="{% url 'notifications' %}"
+            ><i class="fas fa-envelope"></i>Notifications
+            ({{request.user.notification1.count}})</a
+          >
+          {% endif %} {% endif %}
 
-            {% endif %}
-
-           
-            
-           <!-- <div style="justify-content: end;">
-
-               <a href="{% url 'job:search' %}" class="btn " style="color: #f;back" >Search</a> </button>
-           
-            </div> -->
-        
-          </div>
         </div>
-      </nav>
-      <!--End of nav-->
-      
-      <script
+      </div>
+    </nav>
+    <!--End of nav-->
+
+    <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
@@ -138,9 +158,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script  src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <!-- <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.common.prod.min.js" integrity="sha512-vwjHx54j9x6k6Mz7g7fR1d8f9CoCqKGv3eTaYShGsa0+SmmXgl6cq/DF+fek2/akIYUw6ZlnHU5UFEkpo+xF1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-      {% block scripts %}
-      {% endblock %}
-</body>
+    {% block scripts %} {% endblock %}
+  </body>
 </html>

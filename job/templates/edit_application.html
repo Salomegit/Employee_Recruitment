@@ -13,7 +13,7 @@
 <div  >
 <form
   method="POST"
-
+   action="."
   style="
     color: #561c32;
     font: 100% / normal sans-serif;
@@ -75,6 +75,8 @@
           type="date"
           name="date_of_birth"
           placeholder="Your Date of Birth"
+          title="Valid date of birth"
+          min="1960-01-01" max="2005-12-31"
           class="form-control"
           id="id_date_of_birth"
           value="{{ application.date_of_birth }}"            
@@ -93,7 +95,7 @@
             placeholder="gender"
             
             name="gender"
-            value="M"{% if gender == "M" %} checked {% endif %}
+            value="M"{% if application.gender == "M" %} checked {% endif %}
             id="id_gender"
 
           />
@@ -105,7 +107,7 @@
             placeholder="gender"
             
             name="gender"
-            value="F" {% if gender == "F" %} checked {% endif %}
+            value="F" {% if application.gender == "F" %} checked {% endif %}
             id="id_gender"
           />
         </div>
@@ -116,14 +118,32 @@
             placeholder="gender"
             
             name="gender"
-            value="O" {% if gender == "O" %} checked {% endif %}
+            value="O" {% if application.gender == "O" %} checked {% endif %}
             id="id_gender"
 
           />
         </div>
       </div>
     </div>
+    <div class="col-sm-12">
 
+      <div class="form-group">
+        <label >Level of Education:</label>
+        <select  name="level_education"   
+        >
+          <option value="">-- Select --</option>
+          <option value="High School" {% if application.level_education == "High School" %}selected{% endif %}>High School</option>
+          <option value="Associate Degree"{% if application.level_education == "Associate Degree" %}selected{% endif %}>Associate Degree</option>
+          <option value="Bachelor Degree"{% if application.level_education == "Bachelor Degree" %}selected{% endif %}>Bachelor's Degree</option>
+          <option value="Master Degree" {% if application.level_education == "Master Degree" %}selected{% endif %}>Master's Degree</option>
+          <option value="Doctoral Degree"{% if application.level_education == "Doctoral Degree" %}selected{% endif %}>Doctoral Degree</option>
+          <option value="Professional Degree"{% if application.level_education == "Professional Degree" %}selected{% endif %}>Professional Degree</option>
+          <option value="Certificate"{% if application.level_education == "Certificate" %}selected{% endif %}>Certificate</option>
+          <option value="Diploma"{% if application.level_education == "Diploma" %}selected{% endif %}>Diploma</option>
+          
+        </select>
+      </div>
+  </div>
     <div class="col-sm-12">
       <div class="form-group">
         <label>Education acquired:-</label>

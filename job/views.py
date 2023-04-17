@@ -203,7 +203,6 @@ def add(request):
         if form.is_valid():
             job = form.save(commit=False)
             job.created_by = request.user
-            job.image = request.FILES['image']
             
             job.save()
             messages.info(
