@@ -59,8 +59,16 @@
       Get In Touch With Us
     </h5>
     <div class="container-fluid">
-      <form method="post" name="contact">
+      <form method="POST"  name="contact">
         {% csrf_token %}
+
+        {% if form.errors %}
+        {% for field, errors in form.errors.items %}
+          {% for error in errors %}
+            <div class="alert alert-danger"> Error at {{ field }} field: {{ error }}</div>
+          {% endfor %}
+        {% endfor %}
+        {% endif %}
         <div class="form-row">
           <div class="col-sm-6">
             <div class="form-group">
@@ -69,6 +77,8 @@
                 type="text"
                 name="full_name"
                 id="id_fullname"
+                pattern="[A-Za-z]+"
+                title="Only letters accepted"
                 class="form-control"
                 placeholder="Enter your Full Name"
                 required
@@ -83,9 +93,10 @@
               <input
                 type="email"
                 name="email"
-                placeholder="johndoe@gmail.com"
-
+                title="Enter a valid Email"
                 id="id_email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                placeholder="johndoe@gmail.com"
                 class="form-control"
                 required
               />

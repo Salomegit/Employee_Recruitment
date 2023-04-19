@@ -12,6 +12,7 @@ xhtml2pdf = "*"
 django-jazzmin = "*"
 reportlab = "*"
 django-bootstrap-pagination = "*"
+pymysql = "*"
 
 [dev-packages]
 

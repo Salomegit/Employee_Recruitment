@@ -190,13 +190,13 @@
     </div>
     <div class="col-sm-12">
       <div class="form-group">
-        <label> Your Location:-</label>
+        <label> Your Location(County):-</label>
         <input
           style="border: 2px solid"
           type="text"
           placeholder="Your location"
           pattern="[A-Za-z]+"
-
+          title="Only letters accepted"
           name="location"
           class="form-control"
           id="id_location"
@@ -214,6 +214,7 @@
           pattern="\+254[0-9]{3}[0-9]{3}[0-9]{3}"
           minlength="13"
           maxlength="13"
+          title="Only numbers accepted"
           name="mobile"
           class="form-control"
           id="id_mobile"

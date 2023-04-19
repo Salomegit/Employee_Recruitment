@@ -104,6 +104,7 @@ class Application(models.Model):
         ( HIGH_SCHOOL," HIGH_SCHOOL"),
         ( PROFESSIONAL_DEGREE,"PROFESSIONAL_DEGREE")
     )
+    
     job = models.ForeignKey(Job,
                             related_name='applications',
                              on_delete=models.CASCADE)

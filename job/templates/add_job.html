@@ -103,7 +103,7 @@
           <input
             style="border: 2px solid"
             type="text"
-            placeholder="100$-200$"
+            placeholder="Ksh 30,000-50,000"
             name="salary"
             class="form-control"
             id="id_salary"
@@ -141,9 +141,10 @@
           <input
             style="border: 2px solid"
             type="date"
-           min=" {{ date.today() }}"
-           max="2023-12-31"
+            min="2023-04-22" max="2023-05-31"
+
             name="deadline"
+            title="Kindly select a later date"
             class="form-control"
             id="id_deadline"
             v-model="deadline"

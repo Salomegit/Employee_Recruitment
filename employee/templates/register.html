@@ -19,22 +19,29 @@
   }
 </script>
   
+<script src="path/to/validator.min.js">
+
+</script>
 <script>
-  function validateEmail() {
-    const emailInput = document.getElementById('validateemail');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,5}$/;
-  
-    emailInput.addEventListener('input', function() {
+    const form = document.querySelector('form');
+    const emailInput = form.querySelector('#email');
+    
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      
+      // Get the value of the email input field
       const email = emailInput.value;
-      if (!emailRegex.test(email)) {
-        emailInput.setCustomValidity('Please enter a valid email address');
+      
+      // Validate the email using Validator.js
+      if (validator.isEmail(email)) {
+        // If the email is valid, submit the form
+        form.submit();
       } else {
-        emailInput.setCustomValidity('');
+        // If the email is invalid, show an error message
+        alert('Please enter a valid email address.');
       }
     });
-  }
-  
- </script>
+</script>
  {% if form.errors %}
   {% for field, errors in form.errors.items %}
     {% for error in errors %}
@@ -130,6 +137,8 @@
                 name="email"
                 title="Enter a valid email"
                 id="validateemail"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+
                 class="form-control"
                 placeholder="example:- johndoe@gmail.com"
 

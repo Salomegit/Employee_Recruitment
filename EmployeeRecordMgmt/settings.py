@@ -101,6 +101,15 @@ WSGI_APPLICATION = 'EmployeeRecordMgmt.wsgi.application'
 
 DATABASES = {
     'default': {
+    
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME' : 'myconnection',
+        # 'HOST' : 'localhost',
+        # 'PASSWORD':'password',
+        # 'USER' : 'root',
+        # 'PORT' : '3306'
+
+
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }

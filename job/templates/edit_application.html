@@ -8,133 +8,120 @@
     color: #561c32;
   "
 >
- Edit Application 
+  Edit Application
 </center>
-<div  >
-<form
-  method="POST"
-   action="."
-  style="
-    color: #561c32;
-    font: 100% / normal sans-serif;
-    justify-content: space-between;
-    font-size: large;
-    padding: 20px;
-    justify-content: start;
-    align-items: flex-start;
-  "
-  enctype="multipart/form-data"
->
-{% csrf_token %} {%if form.errors %} {% for error in form.errors %}
-<div class="alert alert-danger">Error in {{ error }} Field or field is empty</div>
-{% endfor %} {% endif %}
-
-  <div
-    class="card mx-auto"
-    style="width: 70%; background-color: #d5abb9; justify-content: center"
+<div>
+  <form
+    method="POST"
+    style="
+      color: #561c32;
+      font: 100% / normal sans-serif;
+      justify-content: space-between;
+      font-size: large;
+      padding: 20px;
+      justify-content: start;
+      align-items: flex-start;
+    "
+    enctype="multipart/form-data"
   >
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label> Firstname:-</label>
-        <input
-          style="border: 2px solid"
-          type="text"
-          placeholder="Your First Name"
-          name="first_name"
-          class="form-control"
-          id="id_first_name"
-          value=" {% if application.first_name %}{{ application.first_name }}{% endif %}"            
-          v-model="first_name"
-
-          required
-        />
-      </div>
+    {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+    <div class="alert alert-danger">
+      Error in {{ error }} Field or field is empty
     </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label> Lastname:-</label>
-        <input
-          style="border: 2px solid"
-          type="text"
-          name="last_name"
-          placeholder="Your Last Name"
-          class="form-control"
-          id="id_last_name"
-          value=" {% if application.last_name %}{{ application.last_name }}{% endif %}"            
-          v-model="last_name"
+    {% endfor %} {% endif %}
 
-          required
-        />
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label>Date of Birth:-</label>
-        <input
-          style="border: 2px solid"
-          type="date"
-          name="date_of_birth"
-          placeholder="Your Date of Birth"
-          title="Valid date of birth"
-          min="1960-01-01" max="2005-12-31"
-          class="form-control"
-          id="id_date_of_birth"
-          value="{{ application.date_of_birth }}"            
-
-          required
-        />
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label>Gender</label>
-        <div style="margin-left: 20px">
-          <label>Male</label>
+    <div
+      class="card mx-auto"
+      style="width: 70%; background-color: #d5abb9; justify-content: center"
+    >
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Firstname:-</label>
           <input
-            type="radio"
-            placeholder="gender"
-            
-            name="gender"
-            value="M"{% if application.gender == "M" %} checked {% endif %}
-            id="id_gender"
-
-          />
-        </div>
-        <div style="margin-left: 20px">
-          <label>Female</label>
-          <input
-            type="radio"
-            placeholder="gender"
-            
-            name="gender"
-            value="F" {% if application.gender == "F" %} checked {% endif %}
-            id="id_gender"
-          />
-        </div>
-        <div style="margin-left: 20px">
-          <label>Other</label>
-          <input
-            type="radio"
-            placeholder="gender"
-            
-            name="gender"
-            value="O" {% if application.gender == "O" %} checked {% endif %}
-            id="id_gender"
-
+            style="border: 2px solid"
+            type="text"
+            placeholder="Your First Name"
+            name="first_name"
+            class="form-control"
+            id="id_first_name"
+            value=" {% if application.first_name %}{{ application.first_name }}{% endif %}"
+            v-model="first_name"
+            required
           />
         </div>
       </div>
-    </div>
-    <div class="col-sm-12">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Lastname:-</label>
+          <input
+            style="border: 2px solid"
+            type="text"
+            name="last_name"
+            placeholder="Your Last Name"
+            class="form-control"
+            id="id_last_name"
+            value=" {% if application.last_name %}{{ application.last_name }}{% endif %}"
+            v-model="last_name"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Date of Birth:-</label>
+          <input
+            style="border: 2px solid"
+            type="date"
+            name="date_of_birth"
+            placeholder="Your Date of Birth"
+            title="Valid date of birth"
+            min="1960-01-01"
+            max="2005-12-31"
+            class="form-control"
+            id="id_date_of_birth"
+            value="{{ application.date_of_birth }}"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Gender</label>
+          <div style="margin-left: 20px">
+            <label>Male</label>
+            <input type="radio" placeholder="gender" name="gender" value="M"
+            {% if application.gender == "M" %} checked {% endif %} id="id_gender"
+            />
+          </div>
+          <div style="margin-left: 20px">
+            <label>Female</label>
+            <input type="radio" placeholder="gender" name="gender" value="F" 
+            {% if application.gender == "F" %} checked {% endif %} id="id_gender"
+            />
+          </div>
+          <div style="margin-left: 20px">
+            <label>Other</label>
+            <input type="radio" placeholder="gender" name="gender" value="O" 
+            {% if application.gender == "O" %} checked {% endif %} id="id_gender"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-sm-12">
 
       <div class="form-group">
         <label >Level of Education:</label>
-        <select  name="level_education"   
-        >
+        <select  name="level_education"   >
           <option value="">-- Select --</option>
-          <option value="High School" {% if application.level_education == "High School" %}selected{% endif %}>High School</option>
-          <option value="Associate Degree"{% if application.level_education == "Associate Degree" %}selected{% endif %}>Associate Degree</option>
-          <option value="Bachelor Degree"{% if application.level_education == "Bachelor Degree" %}selected{% endif %}>Bachelor's Degree</option>
+          <option value="High School" {% if application.level_education == "High School" %}selected{% endif %} >High School
+
+          </option>
+          <option value="Associate Degree"{% if application.level_education == "Associate Degree" %}selected{% endif %}>Associate Degree
+
+          </option>
+          <option value="Bachelor Degree"{% if application.level_education == "Bachelor Degree" %}selected{% endif %}>Bachelor's Degree
+
+          </option>
           <option value="Master Degree" {% if application.level_education == "Master Degree" %}selected{% endif %}>Master's Degree</option>
           <option value="Doctoral Degree"{% if application.level_education == "Doctoral Degree" %}selected{% endif %}>Doctoral Degree</option>
           <option value="Professional Degree"{% if application.level_education == "Professional Degree" %}selected{% endif %}>Professional Degree</option>
@@ -143,123 +130,134 @@
           
         </select>
       </div>
-  </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label>Education acquired:-</label>
-        <textarea
-          style="border: 2px solid"
-          placeholder="Levels of Education Acquired"
-          type="textarea"
-          name="education"
-          class="form-control"
-          id="education"
-          rows="5"
-          required
-        >{% if application.education %}{{ application.education }}{% endif %}</textarea>
+  </div> -->
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Education acquired:-</label>
+          <textarea
+            style="border: 2px solid"
+            placeholder="Levels of Education Acquired"
+            type="textarea"
+            name="education"
+            class="form-control"
+            id="education"
+            rows="5"
+            required
+          >
+{% if application.education %}{{ application.education }}{% endif %}</textarea
+          >
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label> Email:-</label>
-        <input
-          style="border: 2px solid"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          class="form-control"
-          id="id_email"
-          value=" {% if application.email %}{{ application.email }}{% endif %}"            
-
-          required
-        />
+      <!-- <div class="col-sm-12">
+        <div class="form-group">
+          <label> Email:-</label>
+          <input
+            style="border: 2px solid"
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            class="form-control"
+            id="id_email"
+            value=" {% if application.email %}{{ application.email }}{% endif %}"
+            required
+          />
+        </div>
+      </div> -->
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Your Location(County):-</label>
+          <input
+            style="border: 2px solid"
+            type="text"
+            placeholder="Your location"
+            name="location"
+            class="form-control"
+            id="id_location"
+            value=" {% if application.location %}{{ application.location }}{% endif %}"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label> Your Location:-</label>
-        <input
-          style="border: 2px solid"
-          type="text"
-          placeholder="Your location"
-          name="location"
-          class="form-control"
-          id="id_location"
-          value=" {% if application.location %}{{ application.location }}{% endif %}"            
-
-          required
-        />
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label> Your Mobile Number:-</label>
+          <input
+            style="border: 2px solid"
+            type="text"
+            placeholder="eg 07XX XXX XXX"
+            name="mobile"
+            class="form-control"
+            id="id_mobile"
+            value=" {% if application.mobile %}{{ application.mobile }}{% endif %}"
+            required
+          />
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label> Your Mobile Number:-</label>
-        <input
-          style="border: 2px solid"
-          type="text"
-          placeholder="eg 07XX XXX XXX"
-          name="mobile"
-          class="form-control"
-          id="id_mobile"
-          value=" {% if application.mobile %}{{ application.mobile }}{% endif %}"            
-
-          required
-        />
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Any Work Experience Acquired:-</label>
+          <textarea
+            style="border: 2px solid"
+            type="textarea"
+            name="experience"
+            placeholder="Any Experience Acquired"
+            class="form-control"
+            id="id_experience"
+            rows="5"
+            required
+          >
+ {% if application.experience %}{{ application.experience }}{% endif %}           
+    </textarea
+          >
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label>Any Work Experience Acquired:-</label>
-        <textarea
-          style="border: 2px solid"
-          type="textarea"
-          name="experience"
-          placeholder="Any Experience Acquired"
-          class="form-control"
-          id="id_experience"
-          rows="5"
-          required
-        > {% if application.experience %}{{ application.experience }}{% endif %}           
-    </textarea>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Any Other Information/Comment:-</label>
+          <textarea
+            style="border: 2px solid"
+            type="textarea"
+            name="content"
+            placeholder="Any Comment"
+            class="form-control"
+            id="id_content"
+            rows="5"
+            required
+          >
+{% if application.content %}{{ application.content }}{% endif %} </textarea
+          >
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12">
-      <div class="form-group">
-        <label>Any Other Information/Comment:-</label>
-        <textarea
-          style="border: 2px solid"
-          type="textarea"
-          name="content"
-          placeholder="Any Comment"
-          class="form-control"
-          id="id_content"
-          rows="5"
-          required
-        >{% if application.content %}{{ application.content }}{% endif %} </textarea>
-      </div>
-    </div>
       <div>
-    <label for="file">Resume:-</label>
-    <br>
-    <input   type="file" id="id_resume" name="resume" accept=".pdf,.doc,.docx"
-    
-     {{% if not application.resume %}required{% endif %}
-
-     required 
-     />
-   </div>
-
-    <input
-    type="submit"
-    value="Save Changes"
-    class="m-2 px-3 btn btn-primary"
-    style="background-color: #561c32; justify-content: center"
-  />
-  
-</form>
+        <label for="file">Resume:-</label>
+        <br />
+        <input
+          type="file"
+          id="id_resume"
+          name="resume"
+          accept=".pdf,.doc,.docx"
+          {{%
+          if
+          not
+          application.resume
+          %}required{%
+          endif
+          %}
+          required
+        />
+      </div>
+      <div>
+        <input
+          type="submit"
+          value="Save Changes"
+          class="m-2 px-3 btn btn-primary"
+          style="background-color: #561c32; justify-content: center"
+        />
+      </div>
+    </div>
+  </form>
 </div>
-
-
+{% endblock %}
 <!-- <script>
     const EditjobApplication = {
       data() {
@@ -307,4 +305,3 @@
     };
     Vue.createApp(EditjobApplication).mount("#edit-job-application");
   </script> -->
-{% endblock %}

@@ -99,7 +99,8 @@ def Login(request):
             login(request, user1)
           
             message = "Login successful\U0001F44D"
-           
+            # return redirect("dashboard")  
+
             return render(request, "base.html", {'message': message})
 
         else:
