@@ -77,34 +77,33 @@ class Application(models.Model):
     PENDING = 'pending'
     DECLINED = 'declined'
 
-    
     CHOICES_STATUS = (
         (APPROVED,'Approved'),
         (PENDING,'Pending' ),
         (DECLINED,'Declined' )
-     )
-    
-
-    CERTIFICATE = 'Certificate'
-    DIPLOMA = 'Diploma'
-    ASSOCIATE_DEGREE = "Associate Degree"
-    BACHELOR_DEGREE = "Bachelor Degree"
-    MASTER_DEGREE = "Master Degree"
-    DOCTORATE = 'Doctorate'
-    HIGH_SCHOOL = 'High School'
-    PROFESSIONAL_DEGREE =  "Professional Degree"
-    
-    CHOICES_EDUCATION = (
-        (CERTIFICATE, 'CERTIFICATE'),
-        (DIPLOMA, 'DIPLOMA'),
-        (ASSOCIATE_DEGREE, "ASSOCIATE_DEGREE"),
-        (BACHELOR_DEGREE, "BACHELOR_DEGREE"),
-        (MASTER_DEGREE, "MASTER_DEGREE"),
-        (DOCTORATE, 'DOCTORATE'),
-        ( HIGH_SCHOOL," HIGH_SCHOOL"),
-        ( PROFESSIONAL_DEGREE,"PROFESSIONAL_DEGREE")
     )
     
+    HIGH_SCHOOL = 'High School'
+    ASSOCIATE_DEGREE = 'Associate Degree'
+    BACHELOR_DEGREE = 'Bachelor Degree'
+    MASTER_DEGREE = 'Master Degree'
+    DOCTORATE = 'Doctorate'
+    PROFESSIONAL_DEGREE = 'Professional Degree'
+    CERTIFICATE = 'Certificate'
+    DIPLOMA = 'Diploma'
+    
+
+
+    EDUCATION_CHOICES = ((HIGH_SCHOOL, 'High School'),
+        (ASSOCIATE_DEGREE, 'Associate Degree'),
+        (BACHELOR_DEGREE, "Bachelor's Degree"),
+        (MASTER_DEGREE, "Master's Degree"),
+        (DOCTORATE, 'Doctoral Degree'),
+        (PROFESSIONAL_DEGREE, 'Professional Degree'),
+        (CERTIFICATE, 'Certificate'),
+        (DIPLOMA, 'Diploma')
+    )
+
     job = models.ForeignKey(Job,
                             related_name='applications',
                              on_delete=models.CASCADE)
@@ -123,7 +122,7 @@ class Application(models.Model):
     mobile = models.IntegerField(null=True, blank=True)
     education   = models.CharField( max_length=2553, null=True, blank=True)
 
-    level_education =  models.CharField(max_length=40,choices= CHOICES_EDUCATION)
+    level_education = models.CharField(max_length=30, choices=EDUCATION_CHOICES)
 
 
     content = models.TextField()

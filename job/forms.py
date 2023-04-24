@@ -9,7 +9,7 @@ class AddJobForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['first_name','last_name','date_of_birth','gender','education','email','location','content','experience','mobile', 'resume']
+        fields = ['first_name','last_name','date_of_birth','gender','education','email','location','content','experience','mobile', 'resume', 'level_education']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

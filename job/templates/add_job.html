@@ -45,6 +45,7 @@
           <label> Title:-</label>
           <input
             style="border: 2px solid"
+            placeholder="Add Job Title"
             type="text"
             name="title"
             class="form-control"
@@ -61,6 +62,8 @@
             style="border: 2px solid"
             type="textarea"
             name="skillset_required"
+            placeholder="Add Skillset Required"
+
             class="form-control"
             id="id_skillset_required"
             rows="5"
@@ -75,11 +78,12 @@
           <textarea
             style="border: 2px solid"
             type="textarea"
+
             name="about_job"
             class="form-control"
             id="id_about_job"
             rows="8"
-            v-model="about_job"
+            placeholder="Add About job"
           ></textarea>
         </div>
       </div>
@@ -90,6 +94,7 @@
             style="border: 2px solid"
             type="text"
             name="experience"
+            placeholder="Add Experience Required"
             class="form-control"
             id="id_experience"
             rows="8"
@@ -103,7 +108,7 @@
           <input
             style="border: 2px solid"
             type="text"
-            placeholder="Ksh 30,000-50,000"
+            placeholder="Example :- Ksh 30,000-50,000"
             name="salary"
             class="form-control"
             id="id_salary"

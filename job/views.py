@@ -151,10 +151,15 @@ def apply_for_job(request, job_id):
 
         if form.is_valid():
             email = form.cleaned_data['email']
+            mobile = form.cleaned_data['mobile']
+       
             if Application.objects.filter(job=job, email=email).exists():
                 messages.info(request, 'This email has already been used to apply for this job')
+            if Application.objects.filter(job=job, mobile=mobile).exists():
+                messages.info(request, 'This mobile number has already been used to apply for this job')
+                return render(request, 'apply_for_job.html', {'form': form, 'error_message': 'This mobile number has already been used.'})
 
-                return redirect('job:apply_for_job')
+
 
             else:
                 application = form.save(commit=False)

@@ -42,6 +42,8 @@
             type="text"
             placeholder="Your First Name"
             name="first_name"
+            pattern="[A-Za-z]+"
+            title="Only letters accepted"
             class="form-control"
             id="id_first_name"
             value=" {% if application.first_name %}{{ application.first_name }}{% endif %}"
@@ -57,6 +59,8 @@
             style="border: 2px solid"
             type="text"
             name="last_name"
+            pattern="[A-Za-z]+"
+            title="Only letters accepted"
             placeholder="Your Last Name"
             class="form-control"
             id="id_last_name"
@@ -107,7 +111,7 @@
           </div>
         </div>
       </div>
-      <!-- <div class="col-sm-12">
+      <div class="col-sm-12">
 
       <div class="form-group">
         <label >Level of Education:</label>
@@ -130,7 +134,7 @@
           
         </select>
       </div>
-  </div> -->
+  </div>
       <div class="col-sm-12">
         <div class="form-group">
           <label>Education acquired:-</label>
@@ -148,7 +152,7 @@
           >
         </div>
       </div>
-      <!-- <div class="col-sm-12">
+      <div class="col-sm-12">
         <div class="form-group">
           <label> Email:-</label>
           <input
@@ -162,7 +166,7 @@
             required
           />
         </div>
-      </div> -->
+      </div>
       <div class="col-sm-12">
         <div class="form-group">
           <label> Your Location(County):-</label>
@@ -172,6 +176,8 @@
             placeholder="Your location"
             name="location"
             class="form-control"
+            pattern="[A-Za-z]+"
+            title="Only letters accepted"
             id="id_location"
             value=" {% if application.location %}{{ application.location }}{% endif %}"
             required
@@ -183,13 +189,16 @@
           <label> Your Mobile Number:-</label>
           <input
             style="border: 2px solid"
-            type="text"
-            placeholder="eg 07XX XXX XXX"
             name="mobile"
+            type="tel"
+          pattern="\+254[0-9]{3}[0-9]{3}[0-9]{3}"
+          minlength="13"
+          maxlength="13"
+          title="Only numbers accepted"
             class="form-control"
             id="id_mobile"
             value=" {% if application.mobile %}{{ application.mobile }}{% endif %}"
-            required
+            required value="+254"
           />
         </div>
       </div>

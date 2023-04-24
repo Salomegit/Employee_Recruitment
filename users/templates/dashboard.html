@@ -119,7 +119,7 @@
       <th scope="col">Location</th>
       <th scope="col">View Application</th>
       <th scope="col">Delete Application</th>
-      <th scope="col">Edit </th>
+      <!-- <th scope="col">Edit </th> -->
       <th scope="col">Status </th>
       <th scope="col">View/Send Message</th>
 
@@ -165,12 +165,12 @@
           />
         </a> -->
       </td>
-      <td>
+      <!-- <td>
         <a href="{% url 'job:edit_app' application.id %}">
 
           <img src="{% static 'edit.png' %}" width= "20" height="20" alt="My Image">
         </a>
-      </td>
+      </td> -->
       <td>     
     {%if application.status == 'pending'%}
     <h6> <span style="color: white; border-radius: 5px; padding: 5px; background-color: black">{{application.status}}</span> </h6>

@@ -90,7 +90,7 @@
             style="color: white"
             class="nav-item nav-link"
             href="{% url 'employee:logout' %}"
-            ><i class="fas fa-phone"></i>Logout</a
+            ><i class="fas fa-sign-in-alt"></i>Logout</a
           >
           {% else %}
           <a
@@ -158,6 +158,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <!-- <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.common.prod.min.js" integrity="sha512-vwjHx54j9x6k6Mz7g7fR1d8f9CoCqKGv3eTaYShGsa0+SmmXgl6cq/DF+fek2/akIYUw6ZlnHU5UFEkpo+xF1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     {% block scripts %} {% endblock %}
