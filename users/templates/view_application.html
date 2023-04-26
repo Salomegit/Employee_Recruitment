@@ -158,12 +158,22 @@
         </h6>
         <h6>{{application.content}}</h6>
       </div>
-      <div style="display: flex">
+      <!-- <div style="display: flex">
         <h6 style="width: 200px; word-wrap: normal; font-weight: bold">
           Resume:
         </h6>
         <h6>{{application.resume}}</h6>
+      </div> -->
+      <div style="display: flex">
+        <h6 style="width: 200px; word-wrap: normal; font-weight: bold">Resume:</h6>
+        <div>
+          <a href="{{ application.resume.url }}" download>
+            <button type="button">Download</button>
+          </a>
+          <h6>{{ application.resume }}</h6>
+        </div>
       </div>
+      
       <p></p>
     </div>
   </div>
