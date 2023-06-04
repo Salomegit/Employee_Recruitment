@@ -1,13 +1,13 @@
-{% include 'header.html' %} {% block content %}
-{% if message %}
-    <div id="alert" class="alert alert-success">{{ message }}</div>
-    <script>
-        setTimeout(function() {
-            document.getElementById("alert").style.display = "none";
-        }, 5000);
-    </script>
+{% include 'header.html' %} {% block content %} {% if message %}
+<div id="alert" class="alert alert-success">{{ message }}</div>
+<script>
+  setTimeout(function () {
+    document.getElementById("alert").style.display = "none";
+  }, 5000);
+</script>
+{% endif %} {% if error_message %}
+<div class="alert alert-danger" role="alert">{{ error_message }}</div>
 {% endif %}
-
 <h4
   class="title"
   style="
@@ -35,19 +35,12 @@
   "
   enctype="multipart/form-data"
 >
-  {% csrf_token %} 
-
-   {%if form.errors %} {% for error in form.errors %}
-  <div class="alert alert-danger"> Error at {{ error }} Field</div>
-  {% endfor %} {% endif %} 
-
-  {% if form.errors %}
-  {% for field, errors in form.errors.items %}
-    {% for error in errors %}
-      <div class="alert alert-danger"> Error at {{ field }} field: {{ error }}</div>
-    {% endfor %}
-  {% endfor %}
-{% endif %}
+  {% csrf_token %} {%if form.errors %} {% for error in form.errors %}
+  <div class="alert alert-danger">Error at {{ error }} Field</div>
+  {% endfor %} {% endif %} {% if form.errors %} {% for field, errors in
+  form.errors.items %} {% for error in errors %}
+  <div class="alert alert-danger">Error at {{ field }} field: {{ error }}</div>
+  {% endfor %}  {% endif %}
   <div
     class="card mx-auto"
     style="width: 70%; background-color: #d5abb9; justify-content: center"
@@ -78,7 +71,6 @@
           name="last_name"
           pattern="[A-Za-z]+"
           title="Only letters accepted"
-
           placeholder="Last Name"
           class="form-control"
           id="id_last_name"
@@ -95,7 +87,8 @@
           name="date_of_birth"
           placeholder="Your Date of Birth"
           title="Valid date of birth"
-          min="1960-01-01" max="2005-12-31"
+          min="1960-01-01"
+          max="2005-12-31"
           class="form-control"
           id="id_date_of_birth"
           required
@@ -138,27 +131,23 @@
       </div>
     </div>
     <div class="col-sm-12">
-
       <div class="form-group">
-
         <label>Level of Education:</label>
-       <div class="select">
-
-         <select name="level_education" >
-           <option value="">-- Select --</option>
-           <option value="High School">High School</option>
-           <option value="Associate Degree">Associate Degree</option>
-           <option value="Bachelor Degree">Bachelor's Degree</option>
-           <option value="Master Degree">Master's Degree</option>
-           <option value="Doctorate">Doctoral Degree</option>
-           <option value="Professional Degree">Professional Degree</option>
-           <option value="Certificate">Certificate</option>
-           <option value="Diploma">Diploma</option>
-           
+        <div class="select">
+          <select name="level_education" v-model="level_education">
+            <option value="">---</option>
+            <option value="High School">High School</option>
+            <option value="Associate Degree">Associate Degree</option>
+            <option value="Bachelor Degree">Bachelor's Degree</option>
+            <option value="Master Degree">Master's Degree</option>
+            <option value="Doctoral Degree">Doctoral Degree</option>
+            <option value="Professional Degree">Professional Degree</option>
+            <option value="Certificate">Certificate</option>
+            <option value="Diploma">Diploma</option>
           </select>
         </div>
       </div>
-  </div>
+    </div>
     <div class="col-sm-12">
       <div class="form-group">
         <label>Education acquired:-</label>
@@ -218,7 +207,8 @@
           name="mobile"
           class="form-control"
           id="id_mobile"
-          required value="+254"
+          required
+          value="+254"
         />
       </div>
     </div>
@@ -253,17 +243,18 @@
       </div>
 
       <div>
-    <label for="file">Resume:-</label>
-    <br>
-    <input   type="file" id="file" name="resume" />
-   </div>
-<div>
-      <input
-        type="submit"
-        value="Submit"
-        class="m-3 px-5 btn btn-primary"
-        style="background-color: #561c32"
-      />
+        <label for="file">Resume:-</label>
+        <br />
+        <input type="file" id="file" name="resume" />
+      </div>
+      <div>
+        <input
+          type="submit"
+          value="Submit"
+          class="m-3 px-5 btn btn-primary"
+          style="background-color: #561c32"
+        />
+      </div>
     </div>
   </div>
 </form>
