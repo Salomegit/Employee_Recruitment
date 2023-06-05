@@ -283,14 +283,7 @@
             "index": "pypi",
             "version": "==1.7.1"
         },
-        "django-debug-toolbar": {
-            "hashes": [
-                "sha256:89619f6e0ea1057dca47bfc429ed99b237ef70074dabc065a7faa5f00e1459cf",
-                "sha256:bad339d68520652ddc1580c76f136fcbc3e020fd5ed96510a89a02ec81bb3fb1"
-            ],
-            "index": "pypi",
-            "version": "==4.0.0"
-        },
+      
         "django-jazzmin": {
             "hashes": [
                 "sha256:5bb07055cf19183030724f976904fd8b6337559727959340a43832fab0531812",

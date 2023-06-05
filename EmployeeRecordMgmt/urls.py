@@ -27,7 +27,6 @@ admin.site.site_header = "Jobseeker Records"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/',include("employee.urls")),
-    path('__debug__/',include('debug_toolbar.urls')),
     path('job/',include("job.urls")),
     path('users/',include("users.urls")),
     path('notification/',include("notification.urls"))
