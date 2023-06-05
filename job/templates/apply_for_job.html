@@ -133,19 +133,22 @@
     <div class="col-sm-12">
       <div class="form-group">
         <label>Level of Education:</label>
-        <div class="select">
-          <select name="level_education" v-model="level_education">
-            <option value="">---</option>
-            <option value="High School">High School</option>
-            <option value="Associate Degree">Associate Degree</option>
-            <option value="Bachelor Degree">Bachelor's Degree</option>
-            <option value="Master Degree">Master's Degree</option>
-            <option value="Doctoral Degree">Doctoral Degree</option>
-            <option value="Professional Degree">Professional Degree</option>
-            <option value="Certificate">Certificate</option>
-            <option value="Diploma">Diploma</option>
+       <div class="select">
+
+         <select name="level_education" >
+           <option value="">-- Select --</option>
+           <option value="High School">High School</option>
+           <option value="Associate Degree">Associate Degree</option>
+           <option value="Bachelor Degree">Bachelor's Degree</option>
+           <option value="Master Degree">Master's Degree</option>
+           <option value="Doctorate">Doctoral Degree</option>
+           <option value="Professional Degree">Professional Degree</option>
+           <option value="Certificate">Certificate</option>
+           <option value="Diploma">Diploma</option>
+           
           </select>
-        </div>
+          </div>
+        
       </div>
     </div>
     <div class="col-sm-12">
@@ -243,18 +246,17 @@
       </div>
 
       <div>
-        <label for="file">Resume:-</label>
-        <br />
-        <input type="file" id="file" name="resume" />
-      </div>
-      <div>
-        <input
-          type="submit"
-          value="Submit"
-          class="m-3 px-5 btn btn-primary"
-          style="background-color: #561c32"
-        />
-      </div>
+    <label for="file">Resume:-</label>
+    <br>
+    <input   type="file" id="file" name="resume" />
+   </div>
+<div>
+      <input
+        type="submit"
+        value="Submit"
+        class="m-3 px-5 btn btn-primary"
+        style="background-color: #561c32"
+      />
     </div>
   </div>
 </form>
