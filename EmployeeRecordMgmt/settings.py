@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'notification',
     'job',
     'users',
-    'debug_toolbar',
 ]
 INTERNAL_IPS = [
     # ...
