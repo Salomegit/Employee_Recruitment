@@ -1,0 +1,120 @@
+# ========================
+# Django & Python
+# ========================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.mo
+*.db
+db.sqlite3
+instance/
+local_settings.py
+.env
+.env.*
+.envrc
+venv/
+ENV/
+env/
+.venv/
+*.pid
+
+
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+*.pkl
+
+# Translations
+*.mo
+*.pot
+
+# Django migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+# Uncomment the next line if you don't want to track migration files
+# */migrations/
+
+# ========================
+# IDEs and editors
+# ========================
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# ========================
+# OS generated files
+# ========================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ========================
+# Docker & CI/CD
+# ========================
+
+# Docker
+*.dockerfile
+docker-compose*.yaml
+docker-compose*.yml
+.docker/
+docker-data/
+
+# CI/CD
+.gitlab-ci.yml
+*.lock
+
+# ========================
+# Miscellaneous
+# ========================
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# MyPy & Pytest
+.mypy_cache/
+.dmypy.json
+.pytest_cache/
+pytestdebug.log
+
+# VS Code testing
+.coverage
