@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from . import views  # Import views from main app
+
 # from django.contrib.auth.models import Group
 
 admin.site.site_header = "Jobseeker Records"
@@ -29,7 +31,10 @@ urlpatterns = [
     path('employee/',include("employee.urls")),
     path('job/',include("job.urls")),
     path('users/',include("users.urls")),
-    path('notification/',include("notification.urls"))
+    path('notification/',include("notification.urls")),
+    path('', views.home, name='home'),  # Add this line for the hero page
+
+
 
     # path('images/covers')                        
 

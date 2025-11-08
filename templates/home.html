@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4IQ TECHNOLOGIES - Find Your Dream Job</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+    
+    .hero-container {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #561c32 0%, #c94277 50%, #d5abb9 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Animated Background Shapes */
+    .hero-container::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -250px;
+      right: -250px;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .hero-container::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      bottom: -200px;
+      left: -200px;
+      animation: float 15s infinite ease-in-out reverse;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-50px) rotate(180deg);
+      }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .company-logo {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                     0 0 20px rgba(255, 255, 255, 0.3);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                     0 0 30px rgba(255, 255, 255, 0.5);
+      }
+    }
+    
+    .hero-title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-tagline {
+      font-size: 1.3rem;
+      margin-bottom: 50px;
+      opacity: 0.9;
+      font-style: italic;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 20px 60px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #561c32;
+      background: white;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+      z-index: -1;
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      color: #561c32;
+      text-decoration: none;
+    }
+    
+    .cta-button i {
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+    
+    .cta-button:hover i {
+      transform: translateX(10px);
+    }
+    
+    .features-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+    
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover .feature-icon {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1) rotate(10deg);
+    }
+    
+    .feature-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-20px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1rem;
+      }
+      
+      .cta-button {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+      }
+      
+      .company-logo {
+        font-size: 2rem;
+      }
+      
+      .features-row {
+        gap: 20px;
+      }
+      
+      .feature-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="company-logo">4IQ TECHNOLOGIES</div>
+      
+      <h1 class="hero-title">
+        Your Dream Job<br>Awaits You
+      </h1>
+      
+      <p class="hero-subtitle">
+        Join Kenya's leading technology company and take your career to the next level
+      </p>
+      
+      <p class="hero-tagline">
+        Innovation • Growth • Excellence
+      </p>
+      
+     
+
+              <a class="cta-button" href="{% url 'employee:base' %}">
+                
+   Explore Jobs
+        <i class="fas fa-arrow-right"></i>            
+            </a>
+
+      
+      <div class="features-row">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="feature-text">100+ Positions</div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="feature-text">Expert Team</div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="feature-text">Fast Growth</div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="feature-text">Top Benefits</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  <script>
+    // Smooth scroll on click
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
